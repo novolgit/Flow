@@ -12,6 +12,7 @@
 		2F447FB3259D791400019EA6 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F447FB2259D791400019EA6 /* ConfirmView.swift */; };
 		2F5F452F25A33B78009B8A82 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F452E25A33B78009B8A82 /* SettingsView.swift */; };
 		2F5F453225A33C19009B8A82 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F453125A33C19009B8A82 /* HistoryView.swift */; };
+		2F5F453625A36CDE009B8A82 /* flowersList.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F5F453525A36CDE009B8A82 /* flowersList.json */; };
 		2F95FA64259CB2D100985D53 /* FlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95FA63259CB2D100985D53 /* FlowApp.swift */; };
 		2F95FA66259CB2D100985D53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95FA65259CB2D100985D53 /* ContentView.swift */; };
 		2F95FA68259CB2D500985D53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F95FA67259CB2D500985D53 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		2F447FB2259D791400019EA6 /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		2F5F452E25A33B78009B8A82 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F5F453125A33C19009B8A82 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		2F5F453525A36CDE009B8A82 /* flowersList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = flowersList.json; sourceTree = "<group>"; };
 		2F95FA60259CB2D100985D53 /* Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F95FA63259CB2D100985D53 /* FlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowApp.swift; sourceTree = "<group>"; };
 		2F95FA65259CB2D100985D53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 			path = Bin;
 			sourceTree = "<group>";
 		};
+		2F5F453425A36CBD009B8A82 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2F5F453525A36CDE009B8A82 /* flowersList.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		2F95FA57259CB2D100985D53 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 		2F95FA62259CB2D100985D53 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				2F5F453425A36CBD009B8A82 /* Data */,
 				2F261D5E259D472800A2507D /* Bin */,
 				2F95FA63259CB2D100985D53 /* FlowApp.swift */,
 				2F95FA65259CB2D100985D53 /* ContentView.swift */,
@@ -158,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F5F453625A36CDE009B8A82 /* flowersList.json in Resources */,
 				2F95FA6B259CB2D500985D53 /* Preview Assets.xcassets in Resources */,
 				2F95FA68259CB2D500985D53 /* Assets.xcassets in Resources */,
 			);
