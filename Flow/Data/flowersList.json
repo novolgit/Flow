@@ -3,7 +3,7 @@
         "category": "Shrubs",
         "price": 15.99,
         "descriptions": "Large double. Good grower, heavy bloomer. Early to mid-season, acid loving plants. Plant in moist well drained soil with pH of 4.0-5.5.",
-        "image": "california_snow.jpg",
+        "image": "azalea_pink",
         "name": "Azalea",
         "id": 1
     },
@@ -11,7 +11,7 @@
         "category": "Shrubs",
         "price": 33.99,
         "descriptions": "Beautiful large royal purple flowers adorn attractive satiny green leaves that turn orange\\/red in cold weather. Grows to up to 18 feet, or prune annually to shorten.",
-        "image": "princess_flower.jpg",
+        "image": "tibuhina",
         "name": "Tibouchina Semidecandra",
         "id": 2
     },
@@ -19,256 +19,166 @@
         "category": "Shrubs",
         "price": 12.99,
         "descriptions": "Blooms in summer, 20-35 inches high. Fertilize regularly for best results. Full sun, drought tolerant.",
-        "image": "haight_ashbury.jpg",
+        "image": "haight_ashbury",
         "name": "Hibiscus",
         "id": 3
     },
     {
         "category": "Shrubs",
-        "price": 5.99,
-        "descriptions": "Quick-growing, herbaceous, shrub reaching up to 30 inches in height, forming a rounded, dense bush.",
-        "image": "mona_lavender.jpg",
-        "name": "Plectranthus",
-        "id": 4
-    },
-    {
-        "category": "Shrubs",
         "price": 15.99,
         "descriptions": "Slow growing, upright to spreading shrub. Oval, glossy, leaves and profuse winter to spring blooming flowers.",
-        "image": "camellia.jpg",
+        "image": "camellia_japonica",
         "name": "Camellia Japonica",
-        "id": 5
+        "id": 4
     },
     {
         "category": "Shrubs",
         "price": 10.99,
         "descriptions": "Thorny woody vine scrambles over other plants with their hooked thorns. Pest free.",
-        "image": "bougainvillea.jpg",
+        "image": "bougainvillea_spectabilis",
         "name": "Bougainvillea Spectabilis",
+        "id": 5
+    },
+    {
+        "category": "Shrubs",
+        "price": 22.99,
+        "descriptions": "Deep purple colored flowers bushy rounded growth habit to 3 feet tall. Plant in full sun. Water regularly.",
+        "image": "rosa_burgundy",
+        "name": "Rosa Burgundy",
         "id": 6
     },
     {
         "category": "Shrubs",
         "price": 22.99,
         "descriptions": "Deep purple colored flowers bushy rounded growth habit to 3 feet tall. Plant in full sun. Water regularly.",
-        "image": "rosa_burgundy.jpg",
-        "name": "Rosa Burgundy",
-        "id": 7
-    },
-    {
-        "category": "Shrubs",
-        "price": 22.99,
-        "descriptions": "Deep purple colored flowers bushy rounded growth habit to 3 feet tall. Plant in full sun. Water regularly.",
-        "image": "rosa_iceberg.jpg",
+        "image": "rosa_iceberg",
         "name": "Rosa Iceberg",
-        "id": 8
-    },
-    {
-        "category": "Container Plants",
-        "price": 45.99,
-        "descriptions": "They do not thrive indoors, where the light is too dim, and humidity too low, for them to grow properly.",
-        "image": "bonsai.jpg",
-        "name": "Bonsai Tree",
-        "id": 9
+        "id": 7
     },
     {
         "category": "Container Plants",
         "price": 12.99,
         "descriptions": "Blooms continuously from early spring to first frost. Full sun or part shade, moist well-drained soil.",
-        "image": "calibrachoa.jpg",
+        "image": "calibrachoa_noa",
         "name": "Calibrachoa Noa",
-        "id": 10
+        "id": 8
     },
     {
         "category": "Container Plants",
-        "price": 14.99,
-        "descriptions": "The flowers last about ten weeks. They have a waxy texture and reach a height of more than 20 inches.",
-        "image": "cymbidium.jpg",
+        "price": 0.0,
+        "descriptions": "Это травянистые эпифитные многолетники, выращиваемые как наземные растения, с укороченными (яйцевидными или сплюснутыми) стеблями, покрытыми сверху влагалищами листьев. Отдельные экземпляры достигают в высоту 70 см. Листья линейные, килеватые. Соцветие — слегка поникающая рыхлая кисть.",
+        "image": "CymbidiumAestivum",
         "name": "Cymbidium Aestivum",
-        "id": 11
-    },
-    {
-        "category": "Container Plants",
-        "price": 4.99,
-        "descriptions": "Creamy-white centers, medium green outer foliage with flattened outer foliage.",
-        "image": "flowering_kale.jpg",
-        "name": "Brassica Oleracea",
-        "id": 12
-    },
-    {
-        "category": "Container Plants",
-        "price": 4.99,
-        "descriptions": "Compact mounds of colorful dainty flowers, good for window boxes. Fertile well drained soil.",
-        "image": "penny_orange_jumpup.jpg",
-        "name": "Viola Penny Orange Jump Up",
-        "id": 13
-    },
-    {
-        "category": "Container Plants",
-        "price": 5.99,
-        "descriptions": "Cotula have very fragrant orange flowers that bloom in the middle of summer.",
-        "image": "pincushion.jpg",
-        "name": "Cotula",
-        "id": 14
-    },
-    {
-        "category": "Container Plants",
-        "price": 4.99,
-        "descriptions": "Well drained neutral to slightly acid soil, bright light. Do not over-fertilize or these flowers will lose scent.",
-        "image": "pelargonium.jpg",
-        "name": "Pelargonium Peltatum",
-        "id": 15
-    },
-    {
-        "category": "Container Plants",
-        "price": 3.99,
-        "descriptions": "Compact mounds of colorful dainty flowers, good for window boxes. Fertile well drained soil.",
-        "image": "pansy_blue_shades.jpg",
-        "name": "Pansy Blue Shades",
-        "id": 16
-    },
-    {
-        "category": "Container Plants",
-        "price": 3.99,
-        "descriptions": "Compact mounds of colorful dainty flowers, good for window boxes. Fertile well drained soil.",
-        "image": "yellow_pansy.jpg",
-        "name": "Pansy Yellow with Blotch",
-        "id": 17
-    },
-    {
-        "category": "Container Plants",
-        "price": 25.99,
-        "descriptions": "Choose the brightest windows in your house for your orchids, place on an humidity tray and spray regularly.",
-        "image": "phalaenopsis.jpg",
-        "name": "Phalaenopsis Purple",
-        "id": 18
+        "id": 9
     },
     {
         "category": "Herbaceous Perennials",
         "price": 5.99,
-        "descriptions": "They thrive in fertile, fast draining, slightly alkaline (pH 6.75) soil. Avoid overwatering.",
-        "image": "dianthus.jpg",
+        "descriptions": "Красивоцветущиее многолетнее растение, образующее плотную дернину из многочисленных побегов с узколинейными сизо-зелеными листьями. В июне на коленчатых слабооблиственных цветоносах высотой 30-50 см вырастают одиночные простые или махровые ароматные цветы, до 3 см в диаметре. Пурпурные, белые, розовые лепестки имеют бахромчатый, разрезанный край.",
+        "image": "Dianthus",
         "name": "Dianthus",
-        "id": 19
+        "id": 10
     },
     {
         "category": "Herbaceous Perennials",
         "price": 9.99,
-        "descriptions": "Chrysanthemums respond to plenty of food and moisture, and prefer full sun.",
-        "image": "bronze_mums.jpg",
+        "descriptions": "Выносливые растения, относящиеся к семейству астровых. Оттенки их цветов могут быть любыми, за исключением голубого. Размеры и формы цветов представлены в огромном разнообразии. Некоторые имеют сферическую форму и вогнутые лепестки в центре, некоторые имеют лепестки трубчатой формы, а на конце них вы можете увидеть маленькие иглы.",
+        "image": "Chrysanthemum",
         "name": "Chrysanthemum",
-        "id": 20
+        "id": 11
     },
     {
         "category": "Herbaceous Perennials",
         "price": 7.99,
-        "descriptions": "Summer flowering, 12–18” high, likes full sun and well drained soil. Drought tolerant.",
-        "image": "armeria_allicaea.jpg",
+        "descriptions": "Многолетнее травянистое корневищное растение высотой 10-30 см, с гладким, прямым, слегка опушенным стеблем. Листья многочисленные, линейно-ланцетные, цельнокрайние, сидячие, темно-зеленые, собраны в прикорневые розетки.",
+        "image": "ArmeriaAlliacea",
         "name": "Armeria Alliacea",
-        "id": 21
+        "id": 12
     },
     {
         "category": "Herbaceous Perennials",
         "price": 6.99,
-        "descriptions": "Grows to 15 inches. The species is easy to grow from seeds or cuttings. This species prefers full sun.",
-        "image": "salvia.jpg",
+        "descriptions": "Шалфей, цветы которого похожи на колосья, вырастают над листвой. Длина колосьев может быть от 5 до 15 см. Оттенок цветов может быть белым или голубым, а также известны сорта со всеми тонами красного, пурпурового, розового или фиолетового цвета.",
+        "image": "SalviaSplendens",
         "name": "Salvia Splendens",
-        "id": 22
+        "id": 13
     },
     {
         "category": "Herbaceous Perennials",
         "price": 8.99,
-        "descriptions": "Easily grown, tolerant of drought and poor soil, flower and foliage improves with feeding. Full sun.",
-        "image": "agapanthus.jpg",
+        "descriptions": "Растение с толстыми мясистыми корнями и короткими ползущими корневищами, длинными линейными прикорневыми листьями, прочно собранными в розетки. В период цветения агапантус цветок выбрасывает длинный мощный цветонос, высотой до 1м на котором располагаются в большом количестве синевато-лиловые, ярко-голубые и белые крупные цветки, собранные в соцветие зонтик и имеющие вытянутую, воронковидную форму. У сильных взрослых экземпляров может насчитываться до 150 цветков в одном соцветии",
+        "image": "Agapanthus",
         "name": "Agapanthus",
-        "id": 23
+        "id": 14
     },
     {
         "category": "Herbaceous Perennials",
         "price": 5.99,
-        "descriptions": "These plants are very hardy, easy to grow, and increase readily. Average flower size is 3-4 inches in diameter.",
-        "image": "iris_siberica.jpg",
+        "descriptions": "Классификация ирисов следующая: низкорослые (надземный цветонос имеют высоту до 25-35 см), среднерослые (высота цветоноса составляет 35-70 см), высокорослые (высота цветоноса более 70 см).",
+        "image": "IrisSibirica",
         "name": "Iris Sibirica",
-        "id": 24
+        "id": 15
     },
     {
-        "category": "Herbaceous Perennials",
-        "price": 9.99,
-        "descriptions": "Chrysanthemums grow best and produce the most flowers if they are planted in full sunshine.",
-        "image": "white_wedding.jpg",
-        "name": "Chrysanthemum",
-        "id": 25
-    },
-    {
-        "category": "Herbaceous Perennials",
+        "category": "null",
         "price": 10.99,
-        "descriptions": "Grown primarily for its attractive silvergray foliage rather than its yellow flowers. Drought tolerant.",
-        "image": "dusty_miller.jpg",
-        "name": "Senecio Cineraria",
-        "id": 26
+        "descriptions": "Высота растения около 80—100 см. Побеги прочные с одиночными цветками. Цветки полумахровые, чашевидные, лепестки кораллово-розовые (больше красного оттенка, чем у близких коралловых форм) со сливочно-жёлтым оттенком, пыльники золотисто-жёлтые. Плодов не завязывает.Аромат мягкий и сладкий.",
+        "image": "PeonyPink",
+        "name": "Peony Pink",
+        "id": 16
     },
-    {
-        "category": "Cacti & Succulents",
-        "price": 18.99,
-        "descriptions": "Add water until there is half inch of dry soil on the surface. Do not water again until the soil is completely dry.",
-        "image": "red_cactus.jpg",
-        "name": "Red Cactus",
-        "id": 27
+{
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Это выносливые многолетние и однолетние травы. Они вырастают от 30 до 60 см в высоту и имеют опушённую листву. Ромашка – цветок полевой, и её часто можно встретить в дикой природе на лугах и полях.",
+        "image": "chamomile",
+        "name": "Chamomile",
+        "id": 17
     },
-    {
-        "category": "Cacti & Succulents",
-        "price": 30.99,
-        "descriptions": "Drought tolerant, well drained soil. Prefers full sun.",
-        "image": "aloe_vera.jpg",
-        "name": "Aloe Vera",
-        "id": 28
+{
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "крупные цветы, как правило, одиночные, с насыщенными зелеными стеблями от 15 до 90 см в высоту. Листьев мало, они часто окрашены в сиз-зеленый цвет, реже – в ярко-зеленый. Форма у тюльпана может быть само разной: овальной, бокаловидной, чашевидной. Цветовая гамма также весьма широка: цветы могут быть белыми, розовыми, желтыми, темно-красными и даже приближенными к черному. Отсутствует только синий цвет.",
+        "image": "tulip",
+        "name": "Tulip",
+        "id": 18
     },
-    {
-        "category": "Cacti & Succulents",
-        "price": 20.99,
-        "descriptions": "Easy to care for, requiring watering only when they’re dry. They like bright but indirect light.",
-        "image": "exotic_dancer.jpg",
-        "name": "Schlumbergera",
-        "id": 29
-    },
-    {
-        "category": "Cacti & Succulents",
-        "price": 18.5,
-        "descriptions": "Locate it in a place where it is exposed to at least a few hours of direct sunlight.",
-        "image": "string_of_pearls.jpg",
-        "name": "Senecio Rowleyanus",
-        "id": 30
-    },
-    {
-        "category": "Cacti & Succulents",
-        "price": 12.99,
-        "descriptions": "These plants blend in among the stones as a means of protection. Grazing animals would otherwise eat them.",
-        "image": "lithops.jpg",
-        "name": "Lithops",
-        "id": 31
-    },
-    {
-        "category": "Cacti & Succulents",
-        "price": 55.99,
-        "descriptions": "The Mexican Fence Post will eventually reach 20 feet tall. Protect the growing tips with Styrofoam cups on the tops.",
-        "image": "mexican_fencepost_cactus.jpg",
-        "name": "Pachycereus Marginatus",
-        "id": 32
-    },
-    {
-        "category": "Cacti & Succulents",
-        "price": 25.99,
-        "descriptions": "Growing as a large roughly spherical globe, it may eventually reach over a meter in height after many years.",
-        "image": "mexican_golden_barrel_cactus.jpg",
-        "name": "Echinocactus Grusonii",
-        "id": 33
-    },
-    {
-        "category": "Cacti & Succulents",
-        "price": 16.99,
-        "descriptions": "The plants should be kept almost completely dry during the winter months, once a month should be fine.",
-        "image": "opuntia_cactus.jpg",
-        "name": "Opuntia Falcata",
-        "id": 34
-    }
+ {
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Это растение с цветками различного окраса достигает в высоту 90 см. Из него создают украшения на волосы для торжественных случаев в цветочных салонах.",
+        "image": "alstroemeria",
+        "name": "alstroemeria",
+        "id": 19
+},
+{
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Компактное растение, которое в высоту достигает 50 сантиметров. Оптимальный вариант для выращивания в квартире",
+        "image": "callaLilies",
+        "name": "calla lilies",
+        "id": 20
+},
+{
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Лаванды не имеет центрального стебля, а состоит из многочисленных облиственных побегов. В высоту и ширину достигают одного метра. Растения с необыкновенным ароматом, голубой дымкой колосовидных соцветий на длинных стебельках среди серебристо-зеленой опушенной листвы.",
+        "image": "lavender",
+        "name": "lavender",
+        "id": 21
+},
+{
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "
+         "id": 22
+},
+{
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Ветка выглядит как настоящий букет благодаря чрезмерной ветвистости стеблей. Количество бутонов на одной ветке колеблется около 35 шт, которые распускаются, сменяя друг друга. Серые или сизоватые с матовым покрытием листья имеют вытянутый овальный вид.",
+        "image": "eustoma",
+        "name": "eustoma",
+        "id": 23
+}
 ]
