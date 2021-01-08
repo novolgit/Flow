@@ -13,12 +13,14 @@
 		2F5F452F25A33B78009B8A82 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F452E25A33B78009B8A82 /* SettingsView.swift */; };
 		2F5F453225A33C19009B8A82 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F453125A33C19009B8A82 /* HistoryView.swift */; };
 		2F5F453625A36CDE009B8A82 /* flowersList.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F5F453525A36CDE009B8A82 /* flowersList.json */; };
+		2F5F453A25A37364009B8A82 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F453925A37363009B8A82 /* Data.swift */; };
+		2F5F453E25A3783A009B8A82 /* FlowerListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F453D25A3783A009B8A82 /* FlowerListData.swift */; };
+		2F5F454225A39C94009B8A82 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F454125A39C94009B8A82 /* RegistrationView.swift */; };
 		2F95FA64259CB2D100985D53 /* FlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95FA63259CB2D100985D53 /* FlowApp.swift */; };
 		2F95FA66259CB2D100985D53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95FA65259CB2D100985D53 /* ContentView.swift */; };
 		2F95FA68259CB2D500985D53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F95FA67259CB2D500985D53 /* Assets.xcassets */; };
 		2F95FA6B259CB2D500985D53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F95FA6A259CB2D500985D53 /* Preview Assets.xcassets */; };
 		2F95FA74259CBC4900985D53 /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95FA73259CBC4900985D53 /* FeaturedView.swift */; };
-		2F95FA77259CBC5800985D53 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95FA76259CBC5800985D53 /* ProfileView.swift */; };
 		2F9A24C125A27E7C006E8F65 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A24C025A27E7C006E8F65 /* AccountView.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,10 @@
 		2F5F452E25A33B78009B8A82 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F5F453125A33C19009B8A82 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		2F5F453525A36CDE009B8A82 /* flowersList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = flowersList.json; sourceTree = "<group>"; };
+		2F5F453925A37363009B8A82 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		2F5F453D25A3783A009B8A82 /* FlowerListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerListData.swift; sourceTree = "<group>"; };
+		2F5F454125A39C94009B8A82 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		2F5F454525A39EF4009B8A82 /* Flow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flow.entitlements; sourceTree = "<group>"; };
 		2F95FA60259CB2D100985D53 /* Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F95FA63259CB2D100985D53 /* FlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowApp.swift; sourceTree = "<group>"; };
 		2F95FA65259CB2D100985D53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,7 +42,6 @@
 		2F95FA6A259CB2D500985D53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F95FA6C259CB2D500985D53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F95FA73259CBC4900985D53 /* FeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedView.swift; sourceTree = "<group>"; };
-		2F95FA76259CBC5800985D53 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2F9A24C025A27E7C006E8F65 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,26 +56,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2F261D5E259D472800A2507D /* Bin */ = {
+		2F22068825A8D21900443CA6 /* Constructor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constructor;
+			sourceTree = "<group>";
+		};
+		2F22068925A8D2D700443CA6 /* Purchase */ = {
 			isa = PBXGroup;
 			children = (
 				2F447FB2259D791400019EA6 /* ConfirmView.swift */,
 			);
-			path = Bin;
+			path = Purchase;
 			sourceTree = "<group>";
 		};
 		2F5F453425A36CBD009B8A82 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				2F5F453525A36CDE009B8A82 /* flowersList.json */,
+				2F5F453925A37363009B8A82 /* Data.swift */,
+				2F5F453D25A3783A009B8A82 /* FlowerListData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		2F5F454A25A3AB5B009B8A82 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2F5F455F25A8D099009B8A82 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				2F5F453125A33C19009B8A82 /* HistoryView.swift */,
+				2F5F452E25A33B78009B8A82 /* SettingsView.swift */,
+				2F9A24C025A27E7C006E8F65 /* AccountView.swift */,
+				2F5F454125A39C94009B8A82 /* RegistrationView.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		2F95FA57259CB2D100985D53 = {
 			isa = PBXGroup;
 			children = (
-				2F261D57259CF8EB00A2507D /* ConstructorView.swift */,
 				2F95FA62259CB2D100985D53 /* Flow */,
 				2F95FA61259CB2D100985D53 /* Products */,
 			);
@@ -88,17 +119,18 @@
 			isa = PBXGroup;
 			children = (
 				2F5F453425A36CBD009B8A82 /* Data */,
-				2F261D5E259D472800A2507D /* Bin */,
+				2F22068925A8D2D700443CA6 /* Purchase */,
+				2F22068825A8D21900443CA6 /* Constructor */,
+				2F5F455F25A8D099009B8A82 /* Account */,
+				2F5F454A25A3AB5B009B8A82 /* Controllers */,
 				2F95FA63259CB2D100985D53 /* FlowApp.swift */,
+				2F261D57259CF8EB00A2507D /* ConstructorView.swift */,
 				2F95FA65259CB2D100985D53 /* ContentView.swift */,
 				2F261D54259CF23200A2507D /* BinView.swift */,
-				2F95FA76259CBC5800985D53 /* ProfileView.swift */,
 				2F95FA73259CBC4900985D53 /* FeaturedView.swift */,
-				2F9A24C025A27E7C006E8F65 /* AccountView.swift */,
-				2F5F453125A33C19009B8A82 /* HistoryView.swift */,
-				2F5F452E25A33B78009B8A82 /* SettingsView.swift */,
 				2F95FA67259CB2D500985D53 /* Assets.xcassets */,
 				2F95FA6C259CB2D500985D53 /* Info.plist */,
+				2F5F454525A39EF4009B8A82 /* Flow.entitlements */,
 				2F95FA69259CB2D500985D53 /* Preview Content */,
 			);
 			path = Flow;
@@ -183,12 +215,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F261D55259CF23200A2507D /* BinView.swift in Sources */,
-				2F95FA77259CBC5800985D53 /* ProfileView.swift in Sources */,
 				2F95FA66259CB2D100985D53 /* ContentView.swift in Sources */,
+				2F5F454225A39C94009B8A82 /* RegistrationView.swift in Sources */,
 				2F5F452F25A33B78009B8A82 /* SettingsView.swift in Sources */,
+				2F5F453A25A37364009B8A82 /* Data.swift in Sources */,
 				2F447FB3259D791400019EA6 /* ConfirmView.swift in Sources */,
 				2F9A24C125A27E7C006E8F65 /* AccountView.swift in Sources */,
 				2F261D58259CF8EB00A2507D /* ConstructorView.swift in Sources */,
+				2F5F453E25A3783A009B8A82 /* FlowerListData.swift in Sources */,
 				2F5F453225A33C19009B8A82 /* HistoryView.swift in Sources */,
 				2F95FA74259CBC4900985D53 /* FeaturedView.swift in Sources */,
 				2F95FA64259CB2D100985D53 /* FlowApp.swift in Sources */,
@@ -319,8 +353,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 2.2;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;
@@ -330,9 +366,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Vlad-Novol.Flow";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -343,8 +380,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 2.2;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;
@@ -354,9 +393,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Vlad-Novol.Flow";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

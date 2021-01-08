@@ -1,0 +1,186 @@
+[
+    {
+        "category": "Shrubs",
+        "price": 15.99,
+        "descriptions": "Large double. Good grower, heavy bloomer. Early to mid-season, acid loving plants. Plant in moist well drained soil with pH of 4.0-5.5.",
+        "image": "azalea_pink",
+        "name": "Azalea",
+        "id": 1
+    },
+    {
+        "category": "Shrubs",
+        "price": 33.99,
+        "descriptions": "Beautiful large royal purple flowers adorn attractive satiny green leaves that turn orange\\/red in cold weather. Grows to up to 18 feet, or prune annually to shorten.",
+        "image": "tibuhina",
+        "name": "Tibouchina Semidecandra",
+        "id": 2
+    },
+    {
+        "category": "Shrubs",
+        "price": 12.99,
+        "descriptions": "Blooms in summer, 20-35 inches high. Fertilize regularly for best results. Full sun, drought tolerant.",
+        "image": "haight_ashbury",
+        "name": "Hibiscus",
+        "id": 3
+    },
+    {
+        "category": "Shrubs",
+        "price": 15.99,
+        "descriptions": "Slow growing, upright to spreading shrub. Oval, glossy, leaves and profuse winter to spring blooming flowers.",
+        "image": "camellia_japonica",
+        "name": "Camellia Japonica",
+        "id": 4
+    },
+    {
+        "category": "Shrubs",
+        "price": 10.99,
+        "descriptions": "Thorny woody vine scrambles over other plants with their hooked thorns. Pest free.",
+        "image": "bougainvillea_spectabilis",
+        "name": "Bougainvillea Spectabilis",
+        "id": 5
+    },
+    {
+        "category": "Shrubs",
+        "price": 22.99,
+        "descriptions": "Deep purple colored flowers bushy rounded growth habit to 3 feet tall. Plant in full sun. Water regularly.",
+        "image": "rosa_burgundy",
+        "name": "Rosa Burgundy",
+        "id": 6
+    },
+    {
+        "category": "Shrubs",
+        "price": 22.99,
+        "descriptions": "Deep purple colored flowers bushy rounded growth habit to 3 feet tall. Plant in full sun. Water regularly.",
+        "image": "rosa_iceberg",
+        "name": "Rosa Iceberg",
+        "id": 7
+    },
+    {
+        "category": "Container Plants",
+        "price": 12.99,
+        "descriptions": "Blooms continuously from early spring to first frost. Full sun or part shade, moist well-drained soil.",
+        "image": "calibrachoa_noa",
+        "name": "Calibrachoa Noa",
+        "id": 8
+    },
+    {
+        "category": "Container Plants",
+        "price": 0.0,
+        "descriptions": "Это травянистые эпифитные многолетники, выращиваемые как наземные растения, с укороченными (яйцевидными или сплюснутыми) стеблями, покрытыми сверху влагалищами листьев. Отдельные экземпляры достигают в высоту 70 см. Листья линейные, килеватые. Соцветие — слегка поникающая рыхлая кисть.",
+        "image": "CymbidiumAestivum",
+        "name": "Cymbidium Aestivum",
+        "id": 9
+    },
+    {
+        "category": "Herbaceous Perennials",
+        "price": 5.99,
+        "descriptions": "Красивоцветущиее многолетнее растение, образующее плотную дернину из многочисленных побегов с узколинейными сизо-зелеными листьями. В июне на коленчатых слабооблиственных цветоносах высотой 30-50 см вырастают одиночные простые или махровые ароматные цветы, до 3 см в диаметре. Пурпурные, белые, розовые лепестки имеют бахромчатый, разрезанный край.",
+        "image": "Dianthus",
+        "name": "Dianthus",
+        "id": 10
+    },
+    {
+        "category": "Herbaceous Perennials",
+        "price": 9.99,
+        "descriptions": "Выносливые растения, относящиеся к семейству астровых. Оттенки их цветов могут быть любыми, за исключением голубого. Размеры и формы цветов представлены в огромном разнообразии. Некоторые имеют сферическую форму и вогнутые лепестки в центре, некоторые имеют лепестки трубчатой формы, а на конце них вы можете увидеть маленькие иглы.",
+        "image": "Chrysanthemum",
+        "name": "Chrysanthemum",
+        "id": 11
+    },
+    {
+        "category": "Herbaceous Perennials",
+        "price": 7.99,
+        "descriptions": "Многолетнее травянистое корневищное растение высотой 10-30 см, с гладким, прямым, слегка опушенным стеблем. Листья многочисленные, линейно-ланцетные, цельнокрайние, сидячие, темно-зеленые, собраны в прикорневые розетки.",
+        "image": "ArmeriaAlliacea",
+        "name": "Armeria Alliacea",
+        "id": 12
+    },
+    {
+        "category": "Herbaceous Perennials",
+        "price": 6.99,
+        "descriptions": "Шалфей, цветы которого похожи на колосья, вырастают над листвой. Длина колосьев может быть от 5 до 15 см. Оттенок цветов может быть белым или голубым, а также известны сорта со всеми тонами красного, пурпурового, розового или фиолетового цвета.",
+        "image": "SalviaSplendens",
+        "name": "Salvia Splendens",
+        "id": 13
+    },
+    {
+        "category": "Herbaceous Perennials",
+        "price": 8.99,
+        "descriptions": "Растение с толстыми мясистыми корнями и короткими ползущими корневищами, длинными линейными прикорневыми листьями, прочно собранными в розетки. В период цветения агапантус цветок выбрасывает длинный мощный цветонос, высотой до 1м на котором располагаются в большом количестве синевато-лиловые, ярко-голубые и белые крупные цветки, собранные в соцветие зонтик и имеющие вытянутую, воронковидную форму. У сильных взрослых экземпляров может насчитываться до 150 цветков в одном соцветии",
+        "image": "Agapanthus",
+        "name": "Agapanthus",
+        "id": 14
+    },
+    {
+        "category": "Herbaceous Perennials",
+        "price": 5.99,
+        "descriptions": "Классификация ирисов следующая: низкорослые (надземный цветонос имеют высоту до 25-35 см), среднерослые (высота цветоноса составляет 35-70 см), высокорослые (высота цветоноса более 70 см).",
+        "image": "IrisSibirica",
+        "name": "Iris Sibirica",
+        "id": 15
+    },
+    {
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Высота растения около 80—100 см. Побеги прочные с одиночными цветками. Цветки полумахровые, чашевидные, лепестки кораллово-розовые (больше красного оттенка, чем у близких коралловых форм) со сливочно-жёлтым оттенком, пыльники золотисто-жёлтые. Плодов не завязывает.Аромат мягкий и сладкий.",
+        "image": "PeonyPink",
+        "name": "Peony Pink",
+        "id": 16
+    },
+    {
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Это выносливые многолетние и однолетние травы. Они вырастают от 30 до 60 см в высоту и имеют опушённую листву. Ромашка – цветок полевой, и её часто можно встретить в дикой природе на лугах и полях.",
+        "image": "chamomile",
+        "name": "Chamomile",
+        "id": 17
+    },
+    {
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "крупные цветы, как правило, одиночные, с насыщенными зелеными стеблями от 15 до 90 см в высоту. Листьев мало, они часто окрашены в сиз-зеленый цвет, реже – в ярко-зеленый. Форма у тюльпана может быть само разной: овальной, бокаловидной, чашевидной. Цветовая гамма также весьма широка: цветы могут быть белыми, розовыми, желтыми, темно-красными и даже приближенными к черному. Отсутствует только синий цвет.",
+        "image": "tulip",
+        "name": "Tulip",
+        "id": 18
+    },
+    {
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Это растение с цветками различного окраса достигает в высоту 90 см. Из него создают украшения на волосы для торжественных случаев в цветочных салонах.",
+        "image": "alstroemeria",
+        "name": "alstroemeria",
+        "id": 19
+    },
+    {
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Компактное растение, которое в высоту достигает 50 сантиметров. Оптимальный вариант для выращивания в квартире",
+        "image": "callaLilies",
+        "name": "calla lilies",
+        "id": 20
+    },
+    {
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Лаванды не имеет центрального стебля, а состоит из многочисленных облиственных побегов. В высоту и ширину достигают одного метра. Растения с необыкновенным ароматом, голубой дымкой колосовидных соцветий на длинных стебельках среди серебристо-зеленой опушенной листвы.",
+        "image": "lavender",
+        "name": "lavender",
+        "id": 21
+    },
+    {
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "null",
+        "image": "eustoma",
+        "name": "eustoma",
+        "id": 22
+    },
+    {
+        "category": "null",
+        "price": 10.99,
+        "descriptions": "Ветка выглядит как настоящий букет благодаря чрезмерной ветвистости стеблей. Количество бутонов на одной ветке колеблется около 35 шт, которые распускаются, сменяя друг друга. Серые или сизоватые с матовым покрытием листья имеют вытянутый овальный вид.",
+        "image": "eustoma",
+        "name": "eustoma",
+        "id": 23
+    }
+]

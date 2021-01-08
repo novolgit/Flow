@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection: Tab = .featured
+    @EnvironmentObject var modelData: ModelData
+    
     
     
     enum Tab {
@@ -31,14 +33,14 @@ struct ContentView: View {
 //                    Label("Profile", systemImage: "person")
 //                }
 //                .tag(Tab.profile)
-            ConstructorView()
+                ConstructorView()
                 .animation(.spring(response: 0.4, dampingFraction: 0.6, blendDuration: 0.5))
                 .tabItem {
                     Label("Constructor", systemImage: "scale.3d")
                 }
                 .tag(Tab.constructor)
             BinView()
-                .animation(.spring(response: 0.4, dampingFraction: 0.6, blendDuration: 0.5))
+                .animation(.interactiveSpring(response: 0.4, dampingFraction: 0.9, blendDuration: 0.1))
                 .tabItem {
                     Label("Bin", systemImage: "trash")
                 }
@@ -49,14 +51,12 @@ struct ContentView: View {
             UITabBar.appearance().backgroundColor = .red
         }
         .accentColor(.pink)
-        .navigationBarHidden(true)
-//        .foregroundColor(.red)
-        .animation(.spring(response: 0.4, dampingFraction: 0.6, blendDuration: 0.5))
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ModelData())
     }
 }
