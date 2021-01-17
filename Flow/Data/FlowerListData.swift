@@ -7,16 +7,22 @@
 
 import Foundation
 
-struct Flower: Codable, Identifiable {
-    let id: Int
-    let category: Category
-    let price: Double
-    let descriptions, image, name: String
+struct Flower: Codable{
+    var roses: [Rose]
 }
 
-enum Category: String, Codable {
-    case containerPlants = "Container Plants"
-    case herbaceousPerennials = "Herbaceous Perennials"
-    case null = "null"
-    case shrubs = "Shrubs"
+struct Rose: Codable{
+    var shrubs: [Shrub]
+    var singleheadedRose: [SingleheadedRose]
+}
+
+struct Shrub: Codable, Identifiable {
+    var price: Double
+    var descriptions, image, name: String
+    var id: Int
+    var isSelected: Bool
+}
+
+struct SingleheadedRose: Codable{
+    var rosesFrost: [Shrub]
 }

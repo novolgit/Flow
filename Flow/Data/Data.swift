@@ -11,7 +11,11 @@ import CoreLocation
 
 final class ModelData: ObservableObject {
     @Published var flowers: [Flower] = load("flowersList.json")
+    @Published var stores: [Store] = load("storesList.json")
+    @Published var accounts: [Account] = load("accountList.json")
+    var charts: [Chart] = load("chartData.json")
 }
+
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

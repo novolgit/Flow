@@ -1,14 +1,7 @@
-//
-//  SettingsView.swift
-//  Flow
-//
-//  Created by Vlad Novol on 04.01.2021.
-//
-
-import SwiftUI
+  import SwiftUI
+import MapKit
 
 struct SettingsView: View {
-    
     var body: some View {
         Text("Settings")
     }

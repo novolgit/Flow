@@ -1,0 +1,30 @@
+[
+    {
+        "name":"Vlad",
+        "phone":"+89296556140",
+        "id":1,
+        "image":"Image-2",
+        "street":"Lenina",
+        "house":71,
+        "kv":328,
+        "floor":7,
+        "entrance":5,
+        "bonuses":9999,
+        "email":"groundfor@mail.ru",
+        "profile":"admin"
+    },
+    {
+        "name":"Matvey",
+        "phone":"+89016013612",
+        "id":2,
+        "image":"Image-1",
+        "street":"Lenina",
+        "house":16,
+        "kv":27,
+        "floor":3,
+        "entrance":3,
+        "bonuses":9999,
+        "email":"lebedev.matwei@gmail.ru",
+        "profile":"admin"
+    }
+]

@@ -1,0 +1,72 @@
+[
+   {
+      "city": "Lobnya",
+      "hours": "8am - 9: 30pm",
+      "description": "лучшая цветочная в катюшках",
+      "name": "Babochka Lobnya",
+      "phone": "+8(929)655 61 40",
+      "id": 1,
+      "image": "babochka",
+      "rating": 4,
+      "coordinates": {
+         "longitude": 37.47615731238154,
+         "latitude": 56.01542665879942
+      },
+   },
+   {
+      "city": "Lobnya",
+      "hours": "8am - 9: 30pm",
+      "description": "лучшая цветочная в катюшках",
+      "name": "LasFlores Lobnya",
+      "phone": "+8(929)655 61 40",
+      "id": 2,
+      "image": "lasFlores",
+      "rating": 3,
+      "coordinates": {
+         "longitude": 37.47260249999998,
+         "latitude": 56.0106940687365
+      },
+   },
+   {
+      "city": "Lobnya",
+      "hours": "8am - 9: 30pm",
+      "description": "лучшая цветочная в катюшках",
+      "name": "Gorodskaya Baza Cvetov Lobnya",
+      "phone": "+8(929)655 61 40",
+      "id": 3,
+      "image": "GorodskayaBazaCvetovLobnya",
+      "rating": 5,
+      "coordinates": {
+         "longitude": 37.445006000000014,
+         "latitude": 56.00801706872966
+      },
+   },
+   {
+      "city": "Lobnya",
+      "hours": "8am - 9: 30pm",
+      "description": "лучшая цветочная в катюшках",
+      "name": "Floramarkt Moscow Butyrskaya",
+      "phone": "+8(929)655 61 40",
+      "id": 4,
+      "image": "FloramarktMoscowButyrskaya",
+      "rating": 2,
+      "coordinates": {
+         "longitude": 37.58306799999997,
+         "latitude": 55.80805806893225
+      },
+   },
+   {
+      "city": "Lobnya",
+      "hours": "8am - 9: 30pm",
+      "description": "лучшая цветочная в катюшках",
+      "name": "Jolly Bunch Moscow",
+      "phone": "+8(929)655 61 40",
+      "id": 5,
+      "image": "JollyBunchMoscow",
+      "rating": 1,
+      "coordinates": {
+         "longitude": 37.656209,
+         "latitude": 55.764632568969716
+      },
+   }
+]
