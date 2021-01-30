@@ -16,16 +16,28 @@ struct PurchaseView: View {
     @State private var showSort = false
     @State private var isSort = "name"
     
-    
     var body: some View {
         NavigationView{
             VStack {
                 ScrollView(showsIndicators: false) {
+                    HStack{
+                        Spacer()
+                        Image(systemName: "hand.draw")
+                            .rotation3DEffect(
+                                .degrees(180),
+                                axis: (x: 0.0, y: 1.0, z: 0.0)
+                            )
+                    }
+                    .padding([.top, .leading, .trailing])
                     LazyVStack(spacing: 0) {
-                        ForEach (isSort == "name" ? sortByNameList()[0].roses[0].shrubs[0..<3] : sortByPriceList()[0].roses[0].shrubs[0..<3]) { flower in
-                            RowContentView(flower: $modelData.flowers[0].roses[0].shrubs[getIndex(flower: flower)],flowers: $modelData.flowers[0].roses[0].shrubs, isSet: $modelData.flowers[0].roses[0].shrubs[getIndex(flower: flower)].isSelected)
-                                .frame(height: UIScreen.main.bounds.height*0.125)
-                                .padding()
+                        ForEach(
+//                            isSort == "name" ?
+                            sortByNameList()[0..<3]
+//                                    : sortByPriceList()
+                        ) { flower in
+                            RowContentView(flower: $modelData.flowers[getIndex(flower: flower)],flowers: $modelData.flowers, isSet: $modelData.flowers[getIndex(flower: flower)].isSelected)
+                                .frame(height: 85)
+                                .padding(14)
                         }
                         VStack{}.frame(height: UIScreen.main.bounds.height*0.06)
                         VStack {
@@ -37,8 +49,7 @@ struct PurchaseView: View {
     //                                                !detectChoose() ? Color(#colorLiteral(red: 0.5470548868, green: 0.001177539467, blue: 0.2447426915, alpha: 0.2349739327)) : Color(#colorLiteral(red: 0.5470548868, green: 0.001177539467, blue: 0.2447426915, alpha: 1)))
                                            })
                                 .font(.system(size: 20, weight: .semibold, design: .rounded))
-                                .frame(width: UIScreen.main.bounds.width*0.60, height: UIScreen.main.bounds.height*0.12)
-                                .contentShape(RoundedRectangle(cornerRadius: 15.0))
+                                .frame(width: 350, height: 100)
                                 .background(
                                     Group {
                                         if detectChoose(){
@@ -93,14 +104,14 @@ struct PurchaseView: View {
     func sortByPriceList() -> [Flower] {
         
         return modelData.flowers.sorted {
-            $0.roses[0].shrubs[0].price < $1.roses[0].shrubs[0].price
+            $0.price < $1.price
         }
     }
     
     func sortByNameList() -> [Flower] {
         
         return modelData.flowers.sorted {
-            $0.roses[0].shrubs[0].name < $1.roses[0].shrubs[0].name
+            $0.name < $1.name
         }
     }
     
@@ -108,7 +119,7 @@ struct PurchaseView: View {
         
         var price : Double = 0
         
-        modelData.flowers[0].roses[0].shrubs.forEach { (flower) in
+        modelData.flowers.forEach { (flower) in
             if flower.isSelected {
                 price += Double(flower.price)
             }
@@ -121,7 +132,7 @@ struct PurchaseView: View {
         
         var isSelected : Bool = false
         
-        modelData.flowers[0].roses[0].shrubs.forEach { (flower) in
+        modelData.flowers.forEach { (flower) in
             if flower.isSelected {
                 isSelected = true
             }
@@ -130,9 +141,9 @@ struct PurchaseView: View {
         return isSelected
     }
     
-    func getIndex(flower: Shrub)->Int{
+    func getIndex(flower: Flower)->Int{
         
-        return modelData.flowers[0].roses[0].shrubs.firstIndex { (flower1) -> Bool in
+        return modelData.flowers.firstIndex { (flower1) -> Bool in
             return flower.id == flower1.id
         } ?? 0
     }

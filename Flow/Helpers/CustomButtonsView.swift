@@ -149,6 +149,15 @@ struct CustomTappedAccountButton4:View {
     }
 }
 
+struct CustomTappedAccountButton5:View {
+    var body: some View{
+        RoundedRectangle(cornerRadius: 15.0)
+            .fill(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
+            .shadow(color: Color.white.opacity(0.7), radius: 3, x: -5, y: -5)
+            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 2.5, y: 2.5)
+    }
+}
+
 
 struct CustomTappedButtonsView: View {
     var body: some View {
@@ -193,6 +202,29 @@ struct CustomAccountButtonsView: View {
                     .blur(radius: 3)
                     .offset(x: 2, y: 2)
                     .mask(Circle().fill(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd)))
+            )
+    }
+}
+
+struct CustomAccountButtonsView2: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 100.0)
+            .fill(LinearGradient(Color.offGrayLinearEnd, Color.offGrayLinearStart))
+            .shadow(color: Color.black.opacity(0.2), radius: 3, x:3, y:3)
+            .shadow(color: Color.white.opacity(0.7), radius: 3, x:-6, y:-6)
+            .overlay(
+                RoundedRectangle(cornerRadius:100.0)
+                    .stroke(Color.white, lineWidth: 4)
+                    .blur(radius: 3)
+                    .offset(x: -2, y: -2)
+                    .mask(RoundedRectangle(cornerRadius: 100.0).fill(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd)))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius:100.0)
+                    .stroke(Color.gray, lineWidth: 2)
+                    .blur(radius: 4)
+                    .offset(x: 2, y: 2)
+                    .mask(Circle().fill(LinearGradient(Color.offGrayLinearEnd, Color.offGrayLinearStart)))
             )
     }
 }
@@ -246,21 +278,21 @@ struct CustomConfirmButtonsView: View {
 struct CustomConfirmButtonsView3: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
-            .fill(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
-            .shadow(color: Color.white.opacity(0.7), radius: 3, x: -5, y: -5)
-            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 2.5, y: 2.5)
+            .fill(LinearGradient(Color.offGrayLinearEnd, Color.offGrayLinearStart))
+            .shadow(color: Color.white.opacity(0.7), radius: 3, x: 5, y: 5)
+            .shadow(color: Color.black.opacity(0.2), radius: 3, x: -2.5, y: -2.5)
             .overlay(
                 RoundedRectangle(cornerRadius:20)
-                    .stroke(Color.gray, lineWidth: 2)
+                    .stroke(Color.gray, lineWidth: 1)
                     .blur(radius: 3)
-                    .offset(x: -2, y: -2)
+                    .offset(x: 2, y: 2)
                     .mask(RoundedRectangle(cornerRadius: 20).fill(LinearGradient(Color.offGrayLinearEnd, Color.offGrayLinearStart)))
             )
             .overlay(
                 RoundedRectangle(cornerRadius:20)
                     .stroke(Color.white, lineWidth: 4)
-                    .blur(radius: 3)
-                    .offset(x: 2, y: 2)
+                    .blur(radius: 9)
+                    .offset(x: -2, y: -2)
                     .mask(RoundedRectangle(cornerRadius: 20).fill(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd)))
             )
     }
@@ -285,6 +317,29 @@ struct CustomConfirmButtonsView4: View {
                     .blur(radius: 3)
                     .offset(x: 2, y: 2)
                     .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd)))
+            )
+    }
+}
+
+struct CustomConfirmButtonsView5: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 15)
+            .fill(LinearGradient(Color.offGrayLinearEnd, Color.offGrayLinearStart))
+            .shadow(color: Color.white.opacity(0.7), radius: 3, x: 5, y: 5)
+            .shadow(color: Color.black.opacity(0.2), radius: 3, x: -2.5, y: -2.5)
+            .overlay(
+                RoundedRectangle(cornerRadius:15)
+                    .stroke(Color.gray, lineWidth: 1)
+                    .blur(radius: 3)
+                    .offset(x: 2, y: 2)
+                    .mask(RoundedRectangle(cornerRadius: 15).fill(LinearGradient(Color.offGrayLinearEnd, Color.offGrayLinearStart)))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius:15)
+                    .stroke(Color.white, lineWidth: 4)
+                    .blur(radius: 9)
+                    .offset(x: -2, y: -2)
+                    .mask(RoundedRectangle(cornerRadius: 15).fill(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd)))
             )
     }
 }

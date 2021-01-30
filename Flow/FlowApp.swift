@@ -6,15 +6,21 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct FlowApp: App {
     @StateObject private var modelData = ModelData()
     
+    init() {
+      FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(modelData)
+                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }
 }

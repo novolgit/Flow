@@ -7,22 +7,11 @@
 
 import Foundation
 
-struct Flower: Codable{
-    var roses: [Rose]
-}
-
-struct Rose: Codable{
-    var shrubs: [Shrub]
-    var singleheadedRose: [SingleheadedRose]
-}
-
-struct Shrub: Codable, Identifiable {
+struct Flower: Codable, Identifiable {
     var price: Double
     var descriptions, image, name: String
     var id: Int
     var isSelected: Bool
-}
-
-struct SingleheadedRose: Codable{
-    var rosesFrost: [Shrub]
+    var flower: String
+    var group, subGroup: String?
 }

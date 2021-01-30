@@ -11,7 +11,8 @@
         "entrance":5,
         "bonuses":9999,
         "email":"groundfor@mail.ru",
-        "profile":"admin"
+        "profile":"admin",
+        "city": "Lobnya"
     },
     {
         "name":"Matvey",
@@ -25,6 +26,7 @@
         "entrance":3,
         "bonuses":9999,
         "email":"lebedev.matwei@gmail.ru",
-        "profile":"admin"
+        "profile":"admin",
+        "city": "Lobnya"
     }
 ]

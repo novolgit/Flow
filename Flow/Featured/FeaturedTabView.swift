@@ -12,17 +12,8 @@ struct FeaturedTabView: View {
     @State var index: Int
     
     var body: some View {
-        HStack {
-            Text("Featured")
-                .font(.system(size: 30, weight: .bold, design: .serif))
-                .foregroundColor(.gray)
-            Spacer()
-            Image(systemName: "tablecells")
-                .foregroundColor(.gray)
-        }
-        .padding(.horizontal)
         TabView(selection: $index){
-            ForEach(modelData.flowers[0].roses[0].shrubs) { flower in
+            ForEach(modelData.flowers) { flower in
                 HStack{
                     VStack(alignment: .leading){
                         Text(flower.name)

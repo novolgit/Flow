@@ -20,6 +20,15 @@ struct FeaturedView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     VStack{}.frame(height: 30)
+                    HStack {
+                        Text("Featured")
+                            .font(.system(size: 30, weight: .bold, design: .serif))
+                            .foregroundColor(.gray)
+                        Spacer()
+                        Image(systemName: "tablecells")
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.horizontal)
                     FeaturedTabView(index: featuredIndex)
                         .animation(.easeOut)
                         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))

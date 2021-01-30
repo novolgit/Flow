@@ -20,4 +20,5 @@ struct Account: Codable, Identifiable {
     var bonuses: Int
     var email: String
     var profile: String
+    var city: String
 }

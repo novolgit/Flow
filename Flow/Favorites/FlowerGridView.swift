@@ -10,137 +10,143 @@ import SwiftUI
 struct FlowerGridView: View {
     @EnvironmentObject var modelData: ModelData
     
-    var store : Store
+    @State private var isZoomed = false
+    @State var rating = 3
+    
     @Binding var columns : [GridItem]
     
-    
     @Namespace private var namespace
-    @State private var isZoomed = false
-
+    
+    var flower : Flower
     var frame: CGFloat {
-        columns.count == 2  ? 160 : 190
+        columns.count == 2  ? 160 : 170
     }
     
-    
-    @State var rating = 3
-
     var body: some View {
         VStack{
             if self.columns.count == 2{
-                VStack(spacing: 15){
-                    ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
-                        Image(store.image)
+                ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top))  {
+                    Button {
+                    } label: {
+                        Image(systemName: "heart.fill")
                             .resizable()
-                            .cornerRadius(15)
-                            .padding()
-                            .frame(width: frame, height: frame)
-                            .matchedGeometryEffect(id: "image", in: self.namespace)
-                        Button {
-                        } label: {
-                            Image(systemName: "heart.fill")
-                                .foregroundColor(Color.pink.opacity(0.4))
-                                .padding()
-                        }
-                        .matchedGeometryEffect(id: "heat", in: self.namespace)
-                        .padding()
+                            .frame(width: 25, height: 23)
+                            .foregroundColor(Color.pink.opacity(0.4))
                     }
-                    Text(store.name)
-                        .lineLimit(1)
-                        .font(.system(size: 16, weight: .bold, design: .serif))
-                        .foregroundColor(.gray)
-                        .matchedGeometryEffect(id: "title", in: self.namespace)
-                    NavigationLink(
-                        destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city),
-                        label: {
-                            HStack {
-                                Text("Store Details")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 14, weight: .bold, design: .serif))
-                                Image(systemName: "ellipsis")
-                            }
-                        })
-                        .matchedGeometryEffect(id: "detail", in: self.namespace)
-                    NavigationLink(
-                        destination: AssortmentDetailsView(),
-                        label: {
-                            HStack {
-                                Text("Assortment")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 14, weight: .bold, design: .serif))
-                                Image(systemName: "eye")
-                            }
-                        })
-                        .padding(.bottom, 16)
-                        .matchedGeometryEffect(id: "assort", in: self.namespace)
+                    .frame(width: 35, height: 35)
+                    .background(
+                        Group {
+                            NeuButtonsView2(radius: 10, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
+                        }
+                    )
+                    .offset(x: frame - 130, y: frame - 190)
+                    .matchedGeometryEffect(id: "favoritesHeat", in: self.namespace)
+                    VStack{
+                        HStack{
+                            NavigationLink(
+                                destination: FlowerDetail(),
+                                label: {
+                                    HStack {
+                                        Image(systemName: "ellipsis")
+                                        Text("more")
+                                            .foregroundColor(.gray)
+                                            .font(.system(size: 16, weight: .regular, design: .serif))
+                                    }
+                                })
+                                .padding(5)
+                                .background(
+                                    Group {
+                                        NeuButtonsView2(radius: 10, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
+                                    }
+                                )
+                                .offset(x: frame - 160, y: frame - 190)
+                                .matchedGeometryEffect(id: "favoritesDetail", in: self.namespace)
+                            Spacer()
+                        }
+                        Text(flower.name)
+                            .lineLimit(2)
+                            .font(.system(size: 20, weight: .medium))
+                            .foregroundColor(.offSecondaryGray)
+                            .matchedGeometryEffect(id: "favoritesTitle", in: self.namespace)
+                        Spacer()
+                    }
                 }
-//                .frame(width: 180)
+                .padding()
+                .frame(width: frame + 15, height: frame + 30)
                 .background(
                     Group {
-                        NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                        NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                     }
                 )
-                .padding()
+                .padding(.bottom, 20)
             }
             else{
-                HStack{
-                        Image(store.image)
-                            .resizable()
-//                            .frame(width: 170, height: 170)
-                            .cornerRadius(15)
-                            .padding()
-                            .frame(width: frame, height: frame)
-                            .matchedGeometryEffect(id: "image", in: self.namespace)
+                ZStack{
                     VStack{
                         HStack {
-                            Text(store.name)
-                                .foregroundColor(.gray)
-                                .font(.system(size: 16, weight: .bold, design: .serif))
-                                .matchedGeometryEffect(id: "title", in: self.namespace)
+                            NavigationLink(
+                                destination: FlowerDetail(),
+                                label: {
+                                    HStack {
+                                        Image(systemName: "ellipsis")
+                                        Text("more")
+                                            .foregroundColor(.gray)
+                                            .font(.system(size: 16, weight: .regular, design: .serif))
+                                    }
+                                })
+                                .padding(5)
+                                .background(
+                                    Group {
+                                        NeuButtonsView2(radius: 10, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
+                                    }
+                                )
+                                .offset(x: frame - 90, y: frame - 190)
+                                .matchedGeometryEffect(id: "favoritesDetail", in: self.namespace)
                             Spacer()
                             Button {
                             } label: {
                                 Image(systemName: "heart.fill")
+                                    .resizable()
+                                    .frame(width: 25, height: 23)
                                     .foregroundColor(Color.pink.opacity(0.4))
                             }
-                            .matchedGeometryEffect(id: "heat", in: self.namespace)
+                            .frame(width: 35, height: 35)
+                            .background(
+                                Group {
+                                    NeuButtonsView2(radius: 10, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
+                                }
+                            )
+                            .offset(x: frame - 160, y: frame - 190)
+                            .matchedGeometryEffect(id: "favoritesHeat", in: self.namespace)
                         }
-                        .padding()
-                        RatingView(rating: $rating)
-                            .padding(6)
-                        NavigationLink(
-                            destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city),
-                            label: {
-                                HStack {
-                                    Text("Store Details")
-                                        .foregroundColor(.gray)
-                                        .font(.system(size: 14, weight: .bold, design: .serif))
-                                    Image(systemName: "ellipsis")
-                                }
-                            })
-                            .matchedGeometryEffect(id: "buy", in: self.namespace)
-                            .padding(6)
-                        NavigationLink(
-                            destination: AssortmentDetailsView(),
-                            label: {
-                                HStack {
-                                    Text("Assortment")
-                                        .foregroundColor(.gray)
-                                        .font(.system(size: 14, weight: .bold, design: .serif))
-                                    Image(systemName: "eye")
-                                }
-                            })
-                            .matchedGeometryEffect(id: "assort", in: self.namespace)
+                        Text(flower.name)
+                            .lineLimit(2)
+                            .font(.system(size: 20, weight: .medium))
+                            .foregroundColor(.offSecondaryGray)
+                            .matchedGeometryEffect(id: "favoritesTitle", in: self.namespace)
+                        Spacer()
                     }
-                    .padding()
+                    .frame(width: frame + 100, height: frame - 10)
+                    .background(
+                        Group {
+                            NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                        }
+                    )
+                    .offset(x: 55)
+                    Image(flower.image)
+                        .resizable()
+                        .frame(width: frame + 10, height: frame + 10)
+                        .cornerRadius(500)
+                        .frame(width: frame + 10, height: frame + 10)
+                        .background(
+                            Group {
+                                CustomAccountButtonsView2()
+                            }
+                        )
+                        .offset(x: -105)
                 }
-                .frame(width: UIScreen.main.bounds.width*0.92)
-                .background(
-                    Group {
-                        NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
-                    }
-                )
-//                .padding()
             }
         }
+        .animation(.easeOut)
     }
 }

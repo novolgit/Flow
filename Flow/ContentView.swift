@@ -39,8 +39,10 @@ extension Color {
     
     static let offWhite = Color.init(hex: "#ffffff")
     static let offGray = Color(#colorLiteral(red: 0.9510897994, green: 0.9554912448, blue: 0.9662502408, alpha: 1))
+    static let offSecondaryGray = Color.init(hex: "#1f1f1f")
+    
     static let offGrayLinearStart = Color(#colorLiteral(red: 0.9226110578, green: 0.9374341369, blue: 0.9470742345, alpha: 1))
-    static let offGrayLinearEnd = Color(#colorLiteral(red: 0.8825169206, green: 0.9076496959, blue: 0.9166089892, alpha: 1))
+    static let offGrayLinearEnd = Color(#colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1))
     static let tappedOffWhiteStart = Color(#colorLiteral(red: 0.5538704991, green: 0, blue: 0.245544076, alpha: 0.2955374813))
     static let tappedOffWhiteEnd = Color(#colorLiteral(red: 0.5538704991, green: 0, blue: 0.245544076, alpha: 0.04870170948))
     

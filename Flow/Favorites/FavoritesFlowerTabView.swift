@@ -14,7 +14,7 @@ struct FavoritesFlowerTabView: View {
     
     var body: some View {
         TabView(selection: $index){
-            ForEach(modelData.flowers[0].roses[0].shrubs) { flower in
+            ForEach(modelData.flowers) { flower in
                 HStack{
                     VStack(alignment: .leading){
                         Text(flower.name)

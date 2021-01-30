@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RowContentView : View {
-    @Binding var flower: Shrub
-    @Binding var flowers: [Shrub]
+    @Binding var flower: Flower
+    @Binding var flowers: [Flower]
     @Binding var isSet: Bool
     
     @State var offset = CGSize.zero
@@ -22,15 +22,21 @@ struct RowContentView : View {
                 HStack{
                     VStack(alignment: .leading) {
                         Text("Name")
+                            .font(.system(size: 16, weight: .medium, design: .serif))
+                            .foregroundColor(Color.gray)
                         Text(flower.name)
+                            .font(.system(size: 20, weight: .medium, design: .serif))
                         
                     }
                     Spacer()
                     VStack(alignment: .leading) {
                         Text("Price")
+                            .font(.system(size: 16, weight: .medium, design: .serif))
+                            .foregroundColor(Color.gray)
                         
                         
                         Text(String(flower.price) + "$")
+                            .font(.system(size: 20, weight: .medium, design: .serif))
                         
                     }
                     //                    VStack{}.frame(width: !isSet ? 39 : 10)
@@ -43,14 +49,13 @@ struct RowContentView : View {
                             
                         }
                     }
-                    .padding(8)
-                    
+                    .padding()
                 }
                 .padding()
-                .frame(width : geo.size.width, height: UIScreen.main.bounds.height*0.14)
+                .frame(width : geo.size.width, height: 100)
                 .background(
                     Group {
-                        NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                        NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                     }
                 )
                 ZStack {
@@ -107,6 +112,7 @@ struct RowContentView : View {
                             }
                         }
             )
+            .animation(.spring())
         }
     }
     

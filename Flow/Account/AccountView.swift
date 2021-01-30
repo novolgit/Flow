@@ -21,7 +21,7 @@ struct AccountView: View {
                         VStack {
                             HStack{
                                 NavigationLink(
-                                    destination: BonusView()){
+                                    destination: BonusView(accountBonuses: account.bonuses)){
                                     VStack {
                                         Text("\(account.bonuses)")
                                             .font(.system(size: 30, design: .serif))
@@ -60,7 +60,7 @@ struct AccountView: View {
                             LazyVGrid(columns: columns, alignment: .center, spacing: 30) {
                                 Section{
                                     NavigationLink(
-                                        destination: SettingsView()){
+                                        destination: SettingsView(accountName: account.name, accountEmail: account.email, accountPhone: account.phone, accountCity: account.city)){
                                         VStack{
                                             Image(systemName: "gearshape.2")
                                             Text("Settings")
@@ -75,7 +75,7 @@ struct AccountView: View {
                                         )
                                     }
                                     NavigationLink(
-                                        destination: SettingsView()){
+                                        destination: AboutUsView()){
                                         VStack{
                                             Image(systemName: "archivebox")
                                             Text("History")
@@ -172,7 +172,7 @@ struct AccountView: View {
                         .navigationBarTitle(account.name, displayMode: .inline)
                         .toolbar(content: {
                             NavigationLink(
-                                destination: SignIn(),
+                                destination: LoginView(),
                                 label: {
                                     Text("Sign In")
                                 })

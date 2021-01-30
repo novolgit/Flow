@@ -35,6 +35,7 @@ struct CustomSheetView: View {
             .padding(.top)
             .onTapGesture {
             self.isOpen.toggle()
+                
         }
     }
 
@@ -57,21 +58,19 @@ struct CustomSheetView: View {
             VStack{
                 self.indicator
                 BottomSheet(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
-                   
-                
             }
+            .background(BlurView())
+//            .background(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
             .frame(width: geometry.size.width, height: self.maxHeight, alignment: .top)
 //            .background(Color(#colorLiteral(red: 0.9164158702, green: 0.9109681845, blue: 0.9206033349, alpha: 1)).opacity(0.9))
             .cornerRadius(Constants.radius)
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
-            .background(BlurView(style: .extraLight))
             .cornerRadius(20)
             .animation(.interactiveSpring())
             .gesture(
                 DragGesture().updating(self.$translation) { value, state, _ in
                     state = value.translation.height
-                        
                 }.onEnded { value in
                     let snapDistance = self.maxHeight * Constants.snapRatio
                     guard abs(value.translation.height) > snapDistance else {
@@ -107,12 +106,13 @@ struct BottomSheet : View {
     @State var rating = 3
     
     var body: some View{
+        VStack {
             HStack {
-                Text("Raiting")
-                    .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
-                Spacer()
-                RatingView(rating: $rating)
-            }
+                    Text("Raiting")
+                        .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                    Spacer()
+                    RatingView(rating: $rating)
+                }
             .padding()
             Divider()
         ScrollView(.vertical, showsIndicators: false){
@@ -132,7 +132,8 @@ struct BottomSheet : View {
    
                             Spacer()
                             Text("Lenina 71")
-                                .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                                .font(.system(size: 19, weight: .medium, design: .serif))
+                                .foregroundColor(.gray)
    
                         }
                         .padding(.vertical, 10)
@@ -193,35 +194,11 @@ struct BottomSheet : View {
                             }
                             Spacer()
                         }
-                        .padding(.vertical, 10)
                 }
                 .padding()
-//                VStack{}.frame(height: 60)
             }
             .frame(width: UIScreen.main.bounds.width*0.93, height: 435)
-            .background(
-                Group {
-                    NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
-                }
-            )
-            .padding()
-    }
-}
-
-struct BlurView : UIViewRepresentable {
-    
-    var style : UIBlurEffect.Style
-    
-    func makeUIView(context: Context) -> UIVisualEffectView{
-        
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: style))
-        
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-        
-        
+        }
     }
 }
 
@@ -275,35 +252,25 @@ struct CustomSheetView2 : View {
     var body: some View{
         
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom), content: {
-            
-            
             GeometryReader{reader in
-            
                 VStack{
-                    
                     BottomSheet(
 //                        offset: $offset, value: (-reader.frame(in: .global).height + 150),
                                 coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
+                        .background(BlurView())
                         .offset(y: reader.frame(in: .global).height - 175)
                         .offset(y: offset)
                         .gesture(DragGesture()
                                     .onChanged({ (value) in
-                            
                             withAnimation(.easeOut(duration: 0.5)){
-                                
                                 if value.startLocation.y > reader.frame(in: .global).midX{
-
                                     if value.translation.height < 0 && offset > (-reader.frame(in: .global).height + 450){
-
                                         offset = value.translation.height
                                     }
 //                                    offset = -450
                                 }
-                                
                                 if value.startLocation.y < reader.frame(in: .global).midX{
- 
                                     if value.translation.height > 0 && offset < 0{
-                                        
                                         offset = (-reader.frame(in: .global).height + 450) + value.translation.height
                                     }
 //                                    offset = 0
@@ -312,29 +279,19 @@ struct CustomSheetView2 : View {
                             
                         })
                                     .onEnded({ (value) in
-                            
                             withAnimation(.easeIn){
                                 if value.startLocation.y > reader.frame(in: .global).midX{
-                                    
                                     if -value.translation.height > reader.frame(in: .global).midX{
-                                        
                                         offset = (-reader.frame(in: .global).height + 450)
-                                        
                                         return
                                     }
-                                    
                                     offset = 0
                                 }
-                                
                                 if value.startLocation.y < reader.frame(in: .global).midX{
-                                    
                                     if value.translation.height < reader.frame(in: .global).midX{
-                                        
                                         offset = (-reader.frame(in: .global).height + 250)
-                                        
                                         return
                                     }
-                                    
                                     offset = 0
                                 }
                             }

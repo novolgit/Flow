@@ -1,511 +1,1491 @@
+
 [
-    {
-        "roses":[
-            {
-                "shrubs":[
-                    {
-                        "price":22.99,
-                        "descriptions":"Очаровательная белоснежная роза с бутоном классической формы.",
-                        "image":"Splozina",
-                        "name":"Splozina",
-                        "id":1,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Если вдруг что-то в ваших отношениях пошло не так или, наоборот, Вы поняли сегодня самое важное - вспомните про этот красивый цветок... Он будет очень кстати.",
-                        "image":"ForGood",
-                        "name":"For Good",
-                        "id":2,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Белая, с кремовым оттенком, роза. Имеет бутон классической формы и аромат, напоминающий ваниль.",
-                        "image":"Porcellino",
-                        "name":"Porcellino",
-                        "id":3,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":" «Магическая» двухцветная кустовая роза родом из Нидерландов.",
-                        "image":"DutchMagi",
-                        "name":"Dutch Magi",
-                        "id":4,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Чайно-гибридная роза с королевским цветком, который имеет от 40 лепестков, расположенных концентрическими кругами. Лепестки кремово-белые, с розовым краем.",
-                        "image":"Аthena",
-                        "name":"Аthena",
-                        "id":5,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Роза необычайно мягких тонов. Нежный, кремово-белый окрас перетекает в мягко-розовый, придавая розе выразительность.",
-                        "image":"Reflex",
-                        "name":"Reflex",
-                        "id":6,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Бутон классической бокаловидной формы, нежные бело-розовые лепестки, сладковатый аромат средней интенсивности. Отличный подарок любимым без повода.",
-                        "image":"Jumilia",
-                        "name":"Jumilia",
-                        "id":7,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Пионовидная кустовая Роза из Нидерландов. Плотные бутоны шаровидной формы, окрашенные в кремовый цвет, прекрасно смотрятся на небольшом стройном стебле.",
-                        "image":"Bombastic",
-                        "name":"Bombastic",
-                        "id":8,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Некрупная кустовая роза нежного розового цвета.",
-                        "image":"Irischkapink",
-                        "name":"Irischka pink",
-                        "id":9,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Кустовая пионовидная роза с двухцветными бутонами насыщенного розово-малинового цвета",
-                        "image":"LadyBombastic",
-                        "name":"Lady Bombastic",
-                        "id":10,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Пионовидная бордовая роза. Шаровидный плотный бутон с множеством лепестков, как у старинных садовых роз.",
-                        "image":"PianoRed",
-                        "name":"Piano Red",
-                        "id":11,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Тёмно-красная  кустовая роза небольшого размера. Бутоны чашевидной формы с бархатистыми лепестками.",
-                        "image":"RedLex",
-                        "name":"Red Lex",
-                        "id":12,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":" «Голландская сенсация». Ярко-красная роза, которая стала сенсацией даже в самой цветочной стране - Голландии.",
-                        "image":"DutchSensation",
-                        "name":"Dutch Sensation",
-                        "id":13,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Бутоны традиционной формы перламутрово-розового цвета, с салатовой «рубашкой» ",
-                        "image":"MansfieldPark",
-                        "name":"Mansfield Park",
-                        "id":14,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Классическая английская форма бутона. Это цветок из сортсерии «законодательница моды» красно-розового цвета ",
-                        "image":"JollyTrendsetter",
-                        "name":"Jolly Trendsetter",
-                        "id":15,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Классическая английская форма бутона. Это цветок из сортсерии «законодательница моды» ярко-жёлтого, солнечного цвета ",
-                        "image":"LunaTrendsetter",
-                        "name":"Luna Trendsetter",
-                        "id":16,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Крайне необычный вариант кустовой розы, который скорее подходит для аранжировки. ",
-                        "image":"BottelCorallogreen",
-                        "name":"Bottel Corallo green",
-                        "id":17,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Мягкий, приятный розово-зелёный оттенок, большое количество бутонов на цветке, изысканно закрученные лепестки",
-                        "image":"SweetFlow",
-                        "name":"Sweet Flow",
-                        "id":18,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Классическая английская форма бутона. Это цветок из сортсерии «законодательница моды» красно-фиолетового, рубинового цвета ",
-                        "image":"PartyTrendsetter",
-                        "name":"Party Trendsetter",
-                        "id":19,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Кустовая пионовидная роза, ярко желтого, солнечного цвета",
-                        "image":"Catalina",
-                        "name":"Catalina",
-                        "id":20,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Кустовая пионовидная роза. Крупный плотный шаровидный бутон; лепестки бело-зелёного цвета с малиновым краем. Выглядит оригинально и необычно; находка для любителей стиля «винтаж» ",
-                        "image":"LatinPompon",
-                        "name":"Latin Pompon",
-                        "id":21,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Очень крупная кустовая роза розово-лососевого оттенка",
-                        "image":"BigSuccess",
-                        "name":"Big Success",
-                        "id":22,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Святая София - кустовая роза с очень крупными бутонами кораллово-розового цвета. По внешнему виду, эффектности и размеру уверенно конкурирует с одноголовыми розами.",
-                        "image":"AyaSofia",
-                        "name":"Aya Sofia",
-                        "id":23,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Смешение тёплого, светло-розового и холодного, бледно-сиреневого оттенков действительно создаёт впечатление лёгкого, полупрозрачного серебристого налёта. Красиво, утончённо, небанально.",
-                        "image":"SilverLace",
-                        "name":"Silver Lace",
-                        "id":24,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"очаровательная миниатюрная розочка. Бутончик классической формы, как у 'взрослых' сестёр; цвет также вполне классический. Однако россыпь этих маленьких красавиц способна создать такое настроение, которое классическим розам будет не под силу.",
-                        "image":"PinkBubbles",
-                        "name":"Pink Bubbles",
-                        "id":25,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Тёмно-бордовая кустовая роза. Очень эффектная, 'торжественная', или 'вечерняя'. Миниатюрность только добавляет ей изысканности и очарования. Отличный вариант, чтобы выразить вполне определённые чувства и при этом оказаться оригинальным.",
-                        "image":"Angelique",
-                        "name":"Angelique",
-                        "id":26,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Романтические пузырьки — просто невероятно милые розочки. Они настолько миниатюрны, что кажутся детскими, игрушечными; хочется взять их большую охапку и 'утопить' в них любимого человека",
-                        "image":"RomanticBubbles",
-                        "name":"Romantic Bubbles",
-                        "id":27,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"('Малайское украшение') - кремово-розовая кустовая роза из премиального сегмента. Нежный спокойный тон, идеальные бутончики - как нечто умиротворяющее из далёкой, омываемой тёплыми морями Малайи.",
-                        "image":"MalayaBijoux",
-                        "name":"Malaya Bijoux",
-                        "id":28,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Роза, относящаяся к классу 'премиум', что неудивительно: лепестки насыщенного розового (малинового) цвета не дают в этом усомниться, буквально завораживая взгляд.",
-                        "image":"Quincy",
-                        "name":"Quincy",
-                        "id":29,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Роза класса 'премиум', с чем не поспоришь - классической формы бутоны тёмно-бордового, близкого к чёрному, цвета, выглядят просто роскошно. Это не романтическая влюблённость, это страсть, поглотившая полностью",
-                        "image":"Amata",
-                        "name":"Amata",
-                        "id":30,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Маленькая, но буквально полыхающая оранжево-жёлтым пламенем розочка. ",
-                        "image":"Eyeliner",
-                        "name":"Eyeliner",
-                        "id":31,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Двухцветная кустовая роза. Цвет меняется от бледного-розового к красно-оранжевому. Бутон плотный, классической формы.",
-                        "image":"Zadique",
-                        "name":"Zadique",
-                        "id":32,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":" «Рубиновое украшение» - кустовая пионовидная роза насыщенного, рубинового оттенка, как ублагородного вина.",
-                        "image":"RubyBijoux",
-                        "name":"Ruby Bijoux",
-                        "id":33,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":" При взгляде на эту розу возникает ощущение, что это именно такой цветок, каким должна быть классическая роза. Бутон классической формы, классический тёмно-розовый цвет, унаследованный от шиповника.",
-                        "image":"ClassicSensation",
-                        "name":"Classic Sensation",
-                        "id":34,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Цвет - персиково-розовый или, как пишет поставщик, цвет 'брызги шампанского'. Маленькие бутончики действительно напоминают веер брызг, что и дало название всем кустовым розам в принципе. Тем более, что там, где розы - там и шампанское и, возможно, секрет хорошего вечера - в этой розе",
-                        "image":"Justine",
-                        "name":"Justine",
-                        "id":35,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Очень выразительная кустовая роза. Лепестки имеют светло-розовый окрас снаружи и тёмно-бордовый на внутренней части. В отличие от большинства других двухцветных роз, которым это добавляет современности, двухцветный окрас идеальных бутончиков традиционной формы только усиливает впечатление 'классики'. Эффектность в классическом стиле — для кого-то это может стать просто идеальным подарком.",
-                        "image":"BBubbles",
-                        "name":"B-Bubbles",
-                        "id":36,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Кустовая роза из разряда 'премиум'. Цвет мягкий, спокойный и довольно неожиданный для розы — розовый с оттенком фиолетового, называемый ещё лавандовым или аметистовым.",
-                        "image":"ALady",
-                        "name":"A-Lady",
-                        "id":37,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Бело-розовая пионовидная кустовая роза. Замечательно, 'картинно' смотрится в монобукете; прекрасно дополняет составные букеты, не уходя при этом на второй план.",
-                        "image":"PorcelinaLace",
-                        "name":"Porcelina Lace",
-                        "id":38,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Кустовая ярко-оранжевая роза. Чрезвычайно позитивный оттенок, две-три веточки этих замечательных 'коралловых пузырьков' — и хорошее настроение обеспечено.",
-                        "image":"CoralBubbles",
-                        "name":"Coral Bubbles",
-                        "id":39,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Кустовая роза белового цвета с желтовато-кремовой серединкой. Очень популярна для составления свадебных букетов; прекрасно сочетается с другими цветами и очень достойно выглядит в монобукете.",
-                        "image":"WhiteBubbles",
-                        "name":"White Bubbles",
-                        "id":40,
-                        "isSelected":false
-                    },
-                    
-                    {
-                        "price":22.99,
-                        "descriptions":"Кустовая роза 'Аэробик' замечательна и формой, и цветом, а её миниатюрность только добавляет ей очарования. Просто находка для любителей нежности.",
-                        "image":"Aerobic",
-                        "name":"Aerobic",
-                        "id":41,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Популярная двухцветная роза. Маленькие жёлто-красные бутончики, словно танцуя, играют переливами цвета от тёплого к жаркому",
-                        "image":"SummerDance",
-                        "name":"Summer Dance",
-                        "id":42,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Ванильное кружево —     бело-кремовая, как цветок ванили, кустовая роза. А многочисленные маленькие пионовидные бутончики с туго скрученными лепестками - это и есть то самое ароматное кружево, от которого не откажется ни одна женщина",
-                        "image":"VanillaLace",
-                        "name":"Vanilla Lace",
-                        "id":43,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Плотные маленькие бутоны, напоминающие бубенчики, неоднородны по окрасу - от светлого до тёмно-розового в зелёной рубашке. Эти непредсказуемые, можно сказать, хаотичные переливы цвета на 'капустных' завикрениях лепестков создают видимость некоего кружева. Ну а то, что кружево розовое, только добавляет пикантности этому неординарному цветку.",
-                        "image":"PinkLace",
-                        "name":"Pink Lace",
-                        "id":44,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Кто скрывается под псевдонимом ДжоДжо - персонаж популярного японского комикса, знаменитый музыкант Джоджо Майер или кто-то ещё прекрасный или прекрасная — создатели этой розы не объяснили. Но то, что эта роза получилась прекрасной — сомнений нет. Солнечный оттенок, плотный бутон - россыпь этих золотистых капель дышит летом, счастьем и безмятежностью.",
-                        "image":"LovelyJoJo",
-                        "name":"Lovely JoJo",
-                        "id":45,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Замечательная роза с русским именем. Нежнейший персиковый оттенок, бархатистые, вьющиеся, как бы угловатые лепестки делают эту миниатюрную розочку утончённо- элегантной.",
-                        "image":"Tanja",
-                        "name":"Tanja",
-                        "id":46,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Бело-розовая многоголовая роза. 'Звёздная' россыпь из маленьких бутончиков выглядит очень приятно и ненавязчиво.",
-                        "image":"SweetStars",
-                        "name":"Sweet Stars",
-                        "id":47,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Кремовые лепестки и розоватая сердцевинка придают этой розе очень нежный и очень изящный вид.",
-                        "image":"RoyalPorcellina",
-                        "name":"Royal Porcellina",
-                        "id":48,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Бело-кремовая кустовая роза 'Галина'. Приятный аромат и классическая, 'винтажная' форма делают её хорошим подарком в любое время года и по любому поводу.",
-                        "image":"Galina",
-                        "name":"Galina",
-                        "id":49,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Одно название этой розы уже способно привлечь к ней внимание. И ненапрасно. Интересен её пионовидный бутон, интересны лепестки в этих бутонах с как бы нарочито небрежными, слегка 'мятыми' краями. Интересен, конечно же, её цвет - розово- фиолетовый, 'лавандовый'. Не классика, не стандарт, не обывательская усреднённость. Очень соответствует модному ныне словечку 'дерзкая'. Одним словом, если ищете для подарка нечто оригинальное - то вот оно, перед Вами.",
-                        "image":"LavenderLace",
-                        "name":"Lavender Lace",
-                        "id":50,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Кустовая роза очень тёплого розово-белого, или кремового, оттенка. Небольшие бутончики имеют очень лёгкий аромат и растут очень густо.",
-                        "image":"Jana",
-                        "name":"Jana",
-                        "id":51,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Популярная кустовая роза нежного бело-кремового цвета. Длина стебля 40-45 см. Жыве Беларусь!",
-                        "image":"Belarus",
-                        "name":"Belarus",
-                        "id":52,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Роза огненно-оранжевого цвета с классической формы бутонами небольшого размера. Действительно, необычайно эффектная роза.",
-                        "image":"OrangeSensation",
-                        "name":"Orange Sensation",
-                        "id":53,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Яркая, эффектная двухцветная роза. Цвет лепестков в бутоне меняется от яркоранжевого у основания к красному по краям лепестков.",
-                        "image":"FiestaBubbles",
-                        "name":"Fiesta Bubbles",
-                        "id":54,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Голландская кустовая роза. Небольшой размер, очень милые, 'солнцеподобные', бутончики золотисто-жёлтого цвета. Воплощение оптимизма и позитива.",
-                        "image":"DutchDakar",
-                        "name":"Dutch Dakar",
-                        "id":55,
-                        "isSelected":false
-                    },
-                    {
-                        "price":22.99,
-                        "descriptions":"Яркая, эффектная двухцветная роза. Сочетание нежно жёлтой рубашки и жгуче-красного цвета ближе к сердцевине.",
-                        "image":"sprayMisMac",
-                        "name":"Mis Mac",
-                        "id":56,
-                        "isSelected":false
-                    },
-                    {
-                        "price":10.99,
-                        "descriptions":"Замечательная кустовая роза. Белая, как свадебное платье и изящная, как невеста.",
-                        "image":"WhiteLady",
-                        "name":"White Lady",
-                        "id":57,
-                        "isSelected":false
-                    }
-                ],
-                "singleheadedRose":[
-                    {
-                        "rosesFrost":[               {
-                            "price":10.99,
-                            "descriptions":"Замечательная кустовая роза. Белая, как свадебное платье и изящная, как невеста.",
-                            "image":"WhiteLady",
-                            "name":"White Lady",
-                            "id":57,
-                            "isSelected":false
-                        }]
-                        
-                    }
-                ]
-                
-            }
-        ]
-        
-    }
+{
+     "price":10.99,
+     "descriptions":"Замечательная кустовая роза. Белая, как свадебное платье и изящная, как невеста.",
+     "image":"WhiteLady",
+     "name":"White Lady",
+     "id":1,
+     "isSelected":false,
+     "flower":"rose",
+     "group":"shrubs"
+  },
+  {
+     "price":10.99,
+     "descriptions":"Красная роза, дополнительно покрытая бархатистым красным налётом и серебристыми блёстками.",
+     "image":"RosesFrost",
+     "name":"Roses Frost",
+     "id":2,
+     "isSelected":false,
+     "flower":"rose",
+     "group":"singleheadedRose",
+     "subGroup":"rosesFrost"
+  },
+{
+     "price":10.99,
+     "descriptions":"Чайно-гибридная роза. Изысканный цветок с большим бутоном и длинным стеблем. Лепестки белого цвета с лёгким изумрудным оттенком. На языке цветов эта роза обозначает чистоту и невинность, поэтому традиционно используется при составлении свадебных букетов. Также хорошим тоном считается подарить её на первом свидании",
+     "image":"Avalanche",
+     "name":"Avalanche",
+     "id":3,
+     "isSelected":false,
+     "flower":"rose",
+     "group":"singleheadedRose",
+     "subGroup":"avalanche"
+  },
+  {
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":4,
+     "isSelected":false,
+     "flower":"rose",
+     "group":"singleheadedRose",
+     "subGroup":"gerard"
+  },
+
+{
+     "price":22.99,
+     "descriptions":"Роза ярко-жёлтого, солнечного оттенка. Какое-то особое чувство возникает при взгляде на эту розу. Может быть потому, что в том английском приморском Брайтоне так же, как и в нашем городе, сквозь дожди и туманы редко видно солнце. ",
+     "image":"Brighton",
+     "name":"Brighton",
+     "id":5,
+     "isSelected":false,
+     "flower":"rose",
+     "group":"singleheadedRose",
+     "subGroup":"otherSingleheadedRose"
+  },
+{
+     "price":10.99,
+     "descriptions":"Популярнейшая хризантема. Белая и пушистая. Нежная и очаровательная. Идеальное сочетание скромности и вкуса.",
+     "image":"ZemblaWhite",
+     "name":"Zembla White",
+     "id":6,
+     "isSelected":false,
+     "flower":"Chrysanthemum",
+     "group":"shrubs"
+  },
+{
+     "price":10.99,
+     "descriptions":"Хризантема из сортосерии Madiba, выведенной на рынок Деккер Хризантен в 2015 году. Как название самой сортосерии, так и названия входящих в неё сортов - африканские. Охапка этих малюсеньких солнечных цветов - и на душе тропическое африканское лето.",
+     "image":"MadibaRingaYellow",
+     "name":"Madiba Ringa Yellow",
+     "id":7,
+     "isSelected":false,
+     "flower":"Chrysanthemum",
+     "group":"ShrubsSantini"
+  },
+{
+     "price":10.99,
+     "descriptions":"Хризантема с большим махровым цветочным куполом ярко- оранжевого цвета на длинном стебле. Необходимый оттенок получается путём окрашивания белой хризантемы при помощи добавления в воду цветных питательных растворов.",
+     "image":"AntonovSunshine",
+     "name":"Antonov Sunshine",
+     "id":8,
+     "isSelected":false,
+     "flower":"Chrysanthemum",
+     "group":"SingleHeadChrysanthemum",
+    "subGroup":"SingleHeadChrysanthemumAntonov"
+  },
+{
+     "price":10.99,
+     "descriptions":"Яркая жёлто-оранжевая помпонная хризантема от Decorum. Шарообразный бутон диаметром около 7 см; крепкие жёсткие лепестки-лодочки, не позволяющие бутону терять форму, хорошая стойкость в вазе",
+     "image":"Leontine",
+     "name":"Leontine",
+     "id":9,
+     "isSelected":false,
+     "flower":"Chrysanthemum",
+     "group":"SingleHeadChrysanthemum",
+    "subGroup":"SingleHeadChrysanthemumOther"
+  },
+{
+     "price":10.99,
+     "descriptions":"Белоснежные лепестки и чёрная серединка. Контрастный, холодный цветок. Диаметр 10-11 см, высота стебля 50-55 см. Строгая, благородная красота. Красивый цветок семейства астровых, напоминающий большую ромашку.",
+     "image":"IceQueen",
+     "name":"Ice Queen",
+     "id":10,
+     "isSelected":false,
+     "flower":"Gerbera",
+     "group":"GerberaStandard"
+  },
+{
+     "price":10.99,
+     "descriptions":"Пастельно-розовая гербера. Размер цветка мини-гербер - 5-9 см. Красивый цветок семейства астровых, напоминающий ромашку.",
+     "image":"Kimsey",
+     "name":"Kimsey",
+     "id":11,
+     "isSelected":false,
+     "flower":"Gerbera",
+     "group":"GerberaMini"
+  },
+{
+     "price":4.73,
+     "descriptions":"Очень крупная, тёмно-лиловая с чёрными крапинами, лилия. Диаметр шелковистого цветка может достигать 30 см, длина стебля - полутора метров. Обладает сильным, приятным ароматом.",
+     "image":"Robina",
+     "name":"Robina",
+     "id":12,
+     "isSelected":false,
+     "flower":"Lily"
+  },
+{
+     "price":2.30,
+     "descriptions":"Гвоздика стандарт микс - смесь разных сортов одно- и двухцветной одноголовой гвоздики. Темно-фиолетовая.",
+     "image":"Mix9",
+     "name":"Mix9",
+     "id":13,
+     "isSelected":false,
+     "flower":"Dianthus",
+     "group":"DianthusStandart",
+     "subGroup":"DianthusStandartMix"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"DiantusStandartpink",
+     "name":"Diantus Standart pink",
+     "id":14,
+     "isSelected":false,
+     "flower":"Dianthus",
+     "group":"DianthusStandart",
+     "subGroup":"DianthusStandartOther"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"DianthusSolomioTino",
+     "name":"Dianthus Solomio Tino",
+     "id":15,
+     "isSelected":false,
+     "flower":"Dianthus",
+     "group":"shrubs",
+     "subGroup":"DianthusSolomio"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"DianthusShrubsOther",
+     "name":"Dianthus Shrubs red",
+     "id":16,
+     "isSelected":false,
+     "flower":"Dianthus",
+     "group":"shrubs",
+     "subGroup":"DianthusShrubsOther"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"tulipPink",
+     "name":"Tulip Pink",
+     "id":17,
+     "isSelected":false,
+     "flower":"Tulip"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"EustomaWhite",
+     "name":"Eustoma White",
+     "id":18,
+     "isSelected":false,
+     "flower":"Eustoma"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":19,
+     "isSelected":false,
+     "flower":"Iris"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":20,
+     "isSelected":false,
+     "flower":"Hydrangea"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":21,
+     "isSelected":false,
+     "flower":"Alstroemeria"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"orchid",
+      "id":22,
+     "isSelected":false,
+     "flower":"orchid",
+   "group":"Vanda"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"orchid",
+     "id":23,
+     "isSelected":false,
+     "flower":"orchid",
+   "group":"Dendrobium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"orchid",
+     "id":24,
+     "isSelected":false,
+     "flower":"orchid",
+   "group":"Cymbidium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"orchid",
+     "id":25,
+     "isSelected":false,
+     "flower":"orchid",
+   "group":"Paphiopedilum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"orchid",
+     "id":26,
+     "isSelected":false,
+     "flower":"Amaryllis"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"orchid",
+     "id":27,
+     "isSelected":false,
+     "flower":"Ranunculus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":28,
+     "isSelected":false,
+     "flower":"Hyacinth"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":29,
+     "isSelected":false,
+     "flower":"Calla"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":30,
+     "isSelected":false,
+     "flower":"Gladiolus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":31,
+     "isSelected":false,
+     "flower":"Matricaria"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":32,
+     "isSelected":false,
+     "flower":"Sunflower"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":33,
+     "isSelected":false,
+     "flower":"Peony"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":34,
+     "isSelected":false,
+     "flower":"Astra"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":35,
+     "isSelected":false,
+     "flower":"Muscari"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":36,
+     "isSelected":false,
+     "flower":"Astra"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":37,
+     "isSelected":false,
+     "flower":"Anemone"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":38,
+     "isSelected":false,
+     "flower":"Anthurium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":39,
+     "isSelected":false,
+     "flower":"Delphinium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":40,
+     "isSelected":false,
+     "flower":"Aquilegia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":41,
+     "isSelected":false,
+     "flower":"Antirrhinum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":42,
+     "isSelected":false,
+     "flower":"Galanthus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":43,
+     "isSelected":false,
+     "flower":"Gentiana"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":44,
+     "isSelected":false,
+     "flower":"Gloriosa"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":45,
+     "isSelected":false,
+     "flower":"Dianthus barbatus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":46,
+     "isSelected":false,
+     "flower":"Marigold"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":47,
+     "isSelected":false,
+     "flower":"Campanula"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":48,
+     "isSelected":false,
+     "flower":"Turmeric"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":49,
+     "isSelected":false,
+     "flower":"Lily"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":50,
+     "isSelected":false,
+     "flower":"Latirus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":51,
+     "isSelected":false,
+     "flower":"Levka"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":52,
+     "isSelected":false,
+     "flower":"Anigozanthos"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":53,
+     "isSelected":false,
+     "flower":"Aralia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":54,
+     "isSelected":false,
+     "flower":"Artichoke"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":55,
+     "isSelected":false,
+     "flower":"Asparagus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":56,
+     "isSelected":false,
+     "flower":"Astrance"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":57,
+     "isSelected":false,
+     "flower":"Achillea"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":58,
+     "isSelected":false,
+     "flower":"Banksia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":59,
+     "isSelected":false,
+     "flower":"BirchTree"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":60,
+     "isSelected":false,
+     "flower":"Cornflower"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":61,
+     "isSelected":false,
+     "flower":"Dahlia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":62,
+     "isSelected":false,
+     "flower":"Gypsophila"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":63,
+     "isSelected":false,
+     "flower":"Grevillea"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":64,
+     "isSelected":false,
+     "flower":"DracaenaSanderiana"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":65,
+     "isSelected":false,
+     "flower":"Salix"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":66,
+     "isSelected":false,
+     "flower":"Capsicum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":67,
+     "isSelected":false,
+     "flower":"Cypress"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":68,
+     "isSelected":false,
+     "flower":"Asparagus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":69,
+     "isSelected":false,
+     "flower":"Clematis"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":70,
+     "isSelected":false,
+     "flower":"Cordyline"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":71,
+     "isSelected":false,
+     "flower":"Corylus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":72,
+     "isSelected":false,
+     "flower":"Cotinus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":73,
+     "isSelected":false,
+     "flower":"Crocosmia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":74,
+     "isSelected":false,
+     "flower":"Mimosa"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":75,
+     "isSelected":false,
+     "flower":"Narcissus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":76,
+     "isSelected":false,
+     "flower":"Nerine"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":77,
+     "isSelected":false,
+     "flower":"Ozothamnus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":78,
+     "isSelected":false,
+     "flower":"Panikum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":79,
+     "isSelected":false,
+     "flower":"Pennisetum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":80,
+     "isSelected":false,
+     "flower":"Pittosporum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":81,
+     "isSelected":false,
+     "flower":"FirTree"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":82,
+     "isSelected":false,
+     "flower":"Protea"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":83,
+     "isSelected":false,
+     "flower":"Rubus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":84,
+     "isSelected":false,
+     "flower":"Salal"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":85,
+     "isSelected":false,
+     "flower":"Saponaria"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":86,
+     "isSelected":false,
+     "flower":"Sedum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":87,
+     "isSelected":false,
+     "flower":"Setaria"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":88,
+     "isSelected":false,
+     "flower":"Symphoricarpus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":89,
+     "isSelected":false,
+     "flower":"Scabiosa"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":90,
+     "isSelected":false,
+     "flower":"PineTree"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":91,
+     "isSelected":false,
+     "flower":"Philodendron"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":92,
+     "isSelected":false,
+     "flower":"Phlebodium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":93,
+     "isSelected":false,
+     "flower":"Forsythia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":94,
+     "isSelected":false,
+     "flower":"Fritillary"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":95,
+     "isSelected":false,
+     "flower":"Chasmanthium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":96,
+     "isSelected":false,
+     "flower":"TheJapanQuince"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":97,
+     "isSelected":false,
+     "flower":"Eucalyptus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":98,
+     "isSelected":false,
+     "flower":"Erica"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":99,
+     "isSelected":false,
+     "flower":"Echinacea"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":100,
+     "isSelected":false,
+     "flower":"ForgetMeNot"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id": 101,
+     "isSelected":false,
+     "flower":"Nigella"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id": 102,
+     "isSelected":false,
+     "flower":"Ornithogalum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id": 103,
+     "isSelected":false,
+     "flower":"Chamomile"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":104,
+     "isSelected":false,
+     "flower":"Leucadendron"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":105,
+     "isSelected":false,
+     "flower":"Lilac"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":106,
+     "isSelected":false,
+     "flower":"Strelitzia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":107,
+     "isSelected":false,
+     "flower":"Phlox"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":108,
+     "isSelected":false,
+     "flower":"Freesia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":109,
+     "isSelected":false,
+     "flower":"Heleborus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":110,
+     "isSelected":false,
+     "flower":"Heliconia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":111,
+     "isSelected":false,
+     "flower":"Celosia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":112,
+     "isSelected":false,
+     "flower":"Agapanthus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":113,
+     "isSelected":false,
+     "flower":"Allium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":114,
+     "isSelected":false,
+     "flower":"Amaranth"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":115,
+     "isSelected":false,
+     "flower":"AmmiMouse"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":116,
+     "isSelected":false,
+     "flower":"Astilba"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":117,
+     "isSelected":false,
+     "flower":"Asclepius"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":118,
+     "isSelected":false,
+     "flower":"Bouvardia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":119,
+     "isSelected":false,
+     "flower":"Brassica"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":120,
+     "isSelected":false,
+     "flower":"Brodea"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":121,
+     "isSelected":false,
+     "flower":"Brunia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":122,
+     "isSelected":false,
+     "flower":"Waxflower"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":123,
+     "isSelected":false,
+     "flower":"Viburnum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":124,
+     "isSelected":false,
+     "flower":"Gomphrena"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":125,
+     "isSelected":false,
+     "flower":"Jinster"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":126,
+     "isSelected":false,
+     "flower":"Ilex"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":127,
+     "isSelected":false,
+     "flower":"Lysimachia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":128,
+     "isSelected":false,
+     "flower":"OakLeaf"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":129,
+     "isSelected":false,
+     "flower":"Limonium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":130,
+     "isSelected":false,
+     "flower":"Peach"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":131,
+     "isSelected":false,
+     "flower":"Prunus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":132,
+     "isSelected":false,
+     "flower":"Sandersonia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":133,
+     "isSelected":false,
+     "flower":"Skimmia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":134,
+     "isSelected":false,
+     "flower":"Solidago"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":135,
+     "isSelected":false,
+     "flower":"Trachelium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":136,
+     "isSelected":false,
+     "flower":"Tuya"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":137,
+     "isSelected":false,
+     "flower":"Rosehip"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":138,
+     "isSelected":false,
+     "flower":"Hypericum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":139,
+     "isSelected":false,
+     "flower":"Choisie"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":140,
+     "isSelected":false,
+     "flower":"Eryngium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":141,
+     "isSelected":false,
+     "flower":"Eupatorium"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":142,
+     "isSelected":false,
+     "flower":"Euphorbia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":143,
+     "isSelected":false,
+     "flower":"SucculentEcheveriaAgavoides"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":144,
+     "isSelected":false,
+     "flower":"Mirika"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":145,
+     "isSelected":false,
+     "flower":"Magnolia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":146,
+     "isSelected":false,
+     "flower":"Echinopsis"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":147,
+     "isSelected":false,
+     "flower":"Ruskus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Burnet",
+     "id":148,
+     "isSelected":false,
+     "flower":"SanguisorbaArnhem"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":149,
+     "isSelected":false,
+     "flower":"Buplerum"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":150,
+     "isSelected":false,
+     "flower":"Moluccella"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":151,
+     "isSelected":false,
+     "flower":"KalanchoeWildPinkMeadow"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":152,
+     "isSelected":false,
+     "flower":"SenecioMaritima"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":153,
+     "isSelected":false,
+     "flower":"Lederwaren"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":154,
+     "isSelected":false,
+     "flower":"Alchemilla"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":155,
+     "isSelected":false,
+     "flower":"HuckleberrySnow"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":156,
+     "isSelected":false,
+     "flower":"Monstera"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":157,
+     "isSelected":false,
+     "flower":"Malus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":158,
+     "isSelected":false,
+     "flower":"Mahonia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":159,
+     "isSelected":false,
+     "flower":"Carthamus"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":160,
+     "isSelected":false,
+     "flower":"Craspedia"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":161,
+     "isSelected":false,
+     "flower":"JatrophaFireCracker"
+  },
+{
+     "price":10.99,
+     "descriptions":"Жерар (Gerard) - новый сорт розы от Wans Roses, Германия. Торговая марка - Royal Beauties. Чудесная персиковая роза.",
+     "image":"GerardPeachy",
+     "name":"Gerard Peachy",
+     "id":162,
+     "isSelected":false,
+     "flower":"Echium"
+  }
 ]

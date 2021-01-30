@@ -56,9 +56,11 @@ struct StoreDetail: View {
                 isTap = !isTap
             }
 //            CustomSheetView2(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
-            CustomSheetView(isOpen: $isTap, maxHeight: 650, minHeight: 170, coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
+            CustomSheetView(isOpen: $isTap, maxHeight: 620, minHeight: 163, coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
             .edgesIgnoringSafeArea(.all)
+            
         }
+        .background(BlurView())
         .onAppear {
             setRegion(coordinate)
             manager.delegate = managerDelegate
