@@ -4,10 +4,8 @@ import SwiftUI
 struct SettingsView: View {
     
     var accountName: String
-    var accountEmail: String
     var accountPhone: String
 //    var accountPassword: String
-    var accountCity: String
     
     var body: some View {
         ScrollView{
@@ -44,7 +42,7 @@ struct SettingsView: View {
                                 .foregroundColor(.gray)
                             Spacer()
                         HStack {
-                        Text(accountEmail)
+                        Text("mail")
                             .font(.system(size: 20, design: .serif))
                             .foregroundColor(.gray)
                             Image(systemName: "chevron.right.2")
@@ -106,7 +104,7 @@ struct SettingsView: View {
                             Text("City")
                             Spacer()
                         HStack {
-                        Text(accountCity)
+                        Text("accountCity")
                             .font(.system(size: 20, design: .serif))
                             .foregroundColor(.gray)
                             Image(systemName: "chevron.right.2")
@@ -132,7 +130,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
 
     static var previews: some View {
-        SettingsView(accountName: "Vlad", accountEmail: "groundfor@mail.ru", accountPhone: "+712912382", accountCity: "Lobnya")
+        SettingsView(accountName: "Vlad", accountPhone: "+712912382")
     }
 }
   

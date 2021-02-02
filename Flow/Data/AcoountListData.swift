@@ -22,3 +22,12 @@ struct Account: Codable, Identifiable {
     var profile: String
     var city: String
 }
+
+struct AccountFirebase: Codable {
+    var uid: String
+    var name: String
+    var phone: String
+    var bio: String
+    var profileImage: String
+    var bonuses: Int
+}

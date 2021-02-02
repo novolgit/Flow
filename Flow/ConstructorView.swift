@@ -199,7 +199,6 @@ struct SceneKitView: UIViewRepresentable {
     let sceneView = SCNView(frame: .zero)
     
     @Binding var modelsArray: Array<Any>
-    
     @Binding var isDelete: Int
     
     func makeUIView(context: Context) -> SCNView {
@@ -236,14 +235,14 @@ struct SceneKitView: UIViewRepresentable {
         floorNode.position = SCNVector3(x: 0, y: -1, z: 0)
         sceneView.scene!.rootNode.addChildNode(floorNode)
         
-        
-        //        let tapGesture = UIPanGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
-        //        sceneView.addGestureRecognizer(tapGesture)
-        
         return sceneView
     }
+    
     func updateUIView(_ uiView: SCNView, context: Context) {
         var geometryNode = [SCNNode]()
+        
+        let tapGesture = UIPanGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
+                sceneView.addGestureRecognizer(tapGesture)
         
         if modelsArray.count == 0 {
             for model in modelsArray {
@@ -273,68 +272,64 @@ struct SceneKitView: UIViewRepresentable {
         )
         }
         
-        print("Array: "+String(modelsArray.count))
-        print(sceneView.scene?.rootNode.childNodes.count)
-        print("isDelete taps: "+String(isDelete))
+        print(modelsArray.count)
     }
     //
-    //        func makeCoordinator() -> Coordinator {
-    //            Coordinator(sceneView, modelsArray)
-    //        }
+            func makeCoordinator() -> Coordinator {
+                Coordinator(sceneView)
+            }
     //
-    //        class Coordinator: NSObject {
-    //            private let sceneView: SCNView
-    //            private var modelsArray: Array<Any>
-    //            init(_ sceneView: SCNView, _ modelsArray: Array<Any>) {
-    //                self.sceneView = sceneView
-    //                self.modelsArray = modelsArray
-    //                super.init()
-    //            }
-    //
-    //            @objc func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
-    //                    modelsArray.append("tv_retro.usdz")
-    //            }
-    //        }
+            class Coordinator: NSObject {
+                private let sceneView: SCNView
+                init(_ sceneView: SCNView) {
+                    self.sceneView = sceneView
+                    super.init()
+                }
+                
     
-    //        var PCoordx: Float = 0.0
-    //        var PCoordz: Float = 0.0
-    //        var PCoordy: Float = 0.0
-    //
-    //        @objc func handleTap(_ gestureRecognize: UIPanGestureRecognizer) {
-    //            guard let view = view as? SCNView else { return }
-    //            let location = gestureRecognize.location(in: self.view)
-    //            switch gestureRecognize.state {
-    //            case .began:
-    //                guard let hitNodeResult = view.hitTest(location,
-    //                                                       options: [:]).first else { return }
-    //                self.PCoordx = hitNodeResult.worldCoordinates.x
-    //                self.PCoordy = hitNodeResult.worldCoordinates.y
-    //                self.PCoordz = hitNodeResult.worldCoordinates.z
-    //            case .changed:
-    //                let hitNode = view.hitTest(gestureRecognize.location(in: view), options: [:])
-    //                if let coordx = hitNode.first?.worldCoordinates.x,
-    //                   let coordy = hitNode.first?.worldCoordinates.y,
-    //                   let coordz = hitNode.first?.worldCoordinates.z {
-    //                    let action = SCNAction.moveBy(x: CGFloat(coordx - self.PCoordx),
-    //                                                  y: CGFloat(coordy - self.PCoordy),
-    //                                                  z: CGFloat(coordz - self.PCoordz),
-    //                                                  duration: 0.0)
-    //                    self.geometryNode.runAction(action)
-    //
-    //                    self.PCoordx = coordx
-    //                    self.PCoordy = coordy
-    //                    self.PCoordz = coordz
-    //                }
-    //
-    //                gestureRecognize.setTranslation(CGPoint.zero, in: self.view)
-    //            case .ended:
-    //                self.PCoordx = 0.0
-    //                self.PCoordy = 0.0
-    //                self.PCoordz = 0.0
-    //            default:
-    //                break
-    //            }
-    //        }
+    
+            var PCoordx: Float = 0.0
+            var PCoordz: Float = 0.0
+            var PCoordy: Float = 0.0
+    
+            @objc func handleTap(_ gestureRecognize: UIPanGestureRecognizer) {
+                guard let sceneView = sceneView as? SCNView else { return }
+                let location = gestureRecognize.location(in: self.sceneView)
+                switch gestureRecognize.state {
+                case .began:
+                    let hitNodeResult = sceneView.hitTest(location,
+                                                           options: [:])
+                    let hitResult = hitNodeResult[0]
+                    self.PCoordx = hitResult.worldCoordinates.x
+                    self.PCoordy = hitResult.worldCoordinates.y
+                    self.PCoordz = hitResult.worldCoordinates.z
+                case .changed:
+                    let hitNode = sceneView.hitTest(gestureRecognize.location(in: sceneView), options: [:])
+                    let hitTestResult = hitNode[0]
+                    if let coordx = hitNode.first?.worldCoordinates.x,
+                       let coordy = hitNode.first?.worldCoordinates.y,
+                       let coordz = hitNode.first?.worldCoordinates.z
+                    {
+                        let action = SCNAction.moveBy(x: CGFloat(coordx - self.PCoordx),
+                                                      y: CGFloat(coordy - self.PCoordy),
+                                                      z: CGFloat(coordz - self.PCoordz),
+                                                      duration: 0.0)
+                        hitTestResult.node.runAction(action)
+    
+                        self.PCoordx = coordx
+                        self.PCoordy = coordy
+                        self.PCoordz = coordz
+                    }
+    
+                    gestureRecognize.setTranslation(CGPoint.zero, in: self.sceneView)
+                case .ended:
+                    self.PCoordx = 0.0
+                    self.PCoordy = 0.0
+                    self.PCoordz = 0.0
+                default:
+                    break
+                }
+            }
     
     //        @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
     //            // check what nodes are tapped
@@ -368,6 +363,7 @@ struct SceneKitView: UIViewRepresentable {
     //            }
     //        }
     //    }
+}
 }
 
 extension UIApplication {

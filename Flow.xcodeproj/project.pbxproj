@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		2F0DD38525B2928B00081A93 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0DD38425B2928B00081A93 /* Animations.swift */; };
 		2F0DD38825B33B9700081A93 /* AssortmentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0DD38725B33B9700081A93 /* AssortmentDetailsView.swift */; };
 		2F0F987225B780240023975A /* tv_retro.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 2F0F987125B780230023975A /* tv_retro.usdz */; };
+		2F1665E125C70FF4009E242C /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1665E025C70FF3009E242C /* VerificationView.swift */; };
+		2F1665FB25C75031009E242C /* AccoountCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1665FA25C75031009E242C /* AccoountCreationViewModel.swift */; };
 		2F17C3D325BB3496004B7D1B /* ConfirmPage1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F17C3D225BB3496004B7D1B /* ConfirmPage1View.swift */; };
 		2F17C3D625BB34A4004B7D1B /* ConfirmPage2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F17C3D525BB34A4004B7D1B /* ConfirmPage2View.swift */; };
 		2F17C3DA25BB6B92004B7D1B /* ConfirmPage3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F17C3D925BB6B92004B7D1B /* ConfirmPage3View.swift */; };
@@ -69,6 +71,7 @@
 		2FA579D725B1055B005F59DF /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA579D625B1055B005F59DF /* ResultViewController.swift */; };
 		2FA579DA25B10584005F59DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA579D925B10584005F59DF /* LoginViewController.swift */; };
 		2FBE50B225ACB4DB005F5813 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBE50B125ACB4DB005F5813 /* MapKit.framework */; };
+		2FCECA9A25C89326002B3FB2 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCECA9925C89326002B3FB2 /* Test.swift */; };
 		2FD1772225BC671800F5D72B /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1772125BC671800F5D72B /* CreditCardView.swift */; };
 		2FD1772625BCC04200F5D72B /* ReadyBouqetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1772525BCC04200F5D72B /* ReadyBouqetsView.swift */; };
 		2FEF6E5E25B649780063B6F2 /* wheelbarrow.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 2FEF6E5D25B649780063B6F2 /* wheelbarrow.usdz */; };
@@ -79,6 +82,8 @@
 		2F0DD38425B2928B00081A93 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		2F0DD38725B33B9700081A93 /* AssortmentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentDetailsView.swift; sourceTree = "<group>"; };
 		2F0F987125B780230023975A /* tv_retro.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tv_retro.usdz; sourceTree = "<group>"; };
+		2F1665E025C70FF3009E242C /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
+		2F1665FA25C75031009E242C /* AccoountCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccoountCreationViewModel.swift; sourceTree = "<group>"; };
 		2F17C3D225BB3496004B7D1B /* ConfirmPage1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPage1View.swift; sourceTree = "<group>"; };
 		2F17C3D525BB34A4004B7D1B /* ConfirmPage2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPage2View.swift; sourceTree = "<group>"; };
 		2F17C3D925BB6B92004B7D1B /* ConfirmPage3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPage3View.swift; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 		2FA579D625B1055B005F59DF /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		2FA579D925B10584005F59DF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2FBE50B125ACB4DB005F5813 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2FCECA9925C89326002B3FB2 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		2FD1772125BC671800F5D72B /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		2FD1772525BCC04200F5D72B /* ReadyBouqetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyBouqetsView.swift; sourceTree = "<group>"; };
 		2FEF6E5D25B649780063B6F2 /* wheelbarrow.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = wheelbarrow.usdz; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 				2F5F454125A39C94009B8A82 /* LoginView.swift */,
 				2F18EB4C25C4A4C900206355 /* RegistrationView.swift */,
 				2FA579CF25B10475005F59DF /* SignIn.swift */,
+				2F1665E025C70FF3009E242C /* VerificationView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -210,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				2F5F453925A37363009B8A82 /* Data.swift */,
+				2F1665FA25C75031009E242C /* AccoountCreationViewModel.swift */,
 				2F5F453D25A3783A009B8A82 /* FlowerListData.swift */,
 				2F5F453525A36CDE009B8A82 /* flowersList.json */,
 				2F59065D25ABC66300686CFA /* StoreListData.swift */,
@@ -288,6 +296,7 @@
 		2F95FA62259CB2D100985D53 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				2FCECA9825C89314002B3FB2 /* FirebaseTest */,
 				2F0DD38325B2927900081A93 /* Animations */,
 				2F8D2E5D25B22E29006EB984 /* Favorites */,
 				2F9F2E6325B175BA001CF277 /* Featured */,
@@ -379,13 +388,20 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		2FCECA9825C89314002B3FB2 /* FirebaseTest */ = {
+			isa = PBXGroup;
+			children = (
+				2FCECA9925C89326002B3FB2 /* Test.swift */,
+			);
+			path = FirebaseTest;
+			sourceTree = "<group>";
+		};
 		F4302FF4153FCA9C9386A70B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				B3569919AA8F5CA820BD1F20 /* Pods-Flow.debug.xcconfig */,
 				0F8ED5461DC660A742EA2544 /* Pods-Flow.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -522,6 +538,7 @@
 				2F69183225BA37EE00F700AD /* BlurView.swift in Sources */,
 				2F95FA66259CB2D100985D53 /* ContentView.swift in Sources */,
 				2F5F454225A39C94009B8A82 /* LoginView.swift in Sources */,
+				2F1665FB25C75031009E242C /* AccoountCreationViewModel.swift in Sources */,
 				2F8D2E5125B1F0B8006EB984 /* NearlyStores.swift in Sources */,
 				2F5F452F25A33B78009B8A82 /* SettingsView.swift in Sources */,
 				2F18EB4D25C4A4C900206355 /* RegistrationView.swift in Sources */,
@@ -549,6 +566,7 @@
 				2F18EB4925C474DF00206355 /* FlowerDetail.swift in Sources */,
 				2F8D2E4D25B1EF21006EB984 /* FeaturedTabView.swift in Sources */,
 				2F8D2E5725B1F482006EB984 /* RowContentView.swift in Sources */,
+				2F1665E125C70FF4009E242C /* VerificationView.swift in Sources */,
 				2F65C90725AC59E70009A74A /* StoreDetail.swift in Sources */,
 				2FA16C6D25ADF9510006D27D /* CustomButtonsView.swift in Sources */,
 				2F17C3DA25BB6B92004B7D1B /* ConfirmPage3View.swift in Sources */,
@@ -557,6 +575,7 @@
 				2F17C3D325BB3496004B7D1B /* ConfirmPage1View.swift in Sources */,
 				2F89426825BE1AC9006DF9AB /* ModelListData.swift in Sources */,
 				2F95FA64259CB2D100985D53 /* FlowApp.swift in Sources */,
+				2FCECA9A25C89326002B3FB2 /* Test.swift in Sources */,
 				2FD1772625BCC04200F5D72B /* ReadyBouqetsView.swift in Sources */,
 				2F18EB4225C324EB00206355 /* Keyboard.swift in Sources */,
 				2F18EB4625C4740000206355 /* StoreGridView.swift in Sources */,
@@ -694,7 +713,7 @@
 				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.821.20;
+				CURRENT_PROJECT_VERSION = 2.821.24;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;
@@ -722,7 +741,7 @@
 				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.821.20;
+				CURRENT_PROJECT_VERSION = 2.821.24;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;
