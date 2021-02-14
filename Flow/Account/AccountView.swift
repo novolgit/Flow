@@ -248,6 +248,7 @@ struct AccountView: View {
                             }
                             .frame(width: UIScreen.main.bounds.width*0.90)
                         }
+                        .frame(width: UIScreen.main.bounds.width)
                         .padding()
                         .navigationBarTitle(status ? userName : "Account", displayMode: .inline)
                         .toolbar(content: {

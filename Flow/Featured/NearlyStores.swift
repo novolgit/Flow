@@ -17,7 +17,7 @@ struct NearlyStores: View {
             HStack(spacing: 0) {
                 ForEach(modelData.stores) { store in
                     NavigationLink(
-                        destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city),
+                        destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
                         label: {
                             ZStack{
                                 Image(store.image)

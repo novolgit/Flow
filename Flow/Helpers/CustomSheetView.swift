@@ -52,12 +52,13 @@ struct CustomSheetView: View {
     var coordinatePhone: String
     var coordinateHours: String
     var coordinateCity: String
+    var coordinateDays: String
 
     var body: some View {
         GeometryReader { geometry in
             VStack{
                 self.indicator
-                BottomSheet(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
+                BottomSheet(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
             }
             .background(BlurView())
 //                        .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
@@ -92,63 +93,68 @@ struct CustomSheetView: View {
 //}
 
 struct BottomSheet : View {
+    @Environment(\.colorScheme) var colorScheme
     
-//    @State var txt = ""
-//    @Binding var offset : CGFloat
-//    var value : CGFloat
+    @State var rating = 3
+    
     var coordinateImage: String
     var coordinateName: String
     var coordinateDescription: String
     var coordinatePhone: String
     var coordinateHours: String
     var coordinateCity: String
-    
-    @State var rating = 3
+    var coordinateDays: String
     
     var body: some View{
         VStack {
             HStack {
                     Text("Raiting")
-                        .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                        .font(.system(size: 22, weight: .medium, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     Spacer()
                     RatingView(rating: $rating)
                 }
             .padding()
-            Divider()
         ScrollView(.vertical, showsIndicators: false){
                     VStack{
                         HStack {
                             Text("City")
-                                .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
    
                             Spacer()
                             Text(coordinateCity)
-                                .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         }
                         .padding(.vertical, 10)
+//                        HStack {
+//                            Text("Addres")
+//                                .font(.system(size: 20, weight: .regular, design: .serif))
+//                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+//
+//                            Spacer()
+//                            Text("Lenina 71")
+//                                .font(.system(size: 20, weight: .regular, design: .serif))
+//                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+//
+//                        }
+//                        .padding(.vertical, 10)
                         HStack {
-                            Text("Addres")
-                                .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                            Text("Days")
+                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
    
                             Spacer()
-                            Text("Lenina 71")
-                                .font(.system(size: 19, weight: .medium, design: .serif))
-                                .foregroundColor(.gray)
-   
-                        }
-                        .padding(.vertical, 10)
-                        HStack {
-                            Text("Hours")
-                                .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
-   
-                            Spacer()
-                            Text(coordinateHours)
-                                .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                            Text(coordinateDays)
+                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         }
                         .padding(.vertical, 10)
                         HStack {
                             Text("Phone")
-                                .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
    
                             Spacer()
                             Text(coordinatePhone)
@@ -156,16 +162,29 @@ struct BottomSheet : View {
                         }
                         .padding(.vertical, 10)
                         HStack {
+                            Text("Hours")
+                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+   
+                            Spacer()
+                            Text(coordinateHours)
+                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        }
+                        .padding(.vertical, 10)
+                        HStack {
                             Text("Show Assortment")
-                                .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
    
                             Spacer()
                                 NavigationLink(
                                     destination: AssortmentDetailsView(),
                                     label: {
-                                        Image(systemName: "eye")
+                                        Image(systemName: "arrow.right")
                                     })
-                                .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                                    .font(.system(size: 20, weight: .light, design: .serif))
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         }
                         .padding(.vertical, 10)
                         VStack {
@@ -186,10 +205,11 @@ struct BottomSheet : View {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("Description")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 24, weight: .bold, design: .serif))
+                                    .font(.system(size: 24, weight: .medium, design: .serif))
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                 Text(coordinateDescription)
-                                    .font(.system(size: 19, weight: .medium, design: .serif)).foregroundColor(.gray)
+                                    .font(.system(size: 20, weight: .regular, design: .serif))
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
        
                             }
                             Spacer()
@@ -197,7 +217,12 @@ struct BottomSheet : View {
                 }
                 .padding()
             }
-            .frame(width: UIScreen.main.bounds.width*0.93, height: 435)
+        .background(
+            Group {
+                NeuButtonsView3(radius: 20, whiteColorOpacity: colorScheme == .dark ? Color.topShadowDark.opacity(0.2) : Color.topShadow.opacity(0.2), blackColorOpacity: colorScheme == .dark ? Color.bottomShadowDark.opacity(0.2) :  Color.bottomShadow.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+            }
+            )
+            .frame(width: UIScreen.main.bounds.width*0.93, height: 450)
         }
     }
 }
@@ -248,6 +273,7 @@ struct CustomSheetView2 : View {
     var coordinatePhone: String
     var coordinateHours: String
     var coordinateCity: String
+    var coordinateDays: String
     
     var body: some View{
         
@@ -256,7 +282,7 @@ struct CustomSheetView2 : View {
                 VStack{
                     BottomSheet(
 //                        offset: $offset, value: (-reader.frame(in: .global).height + 150),
-                                coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
+                        coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
                         .background(BlurView())
                         .offset(y: reader.frame(in: .global).height - 175)
                         .offset(y: offset)

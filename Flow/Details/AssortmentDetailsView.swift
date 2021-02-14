@@ -42,20 +42,31 @@ struct AssortmentDetailsView: View {
                 Section(header:
                             HStack {
                                 Text(flowerID)
-                                    .font(.system(size: 26, weight: .bold, design: .serif))
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                    .font(.system(size: 28, weight: .black, design: .serif))
                                 Spacer()
                             }
                             .padding(.leading, 20)
                 ){
                     ForEach(self.flowerName(for: flowerID), id: \.id) {flower in
+                        NavigationLink(
+                            destination: FlowerDetail(flowerDetail: flower),
+                            label: {
+                            
                         HStack{
                             Image(flower.image)
                                 .resizable()
+                                .frame(width: 90, height: 60)
+                                .clipShape(Circle())
                             //                                .frame(width: 70, height: 100)
                             Spacer()
                             HStack{
                                 Text(flower.name)
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                    .font(.system(size: 18, weight: .regular, design: .serif))
                                 Text("\(flower.price)" + "$")
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                    .font(.system(size: 18, weight: .regular, design: .serif))
                             }
                         }
                         .padding()
@@ -66,6 +77,7 @@ struct AssortmentDetailsView: View {
                             }
                         )
                         .padding()
+                            })
                     }
                 }
             }

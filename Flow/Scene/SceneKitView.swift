@@ -26,13 +26,13 @@ struct SceneKitView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> SCNView {
         
-//        sceneView.allowsCameraControl = true
+        sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.scene = SCNScene()
 //        sceneView.defaultCameraController.interactionMode = .orbitTurntable
-        sceneView.cameraControlConfiguration.allowsTranslation = false
-        sceneView.defaultCameraController.maximumHorizontalAngle = 100
-        sceneView.defaultCameraController.maximumVerticalAngle = 100
+//        sceneView.cameraControlConfiguration.allowsTranslation = false
+//        sceneView.defaultCameraController.maximumHorizontalAngle = 100
+//        sceneView.defaultCameraController.maximumVerticalAngle = 100
 
         
         //        for model in modelsArray {
@@ -122,34 +122,37 @@ struct SceneKitView: UIViewRepresentable {
     
             @objc func handleTap(_ gestureRecognize: UIPanGestureRecognizer) {
                 guard let sceneView = sceneView as? SCNView else { return }
-                let location = gestureRecognize.location(in: self.sceneView)
+                let location = gestureRecognize.location(in: sceneView)
                 switch gestureRecognize.state {
                 case .began:
-                    let hitNodeResult = sceneView.hitTest(location,
-                                                           options: [:])
-                    let hitResult = hitNodeResult[0]
-                    self.PCoordx = hitResult.worldCoordinates.x
-                    self.PCoordy = hitResult.worldCoordinates.y
-                    self.PCoordz = hitResult.worldCoordinates.z
+                    let hitNodeResult = sceneView.hitTest(location, options: [:])
+                    if hitNodeResult.count == 1 {
+                        let hitResult = hitNodeResult.first
+                        self.PCoordx = hitResult?.worldCoordinates.x ?? 0
+                        self.PCoordy = hitResult?.worldCoordinates.y ?? 0
+                        self.PCoordz = hitResult?.worldCoordinates.z ?? 0
+                    }
                 case .changed:
                     let hitNode = sceneView.hitTest(gestureRecognize.location(in: sceneView), options: [:])
-                    let hitTestResult = hitNode[0]
-                    if let coordx = hitNode.first?.worldCoordinates.x,
-                       let coordy = hitNode.first?.worldCoordinates.y,
-                       let coordz = hitNode.first?.worldCoordinates.z
-                    {
-                        let action = SCNAction.moveBy(x: CGFloat(coordx - self.PCoordx),
-                                                      y: CGFloat(coordy - self.PCoordy),
-                                                      z: CGFloat(coordz - self.PCoordz),
-                                                      duration: 0.0)
-                        hitTestResult.node.runAction(action)
-    
-                        self.PCoordx = coordx
-                        self.PCoordy = coordy
-                        self.PCoordz = coordz
+                    if hitNode.count == 1 {
+                        let hitTestResult = hitNode.first
+                        if let coordx = hitNode.first?.worldCoordinates.x,
+                           let coordy = hitNode.first?.worldCoordinates.y,
+                           let coordz = hitNode.first?.worldCoordinates.z
+                        {
+                            let action = SCNAction.moveBy(x: CGFloat(coordx - self.PCoordx),
+                                                          y: CGFloat(coordy - self.PCoordy),
+                                                          z: CGFloat(coordz - self.PCoordz),
+                                                          duration: 0.2)
+                            hitTestResult?.node.runAction(action)
+        
+                            self.PCoordx = coordx
+                            self.PCoordy = coordy
+                            self.PCoordz = coordz
+                        }
+        
+                        gestureRecognize.setTranslation(CGPoint.zero, in: sceneView)
                     }
-    
-                    gestureRecognize.setTranslation(CGPoint.zero, in: self.sceneView)
                 case .ended:
                     self.PCoordx = 0.0
                     self.PCoordy = 0.0

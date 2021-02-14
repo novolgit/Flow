@@ -46,7 +46,7 @@ struct StoreGridView: View {
                     VStack{
                         HStack{
                         NavigationLink(
-                            destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city),
+                            destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
                             label: {
                                 HStack {
                                     Image(systemName: "ellipsis")
@@ -121,7 +121,7 @@ struct StoreGridView: View {
                     VStack{
                         HStack {
                             NavigationLink(
-                                destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city),
+                                destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
                                 label: {
                                     HStack {
                                         Image(systemName: "ellipsis")

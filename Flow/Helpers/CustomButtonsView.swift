@@ -48,6 +48,27 @@ struct NeuButtonsView2: View{
     }
 }
 
+struct NeuButtonsView3: View{
+    @Environment(\.colorScheme) var colorScheme
+    
+    let radius: CGFloat
+    let whiteColorOpacity: Color
+    let blackColorOpacity: Color
+    let shadowRadius: CGFloat
+    let xBlack: CGFloat
+    let yBlack: CGFloat
+    let xWhite: CGFloat
+    let yWhite: CGFloat
+    
+    
+    var body: some View{
+        RoundedRectangle(cornerRadius: radius)
+            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark.opacity(0.2) : Color.offGrayLinearStart.opacity(0.2), colorScheme == .dark ? Color.offGrayLinearEndDark.opacity(0.2) : Color.offGrayLinearEnd.opacity(0.2)))
+            .shadow(color: blackColorOpacity, radius: shadowRadius, x:xBlack, y:yBlack)
+            .shadow(color: whiteColorOpacity, radius: shadowRadius, x:xWhite, y:yWhite)
+    }
+}
+
 struct ContainerView: View {
     @Environment(\.colorScheme) var colorScheme
     
@@ -261,6 +282,56 @@ struct CustomAccountButtonsView2: View {
                     .stroke(colorScheme == .dark ? Color.bottomShadowDark : Color.bottomShadow, lineWidth: 4)
                     .blur(radius: 2)
                     .offset(x: -2, y: -2)
+                    .mask(Circle()            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)))
+            )
+    }
+}
+
+struct CustomAccountButtonsView3: View {
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 300.0)
+            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
+            .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 8, x:-4, y:-4)
+            .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 8, x:8, y:8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 300.0)
+                    .stroke(colorScheme == .dark ? Color.topShadowDark : Color.topShadow, lineWidth: 4)
+                    .blur(radius: 4)
+                    .offset(x: 2, y: 2)
+                    .mask(RoundedRectangle(cornerRadius: 300.0)            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 300.0)
+                    .stroke(colorScheme == .dark ? Color.bottomShadowDark : Color.bottomShadow, lineWidth: 4)
+                    .blur(radius: 2)
+                    .offset(x: -2, y: -2)
+                    .mask(Circle()            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)))
+            )
+    }
+}
+
+struct CustomAccountButtonsView4: View {
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 300.0)
+            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
+            .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 4, x:-2, y:-2)
+            .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 4, x:4, y:4)
+            .overlay(
+                RoundedRectangle(cornerRadius: 300.0)
+                    .stroke(colorScheme == .dark ? Color.topShadowDark : Color.topShadow, lineWidth: 1)
+                    .blur(radius: 14)
+                    .offset(x: 4, y: 4)
+                    .mask(RoundedRectangle(cornerRadius: 300.0)            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 300.0)
+                    .stroke(colorScheme == .dark ? Color.bottomShadowDark : Color.bottomShadow, lineWidth: 1)
+                    .blur(radius: 14)
+                    .offset(x: -4, y: -4)
                     .mask(Circle()            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)))
             )
     }

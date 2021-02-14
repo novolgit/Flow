@@ -21,18 +21,18 @@ struct FeaturedView: View {
     
     @State var featuredIndex = 1
     @State var topStoresIndex = 1
-//    @State var account: AccountFirebase?
+    //    @State var account: AccountFirebase?
     
     var chart: Chart
     
     var body: some View {
         NavigationView{
             ScrollView(showsIndicators: false) {
-//                NavigationLink(
-//                    destination: Test(),
-//                    label: {
-//                        Text("Navigate")
-//                    })
+                //                NavigationLink(
+                //                    destination: Test(),
+                //                    label: {
+                //                        Text("Navigate")
+                //                    })
                 VStack {
                     VStack{}.frame(height: 30)
                     HStack {
@@ -46,7 +46,7 @@ struct FeaturedView: View {
                     }
                     .padding(.horizontal)
                     FeaturedTabView(index: featuredIndex)
-//                        .animation(.easeOut)
+                        //                        .animation(.easeOut)
                         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
                         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     HStack {
@@ -90,28 +90,28 @@ struct FeaturedView: View {
                 VStack{}.frame(height: 30)
             }
             .navigationBarItems(trailing: NavigationLink(
-                destination: AccountView(),
+                                    destination: AccountView(),
                                     label: {
                                         if !userStatus {
-                                        Image(systemName: "person.circle")
-                                            .resizable()
-                                            .frame(width:30,height:30)
-                                            .font(.system(size: 18, weight: .light, design: .serif))
-                                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                            //                                            .rotation3DEffect(.degrees(30), axis: (x: 0, y: 1, z: 0))
-                                            .frame(width: 34, height: 34)
-                                            .background(
-                                                Group {
-                                                    NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
-                                                }
-                                            )
-                                        
-                                    }
+                                            Image(systemName: "person.circle")
+                                                .resizable()
+                                                .frame(width:30,height:30)
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                                //                                            .rotation3DEffect(.degrees(30), axis: (x: 0, y: 1, z: 0))
+                                                .frame(width: 34, height: 34)
+                                                .background(
+                                                    Group {
+                                                        NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
+                                                    }
+                                                )
+                                            
+                                        }
                                         else {
                                             Image(systemName: "person.circle")
                                                 .font(.system(size: 18, weight: .light, design: .serif))
                                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                            
+                                                
                                                 //                                            .rotation3DEffect(.degrees(30), axis: (x: 0, y: 1, z: 0))
                                                 .frame(width: 34, height: 34)
                                                 .background(
@@ -140,12 +140,12 @@ struct AsyncImage<Placeholder: View>: View {
     @StateObject private var loader: ImageLoader
     
     private let placeholder: Placeholder
-
+    
     init(url: URL, @ViewBuilder placeholder: () -> Placeholder) {
         self.placeholder = placeholder()
         _loader = StateObject(wrappedValue: ImageLoader(url: url))
     }
-
+    
     var body: some View {
         content
             .onAppear(perform: loader.load)
@@ -166,17 +166,17 @@ struct AsyncImage<Placeholder: View>: View {
 class ImageLoader: ObservableObject {
     @Published var image: UIImage?
     private let url: URL
-
+    
     init(url: URL) {
         self.url = url
     }
-
+    
     deinit {
         cancel()
     }
     
     private var cancellable: AnyCancellable?
-
+    
     func load() {
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map { UIImage(data: $0.data) }

@@ -28,8 +28,15 @@ struct FeaturedTabView: View {
                     .padding()
                     Image(flower.image)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: UIScreen.main.bounds.height*0.3)
+                        .frame(width: 180, height: 180)
+                        .clipShape(Circle())
+                        .frame(width: 180, height: 180)
+                        .background(
+                            Group {
+                                CustomAccountButtonsView4()
+                            }
+                        )
+                        .padding(.trailing, 10)
                 }
 //                            .padding()
                 .frame(width: UIScreen.main.bounds.width*0.90, height: self.index == flower.id ? UIScreen.main.bounds.height*0.30 : UIScreen.main.bounds.height*0.28)

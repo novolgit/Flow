@@ -24,6 +24,7 @@ struct StoreDetail: View {
     var coordinateImage: String
     var coordinateHours: String
     var coordinateCity: String
+    var coordinateDays: String
     @State private var region = MKCoordinateRegion()
     @State var isTap = false
     @State var tracking: MapUserTrackingMode = .follow
@@ -56,7 +57,7 @@ struct StoreDetail: View {
                 isTap = !isTap
             }
 //            CustomSheetView2(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
-            CustomSheetView(isOpen: $isTap, maxHeight: 620, minHeight: 163, coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
+            CustomSheetView(isOpen: $isTap, maxHeight: 620, minHeight: 163, coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
             .edgesIgnoringSafeArea(.all)
             
         }
@@ -86,8 +87,9 @@ struct StoreDetail: View {
 
 struct StoreDetail_Previews: PreviewProvider {
     static var previews: some View {
-        StoreDetail(coordinate: CLLocationCoordinate2D(), coordinateName: "", coordinateDescription: "", coordinatePhone: "", coordinateImage: "", coordinateHours: "", coordinateCity: "")
+        StoreDetail(coordinate: CLLocationCoordinate2D(), coordinateName: "", coordinateDescription: "", coordinatePhone: "", coordinateImage: "", coordinateHours: "", coordinateCity: "", coordinateDays: "")
             .environmentObject(ModelData())
+            .preferredColorScheme(.dark)
     }
 }
 
