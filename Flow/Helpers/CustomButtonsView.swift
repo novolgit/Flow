@@ -183,8 +183,8 @@ struct CustomTappedAccountButton4:View {
     var body: some View{
         RoundedRectangle(cornerRadius: 10.0)
             .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
-            .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2, x: -2, y: -2)
-            .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 2, x: 1, y: 1)
+            .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2, x: 2, y: 2)
+            .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 2, x: -1, y: -1)
     }
 }
 
@@ -422,16 +422,16 @@ struct CustomConfirmButtonsView4: View {
             .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 2, x: 1, y: 1)
             .overlay(
                 RoundedRectangle(cornerRadius:10)
-                    .stroke(colorScheme == .dark ? Color.bottomShadowDark : Color.bottomShadow, lineWidth: 2)
-                    .blur(radius: 3)
+                    .stroke(colorScheme == .dark ? Color.bottomShadowDark : Color.bottomShadow, lineWidth: 1)
+                    .blur(radius: 5)
                     .offset(x: -2, y: -2)
                     .mask(RoundedRectangle(cornerRadius: 10)            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)))
             )
             .overlay(
                 RoundedRectangle(cornerRadius:10)
-                    .stroke(colorScheme == .dark ? Color.topShadowDark : Color.topShadow, lineWidth: 4)
-                    .blur(radius: 3)
-                    .offset(x: 2, y: 2)
+                    .stroke(colorScheme == .dark ? Color.topShadowDark : Color.topShadow, lineWidth: 1)
+                    .blur(radius: 5)
+                    .offset(x: 1, y: 1)
                     .mask(RoundedRectangle(cornerRadius: 10)            .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)))
             )
     }

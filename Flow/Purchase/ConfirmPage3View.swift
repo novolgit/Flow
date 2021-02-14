@@ -25,33 +25,39 @@ struct ConfirmPage3View: View {
                 Button(action: {
                     currentPage -= 1
                 }, label: {
-                Image(systemName: "chevron.left.circle")
-                    .resizable()
-                    .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .font(.system(size: 20, weight: .light, design: .serif))
-                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    .padding(7)
-                    .background(
-                        Group {
-                            NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
-                        }
-                    )
+                    ZStack {
+                        Image(systemName: "chevron.left.circle.fill")
+                            .resizable()
+                            .frame(width: 38, height: 36)
+                            .foregroundColor(colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray)
+                            .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                            .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                        Image(systemName: "chevron.left")
+                            .resizable()
+                            .font(.system(size: 10, weight: .light, design: .serif))
+                            .frame(width: 11, height: 19)
+                            .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.5) : Color.offSecondaryGray.opacity(0.5))
+                            .offset(x: -1)
+                    }
                 })
                 Spacer()
                 Button(action: {
                     currentPage += 1
                 }, label: {
-                Image(systemName: "chevron.right.circle")
-                    .resizable()
-                    .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .font(.system(size: 20, weight: .light, design: .serif))
-                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    .padding(7)
-                    .background(
-                        Group {
-                            NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
-                        }
-                    )
+                    ZStack {
+                        Image(systemName: "chevron.right.circle.fill")
+                            .resizable()
+                            .frame(width: 38, height: 36)
+                            .foregroundColor(colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray)
+                            .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                            .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .font(.system(size: 10, weight: .light, design: .serif))
+                            .frame(width: 11, height: 19)
+                            .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.5) : Color.offSecondaryGray.opacity(0.5))
+                            .offset(x: 1)
+                    }
                 })
             }
             .padding()

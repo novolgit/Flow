@@ -45,8 +45,9 @@ struct AssortmentDetailsView: View {
                                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                     .font(.system(size: 28, weight: .black, design: .serif))
                                 Spacer()
+                                Image(systemName: "hand.tap")
                             }
-                            .padding(.leading, 20)
+                            .padding(.horizontal, 20)
                 ){
                     ForEach(self.flowerName(for: flowerID), id: \.id) {flower in
                         NavigationLink(
@@ -56,7 +57,7 @@ struct AssortmentDetailsView: View {
                         HStack{
                             Image(flower.image)
                                 .resizable()
-                                .frame(width: 90, height: 60)
+                                .frame(width: UIScreen.main.nativeBounds.width * 0.1, height: UIScreen.main.nativeBounds.height * 0.05)
                                 .clipShape(Circle())
                             //                                .frame(width: 70, height: 100)
                             Spacer()
@@ -64,10 +65,12 @@ struct AssortmentDetailsView: View {
                                 Text(flower.name)
                                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                     .font(.system(size: 18, weight: .regular, design: .serif))
+                                Spacer()
                                 Text("\(flower.price)" + "$")
                                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                     .font(.system(size: 18, weight: .regular, design: .serif))
                             }
+                            .padding(8)
                         }
                         .padding()
                         .frame(height: 100)

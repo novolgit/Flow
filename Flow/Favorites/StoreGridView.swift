@@ -21,7 +21,7 @@ struct StoreGridView: View {
     
     var store : Store
     var frame: CGFloat {
-        columns.count == 2  ? 160 : 170
+        columns.count == 2  ? UIScreen.main.nativeBounds.width * 0.19 : UIScreen.main.nativeBounds.width * 0.195
     }
 
     var body: some View {
@@ -32,16 +32,17 @@ struct StoreGridView: View {
                         } label: {
                             Image(systemName: "heart.fill")
                                 .resizable()
-                                .frame(width: 25, height: 23)
-                                .foregroundColor(Color.pink.opacity(0.4))
+                                .frame(width: frame * 0.17, height: frame * 0.15)
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                .font(.system(size: 20, weight: .ultraLight, design: .serif))
                         }
-                        .frame(width: 35, height: 35)
+                        .frame(width: frame * 0.225, height: frame * 0.225)
                         .background(
                             Group {
                                 NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                             }
                         )
-                        .offset(x: frame - 130, y: frame - 190)
+                        .offset(x: frame - frame * 0.83, y: frame - frame * 1.225)
                         .matchedGeometryEffect(id: "favoritesHeat", in: self.namespace)
                     VStack{
                         HStack{
@@ -50,6 +51,8 @@ struct StoreGridView: View {
                             label: {
                                 HStack {
                                     Image(systemName: "ellipsis")
+                                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                        .font(.system(size: 16, weight: .ultraLight, design: .serif))
                                     Text("more")
                                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                         .font(.system(size: 16, weight: .ultraLight, design: .serif))
@@ -61,7 +64,7 @@ struct StoreGridView: View {
                                     NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                                 }
                             )
-                            .offset(x: frame - 160, y: frame - 190)
+                            .offset(x: frame - frame * 1.067, y: frame - frame * 1.21)
                             .matchedGeometryEffect(id: "favoritesDetail", in: self.namespace)
                             Spacer()
                         }
@@ -82,8 +85,10 @@ struct StoreGridView: View {
                             destination: AssortmentDetailsView(),
                             label: {
                                 HStack {
-                                    Image(systemName: "eye")
                                     Text("Assortment")
+                                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                        .font(.system(size: 16, weight: .ultraLight, design: .serif))
+                                    Image(systemName: "arrow.right")
                                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                         .font(.system(size: 16, weight: .ultraLight, design: .serif))
                                 }
@@ -95,10 +100,10 @@ struct StoreGridView: View {
                                     NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                                 }
                             )
-                            .offset(x: frame - 170, y: frame - 5)
+                            .offset(x: frame - frame * 1.05, y: frame)
                 }
                 .padding()
-                .frame(width: frame + 15, height: frame + 30)
+                    .frame(width: frame + frame * 0.1, height: frame + frame * 0.2)
                 .background(
                     Group {
                         NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
@@ -112,10 +117,10 @@ struct StoreGridView: View {
                             .resizable()
                             .frame(width: frame, height: frame)
                             .cornerRadius(10)
-                            .frame(width: frame + 10, height: frame + 10)
+                            .frame(width: frame + frame * 0.05, height: frame + frame * 0.05)
                             .background(
                                 Group {
-                                    NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                                    NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2.5, xBlack: 2.5, yBlack: 2.5, xWhite: -1.25, yWhite: -1.25)
                                 }
                             )
                     VStack{
@@ -125,6 +130,8 @@ struct StoreGridView: View {
                                 label: {
                                     HStack {
                                         Image(systemName: "ellipsis")
+                                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                            .font(.system(size: 16, weight: .ultraLight, design: .serif))
                                         Text("more")
                                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                             .font(.system(size: 16, weight: .ultraLight, design: .serif))
@@ -136,30 +143,31 @@ struct StoreGridView: View {
                                         NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                                     }
                                 )
-                                .offset(x: frame - 160, y: frame - 190)
+                                .offset(x: frame - frame * 0.98, y: frame - frame * 1.12)
                                 .matchedGeometryEffect(id: "favoritesDetail", in: self.namespace)
                             Spacer()
                             Button {
                             } label: {
                                 Image(systemName: "heart.fill")
                                     .resizable()
-                                    .frame(width: 25, height: 23)
-                                    .foregroundColor(Color.pink.opacity(0.4))
+                                    .frame(width: frame * 0.17, height: frame * 0.15)
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                    .font(.system(size: 20, weight: .ultraLight, design: .serif))
                             }
-                            .frame(width: 35, height: 35)
+                            .frame(width: frame * 0.225, height: frame * 0.225)
                             .background(
                                 Group {
                                     NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                                 }
                             )
-                            .offset(x: frame - 160, y: frame - 190)
+                            .offset(x: frame - frame * 0.95, y: frame - frame * 1.12)
                             .matchedGeometryEffect(id: "favoritesHeat", in: self.namespace)
                         }
                         Text(store.name)
                             .lineLimit(2)
                             .multilineTextAlignment(.center)
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                            .font(.system(size: 20, weight: .light, design: .serif))
+                            .font(.system(size: 20, weight: .regular, design: .serif))
                             .matchedGeometryEffect(id: "favoritesTitle", in: self.namespace)
                         Spacer()
                         RatingView(rating: $rating)
@@ -169,10 +177,12 @@ struct StoreGridView: View {
                             destination: AssortmentDetailsView(),
                             label: {
                                 HStack {
-                                    Image(systemName: "eye")
                                     Text("Assortment")
                                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                         .font(.system(size: 16, weight: .light, design: .serif))
+                                    Image(systemName: "arrow.right")
+                                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                        .font(.system(size: 16, weight: .ultraLight, design: .serif))
                                 }
                             })
                             .matchedGeometryEffect(id: "favoritesAssort", in: self.namespace)
@@ -182,10 +192,10 @@ struct StoreGridView: View {
                                     NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                                 }
                             )
-                            .offset(x: frame - 185, y: frame - 160)
+                            .offset(x: frame - frame * 1.2, y: frame - frame * 0.93)
                     }
                 }
-                .frame(width: frame + 200, height: frame - 10)
+                .frame(width: frame + frame * 1.33, height: frame - frame * 0.09)
                 .background(
                     Group {
                         NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)

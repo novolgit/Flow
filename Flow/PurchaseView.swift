@@ -40,7 +40,7 @@ struct PurchaseView: View {
                                 .frame(height: 85)
                                 .padding(14)
                         }
-                        VStack{}.frame(height: UIScreen.main.bounds.height*0.06)
+                        VStack{}.frame(height: UIScreen.main.bounds.height*0.04)
                         VStack {
                             HStack {
                                 Spacer()
@@ -55,7 +55,7 @@ struct PurchaseView: View {
                                                         .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
                                                 }
                                                })
-                                    .frame(width: 190, height: 70)
+                                    .frame(width: UIScreen.main.nativeBounds.width * 0.225, height: UIScreen.main.nativeBounds.height * 0.06)
                                     .background(
                                         Group {
                                                     CustomConfirmButtonsView3()

@@ -58,7 +58,7 @@ struct IndicatorView: View {
                     .rotationEffect(.degrees(Double(currentPage*(-60))))
                     .animation(.spring(response: 1, dampingFraction: 1, blendDuration: 1))
         }
-        .frame(width: 400, height: 202)
+        .frame(width: 400, height: UIScreen.main.nativeBounds.height * 0.105)
     }
 }
 

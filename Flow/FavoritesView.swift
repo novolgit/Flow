@@ -24,7 +24,7 @@ struct FavoritesView: View {
                 HStack{
                     Text("Favorite Stores")
                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                        .font(.system(size: 32, weight: .black, design: .serif))
+                        .font(.system(size: 28, weight: .black, design: .serif))
                     Spacer()
                     
                     Button {
@@ -74,16 +74,15 @@ struct FavoritesView: View {
                     })
                     .frame(width: UIScreen.main.bounds.width*0.25, height: 45)
                     .foregroundColor(.gray)
-                    .contentShape(RoundedRectangle(cornerRadius: 15.0))
                     .background(
                         Group {
                             if !isMoreStores{
                                 Group {
-                                    CustomTappedAccountButton3()
+                                    CustomTappedAccountButton4()
                                 }
                             } else{
                                 Group {
-                                    CustomConfirmButtonsView3()
+                                    CustomConfirmButtonsView4()
                                 }
                             }
                         }
@@ -95,7 +94,7 @@ struct FavoritesView: View {
                 HStack{
                     Text("Favorite Flowers")
                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                        .font(.system(size: 32, weight: .black, design: .serif))
+                        .font(.system(size: 28, weight: .black, design: .serif))
                     Spacer()
                     
                     Button {
@@ -144,16 +143,15 @@ struct FavoritesView: View {
                     })
                     .frame(width: UIScreen.main.bounds.width*0.25, height: 45)
                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    .contentShape(RoundedRectangle(cornerRadius: 15.0))
                     .background(
                         Group {
                             if !isMoreFlowers{
                                 Group {
-                                    CustomTappedAccountButton3()
+                                    CustomTappedAccountButton4()
                                 }
                             } else{
                                 Group {
-                                    CustomConfirmButtonsView3()
+                                    CustomConfirmButtonsView4()
                                 }
                             }
                         }

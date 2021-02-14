@@ -37,7 +37,7 @@ struct FeaturedView: View {
                     VStack{}.frame(height: 30)
                     HStack {
                         Text("Featured")
-                            .font(.system(size: 32, weight: .black, design: .serif))
+                            .font(.system(size: 28, weight: .black, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                         Spacer()
                         Image(systemName: "tablecells")
@@ -51,7 +51,7 @@ struct FeaturedView: View {
                         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     HStack {
                         Text("Charts")
-                            .font(.system(size: 32, weight: .black, design: .serif))
+                            .font(.system(size: 28, weight: .black, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Spacer()
                         Image(systemName: "hand.tap")
@@ -62,7 +62,7 @@ struct FeaturedView: View {
                     ChartView(chart: modelData.charts[0])
                     HStack {
                         Text("Nearly Stores")
-                            .font(.system(size: 32, weight: .black, design: .serif))
+                            .font(.system(size: 28, weight: .black, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Spacer()
                         Image(systemName: "scroll")
@@ -74,7 +74,7 @@ struct FeaturedView: View {
                         .padding()
                     HStack {
                         Text("Top Stores")
-                            .font(.system(size: 32, weight: .black, design: .serif))
+                            .font(.system(size: 28, weight: .black, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Spacer()
                         Image(systemName: "tablecells")
@@ -133,6 +133,12 @@ struct FeaturedView_Previews: PreviewProvider {
     static var previews: some View {
         FeaturedView(chart: ModelData().charts[0]).preferredColorScheme(.dark)
             .environmentObject(ModelData())
+            .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
+            .previewDisplayName("iPhone 11")
+        FeaturedView(chart: ModelData().charts[0]).preferredColorScheme(.dark)
+            .environmentObject(ModelData())
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+            .previewDisplayName("iPhone 8")
     }
 }
 

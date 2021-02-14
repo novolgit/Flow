@@ -57,7 +57,7 @@ struct StoreDetail: View {
                 isTap = !isTap
             }
 //            CustomSheetView2(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
-            CustomSheetView(isOpen: $isTap, maxHeight: 620, minHeight: 163, coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
+            CustomSheetView(isOpen: $isTap, maxHeight: UIScreen.main.nativeBounds.height * 0.35, minHeight: UIScreen.main.nativeBounds.height * 0.1, coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
             .edgesIgnoringSafeArea(.all)
             
         }

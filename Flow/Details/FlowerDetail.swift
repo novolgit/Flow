@@ -27,10 +27,10 @@ struct FlowerDetail: View {
                     )
                     .offset(y: 10)
                 Text(flowerDetail.name)
-                    .lineLimit(2)
+                    .lineLimit(3)
                     .multilineTextAlignment(.center)
                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                    .font(.system(size: 26, weight: .black, design: .serif))
+                    .font(.system(size: 25, weight: .black, design: .serif))
                     .offset(y: 10)
                     .padding(80)
                 Button(action: {
@@ -104,5 +104,7 @@ struct FlowerDetail_Previews: PreviewProvider {
     static var previews: some View {
         FlowerDetail(flowerDetail: ModelData().flowers[80])
             .preferredColorScheme(.dark)
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+            .previewDisplayName("iPhone 8")
     }
 }

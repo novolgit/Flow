@@ -21,7 +21,7 @@ struct FlowerGridView: View {
     
     var flower : Flower
     var frame: CGFloat {
-        columns.count == 2  ? 160 : 170
+        columns.count == 2  ? UIScreen.main.nativeBounds.width * 0.19 : UIScreen.main.nativeBounds.width * 0.195
     }
     
     var body: some View {
@@ -32,16 +32,17 @@ struct FlowerGridView: View {
                     } label: {
                         Image(systemName: "heart.fill")
                             .resizable()
-                            .frame(width: 25, height: 23)
-                            .foregroundColor(Color.pink.opacity(0.4))
+                            .frame(width: frame * 0.17, height: frame * 0.15)
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                            .font(.system(size: 20, weight: .ultraLight, design: .serif))
                     }
-                    .frame(width: 35, height: 35)
+                    .frame(width: frame * 0.225, height: frame * 0.225)
                     .background(
                         Group {
                             NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                         }
                     )
-                    .offset(x: frame - 130, y: frame - 190)
+                    .offset(x: frame - frame * 0.83, y: frame - frame * 1.225)
                     .matchedGeometryEffect(id: "favoritesHeat", in: self.namespace)
                     VStack{
                         HStack{
@@ -50,6 +51,8 @@ struct FlowerGridView: View {
                                 label: {
                                     HStack {
                                         Image(systemName: "ellipsis")
+                                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                            .font(.system(size: 16, weight: .ultraLight, design: .serif))
                                         Text("more")
                                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                             .font(.system(size: 16, weight: .ultraLight, design: .serif))
@@ -61,7 +64,7 @@ struct FlowerGridView: View {
                                         NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                                     }
                                 )
-                                .offset(x: frame - 160, y: frame - 190)
+                                .offset(x: frame - frame * 1.067, y: frame - frame * 1.21)
                                 .matchedGeometryEffect(id: "favoritesDetail", in: self.namespace)
                             Spacer()
                         }
@@ -75,7 +78,7 @@ struct FlowerGridView: View {
                     }
                 }
                 .padding()
-                .frame(width: frame + 15, height: frame + 30)
+                .frame(width: frame + frame * 0.1, height: frame + frame * 0.2)
                 .background(
                     Group {
                         NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
@@ -92,6 +95,8 @@ struct FlowerGridView: View {
                                 label: {
                                     HStack {
                                         Image(systemName: "ellipsis")
+                                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                            .font(.system(size: 16, weight: .ultraLight, design: .serif))
                                         Text("more")
                                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                             .font(.system(size: 16, weight: .ultraLight, design: .serif))
@@ -103,23 +108,24 @@ struct FlowerGridView: View {
                                         NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                                     }
                                 )
-                                .offset(x: frame - 90, y: frame - 190)
+                                .offset(x: frame - frame * 0.5, y: frame - frame * 1.13)
                                 .matchedGeometryEffect(id: "favoritesDetail", in: self.namespace)
                             Spacer()
                             Button {
                             } label: {
                                 Image(systemName: "heart.fill")
                                     .resizable()
-                                    .frame(width: 25, height: 23)
-                                    .foregroundColor(Color.pink.opacity(0.4))
+                                    .frame(width: frame * 0.17, height: frame * 0.15)
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                    .font(.system(size: 20, weight: .ultraLight, design: .serif))
                             }
-                            .frame(width: 35, height: 35)
+                            .frame(width: frame * 0.225, height: frame * 0.225)
                             .background(
                                 Group {
                                     NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                                 }
                             )
-                            .offset(x: frame - 160, y: frame - 190)
+                            .offset(x: frame - frame * 0.95, y: frame - frame * 1.12)
                             .matchedGeometryEffect(id: "favoritesHeat", in: self.namespace)
                         }
                         Text(flower.name)
@@ -129,26 +135,27 @@ struct FlowerGridView: View {
                             .font(.system(size: 24, weight: .regular, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                             .matchedGeometryEffect(id: "favoritesTitle", in: self.namespace)
+                            .padding(.leading, 30)
                         Spacer()
                     }
-                    .frame(width: frame + 100, height: frame - 10)
+                    .frame(width: frame + frame * 0.7, height: frame - frame * 0.1)
                     .background(
                         Group {
                             NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
                         }
                     )
-                    .offset(x: 55)
+                    .offset(x: frame * 0.3)
                     Image(flower.image)
                         .resizable()
-                        .frame(width: frame + 10, height: frame + 10)
+                        .frame(width: frame + frame * 0.1, height: frame + frame * 0.1)
                         .cornerRadius(500)
-                        .frame(width: frame + 10, height: frame + 10)
+                        .frame(width: frame + frame * 0.1, height: frame + frame * 0.1)
                         .background(
                             Group {
-                                CustomAccountButtonsView2()
+                                CustomAccountButtonsView4()
                             }
                         )
-                        .offset(x: -105)
+                        .offset(x: -frame * 0.65)
                 }
             }
         }
