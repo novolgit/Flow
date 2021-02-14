@@ -10,6 +10,8 @@ import SwiftUI
 
 
 struct AssortmentDetailsView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var modelData: ModelData
     //    @State private var sort: Set<String> = modelData.flowers
     
@@ -60,7 +62,7 @@ struct AssortmentDetailsView: View {
                         .frame(height: 100)
                         .background(
                             Group {
-                                NeuButtonsView2(radius: 15, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                                NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                             }
                         )
                         .padding()

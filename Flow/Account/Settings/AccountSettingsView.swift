@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AccountSettingsView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var accountName: String
     @State private var changeAccountText: String = ""
     
@@ -28,7 +30,7 @@ struct AccountSettingsView: View {
             .padding()
             .background(
                 Group {
-                    NeuButtonsView2(radius: 15, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 3, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
+                    NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 3, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
                 }
             )
             HStack{
@@ -48,13 +50,13 @@ struct AccountSettingsView: View {
             .padding()
             .background(
                 Group {
-                    NeuButtonsView2(radius: 15, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 3, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
+                    NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 3, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
                 }
             )
             Spacer()
         }
         .padding()
-        .background(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
+        .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
         .navigationBarTitle("Name", displayMode: .inline)
     }
 }

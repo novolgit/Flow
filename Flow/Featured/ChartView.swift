@@ -18,6 +18,8 @@ extension AnyTransition {
 }
 
 struct ChartView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var chart: Chart
     @State private var showDetail = false
     
@@ -30,13 +32,11 @@ struct ChartView: View {
             HStack {
                 ChartGraph(chart: chart, path: \.flowers)
                     .frame(width: 50, height: 30)
-//                    .animation(.easeIn)
-
-                VStack(alignment: .leading) {
+                    .padding(.trailing, 15)
+                    .animation(.easeIn)
                     Text(chart.name)
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                }
+                        .font(.system(size: 18, weight: .medium, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
 
                 Spacer()
 
@@ -46,14 +46,14 @@ struct ChartView: View {
                     }
                 }) {
                     Image(systemName: "chevron.right.circle")
-                        .foregroundColor(showDetail ? .gray : Color.pink.opacity(0.4))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .imageScale(.large)
                         .rotationEffect(.degrees(showDetail ? 90*5 : 0))
-                        .scaleEffect(showDetail ? 1.5 : 1)
-                        .padding()
+                        .scaleEffect(showDetail ? 1.25 : 1)
+                        .padding(8)
                         .background(
                             Group {
-                                NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 2, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
+                                NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
                             }
                         )
                 }
@@ -63,7 +63,8 @@ struct ChartView: View {
                 HStack {
                     ForEach(mouth2, id: \.self) {m in
                         Text(m)
-                            .font(.system(size: 10))
+                            .font(.system(size: 10, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                     }
                 }
                 VStack{}.frame(height: 40)
@@ -74,9 +75,9 @@ struct ChartView: View {
         .padding()
         .background(
             withAnimation(.easeOut){
-            Group {
-                NeuButtonsView2(radius: 25, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
-            }
+                Group {
+                    NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                }
             }
         )
         .padding()
@@ -94,6 +95,8 @@ struct ChartView_Previews: PreviewProvider {
 }
 
 struct ChartDetail: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     let chart: Chart
     @State var dataToShow = \Chart.Observation.flowers
 
@@ -107,29 +110,27 @@ struct ChartDetail: View {
             VStack {
                 ChartGraph(chart: chart, path: dataToShow)
                     .frame(height: 200)
+                    .padding(.bottom, 10)
                 HStack(spacing: 25) {
                     ForEach(buttons, id: \.0) { value in
                         Button(action: {
                             self.dataToShow = value.1
                         }) {
                             Text(value.0)
-                                .font(.system(size: 15))
-                                .foregroundColor(value.1 == self.dataToShow
-                                    ? Color.gray
-                                    : Color.accentColor)
+                                .font(.system(size: 12, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                 .animation(nil)
                         }
                         .frame(width: UIScreen.main.bounds.width*0.2, height: 40)
-                        .contentShape(RoundedRectangle(cornerRadius: 15.0))
                         .background(
                             Group {
                                 if value.1 == self.dataToShow{
                                     Group {
-                                        CustomTappedAccountButton4()
+                                        CustomTappedAccountButton6()
                                     }
                                 } else{
                                     Group {
-                                        CustomConfirmButtonsView4()
+                                        CustomConfirmButtonsView6()
                                     }
                                 }
                             }
@@ -155,11 +156,11 @@ struct ChartGraph: View {
     var color: Color {
         switch path {
         case \.flowers:
-            return .white
+            return .blue
         case \.bouquet:
-            return .gray
+            return .red
         case \.stores:
-            return .black
+            return .yellow
         default:
             return .black
         }
@@ -179,7 +180,7 @@ struct ChartGraph: View {
                         height: proxy.size.height,
                         range: observation[keyPath: path],
                         overallRange: overallRange)
-                        .colorMultiply(color)
+                        .colorMultiply(color.opacity(0.3))
                         .transition(.slide)
                         .animation(.ripple(index: index))
                 }
@@ -202,6 +203,8 @@ func magnitude(of range: Range<Double>) -> Double {
 }
 
 struct ChartCapsule: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var index: Int
     var height: CGFloat
     var range: Range<Double>
@@ -217,7 +220,7 @@ struct ChartCapsule: View {
 
     var body: some View {
         Capsule()
-            .fill(Color.pink.opacity(0.4))
+            .fill(LinearGradient(colorScheme == .dark ? Color.white : Color.black.opacity(0.01), colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
             .frame(height: height * heightRatio)
             .offset(x: 0, y: height * -offsetRatio)
     }

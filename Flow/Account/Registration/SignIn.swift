@@ -108,7 +108,9 @@ struct SignIn: View {
                               }
                           
                       }
-                  ).frame(width: 280, height: 45, alignment: .center)
+                  )
+        .frame(width: 280, height: 45, alignment: .center)
+        .signInWithAppleButtonStyle(colorScheme == .dark ? .whiteOutline : .black)
 }
 }
 

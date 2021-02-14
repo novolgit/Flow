@@ -12,6 +12,7 @@ import Combine
 import Firebase
 
 struct FeaturedView: View {
+    @Environment(\.colorScheme) var colorScheme
     
     @AppStorage("log_Status") var userStatus = false
     @AppStorage("current_image") var userImage = ""
@@ -36,45 +37,49 @@ struct FeaturedView: View {
                     VStack{}.frame(height: 30)
                     HStack {
                         Text("Featured")
-                            .font(.system(size: 30, weight: .bold, design: .serif))
-                            .foregroundColor(.gray)
+                            .font(.system(size: 32, weight: .black, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                         Spacer()
                         Image(systemName: "tablecells")
-                            .foregroundColor(.gray)
+                            .font(.system(size: 18, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     }
                     .padding(.horizontal)
                     FeaturedTabView(index: featuredIndex)
-                        .animation(.easeOut)
+//                        .animation(.easeOut)
                         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
                         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     HStack {
                         Text("Charts")
-                            .font(.system(size: 30, weight: .bold, design: .serif))
-                            .foregroundColor(.gray)
+                            .font(.system(size: 32, weight: .black, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Spacer()
                         Image(systemName: "hand.tap")
-                            .foregroundColor(.gray)
+                            .font(.system(size: 18, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     }
                     .padding(.horizontal)
                     ChartView(chart: modelData.charts[0])
                     HStack {
                         Text("Nearly Stores")
-                            .font(.system(size: 30, weight: .bold, design: .serif))
-                            .foregroundColor(.gray)
+                            .font(.system(size: 32, weight: .black, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Spacer()
                         Image(systemName: "scroll")
-                            .foregroundColor(.gray)
+                            .font(.system(size: 18, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     }
                     .padding(.horizontal)
                     NearlyStores()
                         .padding()
                     HStack {
                         Text("Top Stores")
-                            .font(.system(size: 30, weight: .bold, design: .serif))
-                            .foregroundColor(.gray)
+                            .font(.system(size: 32, weight: .black, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Spacer()
                         Image(systemName: "tablecells")
-                            .foregroundColor(.gray)
+                            .font(.system(size: 18, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     }
                     .padding(.horizontal)
                     TopStoresTabView(index: topStoresIndex)
@@ -91,30 +96,34 @@ struct FeaturedView: View {
                                         Image(systemName: "person.circle")
                                             .resizable()
                                             .frame(width:30,height:30)
+                                            .font(.system(size: 18, weight: .light, design: .serif))
+                                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                             //                                            .rotation3DEffect(.degrees(30), axis: (x: 0, y: 1, z: 0))
                                             .frame(width: 34, height: 34)
                                             .background(
                                                 Group {
-                                                    NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
+                                                    NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
                                                 }
                                             )
                                         
                                     }
                                         else {
                                             Image(systemName: "person.circle")
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                             
                                                 //                                            .rotation3DEffect(.degrees(30), axis: (x: 0, y: 1, z: 0))
                                                 .frame(width: 34, height: 34)
                                                 .background(
                                                     Group {
-                                                        NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
+                                                        NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
                                                     }
                                                 )
                                         }
                                     })
             )
             .navigationBarTitle("Featured", displayMode: .inline)
-            .background(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
+            .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
         }
         
     }
@@ -122,7 +131,7 @@ struct FeaturedView: View {
 
 struct FeaturedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedView(chart: ModelData().charts[0])
+        FeaturedView(chart: ModelData().charts[0]).preferredColorScheme(.dark)
             .environmentObject(ModelData())
     }
 }

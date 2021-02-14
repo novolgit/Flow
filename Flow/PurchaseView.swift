@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct PurchaseView: View {
+    @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var modelData: ModelData
     
@@ -41,35 +42,36 @@ struct PurchaseView: View {
                         }
                         VStack{}.frame(height: UIScreen.main.bounds.height*0.06)
                         VStack {
-                            NavigationLink(destination: ConfirmView(totalPrice: calculateTotalPrice(), coordinate: modelData.stores[0].locationCoordinate, coordinateName: modelData.stores[0].name),
-                                           label: {
-                                            Text("Confirm")
-                                                .font(.system(size: 24, weight: .medium, design: .serif))
-                                                .foregroundColor(!detectChoose() ? Color.gray.opacity(0.3) : Color.gray)
-    //                                                !detectChoose() ? Color(#colorLiteral(red: 0.5470548868, green: 0.001177539467, blue: 0.2447426915, alpha: 0.2349739327)) : Color(#colorLiteral(red: 0.5470548868, green: 0.001177539467, blue: 0.2447426915, alpha: 1)))
-                                           })
-                                .font(.system(size: 20, weight: .semibold, design: .rounded))
-                                .frame(width: 350, height: 100)
-                                .background(
-                                    Group {
-                                        if detectChoose(){
-                                            Group {
-                                                CustomTappedAccountButton3()
+                            HStack {
+                                Spacer()
+                                NavigationLink(destination: ConfirmView(totalPrice: calculateTotalPrice(), coordinate: modelData.stores[0].locationCoordinate, coordinateName: modelData.stores[0].name),
+                                               label: {
+                                                HStack {
+                                                    Text("Confirm")
+                                                        .font(.system(size: 26, weight: .regular, design: .serif))
+                                                        .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
+                                                    Image(systemName: "arrow.right")
+                                                        .font(.system(size: 20, weight: .light, design: .serif))
+                                                        .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
+                                                }
+                                               })
+                                    .frame(width: 190, height: 70)
+                                    .background(
+                                        Group {
+                                                    CustomConfirmButtonsView3()
                                             }
-                                        } else{
-                                            Group {
-                                                CustomConfirmButtonsView3()
-                                            }
-                                        }
-                                    }
                                 )
+                            }
                             
                         }
+                        .scaleEffect(detectChoose() ? 1 : 0)
+                        .animation(.spring())
+                        .padding(.trailing)
                         VStack{}.frame(height: 35)
                     }
 //                    .background(
 //                        Group {
-//                            NeuButtonsView2(radius: 25, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+//                            NeuButtonsView2(radius: 25, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
 //                        }
 //                    )
 //                    .padding()
@@ -77,7 +79,7 @@ struct PurchaseView: View {
                 }
             }
             .navigationBarTitle("Purchase", displayMode: .inline)
-            .background(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
+            .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
             .navigationBarItems(
                 leading: VStack {
                     Text(String(calculateTotalPrice())).animation(.spring(response: 0.1, dampingFraction: 1, blendDuration: 1))

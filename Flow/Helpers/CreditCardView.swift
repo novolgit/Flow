@@ -9,6 +9,8 @@ import SwiftUI
 import Combine
 
 struct CreditCardView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var cardNumber: String = ""
     @State private var cardHolder: String = ""
     @State private var cardValidDate: String = ""
@@ -43,10 +45,12 @@ struct CreditCardView: View {
 //                    .font(.system(size: 20, design: .serif))
                 
                     Image(systemName: "creditcard")
+                        .font(.system(size: 20, weight: .regular, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     TextField("card number", text: $cardNumber)
                         .onReceive(Just(cardNumber)) { _ in limitNumber(numberLimit) }
-                        .font(.system(size: 20, design: .serif))
-                        .foregroundColor(.gray)
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .keyboardType(.decimalPad)
 //                Divider()
             }
@@ -65,8 +69,8 @@ struct CreditCardView: View {
 //                    .font(.system(size: 20, design: .serif))
                 Image(systemName: "person.fill.questionmark")
                 TextField("cardholder name", text: $cardHolder)
-                    .font(.system(size: 20, design: .serif))
-                    .foregroundColor(.gray)
+                    .font(.system(size: 20, weight: .light, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .disableAutocorrection(true)
 //                Divider()
             }
@@ -86,8 +90,8 @@ struct CreditCardView: View {
                     
                     TextField("Valid Untill", text: $cardValidDate)
                         .onReceive(Just($cardValidDate)) { _ in limitValid(validLimit) }
-                        .font(.system(size: 20, design: .serif))
-                        .foregroundColor(.gray)
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .keyboardType(.decimalPad)
                 }
                 .padding()
@@ -110,8 +114,8 @@ struct CreditCardView: View {
                         }
                     }
                     .onReceive(Just($cardCVV)) { _ in limitCVV(cvvLimit) }
-                    .font(.system(size: 20, design: .serif))
-                    .foregroundColor(.gray)
+                    .font(.system(size: 20, weight: .light, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .keyboardType(.decimalPad)
                 }
                 .padding()
@@ -129,8 +133,8 @@ struct CreditCardView: View {
             Button(action: {
             }, label: {
                 Text("Pay")
-                    .foregroundColor(.gray)
-                    .font(.system(size: 24, weight: .medium, design: .serif))
+                    .font(.system(size: 28, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 
             })
             .frame(width: 350, height: 100)
@@ -175,6 +179,8 @@ struct CreditCardView_Previews: PreviewProvider {
 }
 
 struct CardFront: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var cardNumber: String
     var cardHolder: String
     var cardValidDate: String
@@ -183,21 +189,26 @@ struct CardFront: View {
         VStack{
             Spacer()
             Text(cardNumber.separating(every: 4, separator: " "))
-                .font(.system(size: 26, design: .serif))
+                .font(.system(size: 20, weight: .light, design: .serif))
+                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 .padding()
             HStack{
                 VStack(alignment: .leading){
                     Text("Cardholder")
-                        .font(.system(size: 16, design: .serif))
+                        .font(.system(size: 16, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     Text(cardHolder.uppercased())
-                        .font(.system(size: 20, design: .serif))
+                        .font(.system(size: 20, weight: .regular, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 }
                 Spacer()
                 VStack(alignment: .leading){
                     Text("Valid THRU")
-                        .font(.system(size: 16, design: .serif))
+                        .font(.system(size: 16, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     Text(cardValidDate.separating(every: 2, separator: "/"))
-                        .font(.system(size: 20, design: .serif))
+                        .font(.system(size: 20, weight: .regular, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 }
             }
         }
@@ -205,13 +216,15 @@ struct CardFront: View {
         .frame(width: 350, height: 200)
         .background(
             Group {
-                NeuButtonsView2(radius: 15, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
             }
         )
     }
 }
 
 struct CardBack: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var cardCVV: String
     
     var body: some View{
@@ -220,9 +233,11 @@ struct CardBack: View {
             HStack {
                 VStack(alignment: .leading){
                     Text("CVV")
-                        .font(.system(size: 16, design: .serif))
+                        .font(.system(size: 16, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     Text(cardCVV)
-                        .font(.system(size: 20, design: .serif))
+                        .font(.system(size: 20, weight: .regular, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 }
                 .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                 Spacer()
@@ -232,7 +247,7 @@ struct CardBack: View {
         .frame(width: 350, height: 200)
         .background(
             Group {
-                NeuButtonsView2(radius: 15, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
             }
         )
     }

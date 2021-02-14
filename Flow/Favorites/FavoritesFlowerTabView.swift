@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FavoritesFlowerTabView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var modelData: ModelData
     
     @State var index: Int
@@ -34,7 +36,7 @@ struct FavoritesFlowerTabView: View {
             }
             .background(
                 Group {
-                    NeuButtonsView2(radius: 25, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                    NeuButtonsView2(radius: 25, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
                 }
             )
             .padding()

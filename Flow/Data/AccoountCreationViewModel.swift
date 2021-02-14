@@ -15,7 +15,7 @@ class AccountCreationViewModel: ObservableObject{
     // User Details...
     @Published var name = ""
     @Published var bio = ""
-    @Published var bonuses = 0
+    @Published var bonuses = 9000
     @Published var phNumber = ""
     
     // refrence For View Changing
@@ -37,7 +37,6 @@ class AccountCreationViewModel: ObservableObject{
     @Published var CODE = ""
     
     // Status...
-    @AppStorage("log_Status") var userStatus = false
     @AppStorage("current_bonuses") var userBonuses = 0
     @AppStorage("current_user") var userName = ""
     @AppStorage("current_phone") var userPhone = ""
@@ -49,6 +48,7 @@ class AccountCreationViewModel: ObservableObject{
         
         isLoading.toggle()
         
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         PhoneAuthProvider.provider().verifyPhoneNumber("+" + phNumber, uiDelegate: nil) { (CODE, err) in
             
             self.isLoading.toggle()
@@ -169,7 +169,13 @@ class AccountCreationViewModel: ObservableObject{
             }
             
             // Success..
-            self.userStatus = true
+            UserDefaults.standard.set(true, forKey: "status")
+            UserDefaults.standard.set(self.name, forKey: "userName")
+            UserDefaults.standard.set(self.bonuses, forKey: "userBonuses")
+            UserDefaults.standard.set(self.phNumber, forKey: "userPhNumber")
+            UserDefaults.standard.set(self.bio, forKey: "userBio")
+            
+            NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
 //            self.userBonuses = self.bonuses
 //            self.userName = self.name
 //            self.userPhone = self.phNumber
@@ -183,7 +189,9 @@ class AccountCreationViewModel: ObservableObject{
         do { try Auth.auth().signOut() }
         catch { print("already logged out") }
         
-        self.userStatus = false
+        UserDefaults.standard.set(false, forKey: "status")
+        
+        NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
     }
     
         private var db = Firestore.firestore()

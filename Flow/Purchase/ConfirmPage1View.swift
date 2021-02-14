@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct ConfirmPage1View: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var region = MKCoordinateRegion()
     
     @Binding var currentPage: Int
@@ -34,11 +36,12 @@ struct ConfirmPage1View: View {
                     Image(systemName: "chevron.right.circle")
                         .resizable()
                         .frame(width: 30, height: 30)
-                        .foregroundColor(.gray)
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .padding(7)
                         .background(
                             Group {
-                                NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
+                                NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
                             }
                         )
                 })
@@ -59,7 +62,7 @@ struct ConfirmPage1View: View {
                 .frame(width: UIScreen.main.bounds.width*0.93, height: UIScreen.main.bounds.height*0.33)
                 .background(
                     Group {
-                        NeuButtonsView2(radius: 25, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                        NeuButtonsView2(radius: 25, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
                     }
                 )
                 .padding()
@@ -69,8 +72,8 @@ struct ConfirmPage1View: View {
                 impactMed.impactOccurred()
             }, label: {
                 Text("Next")
-                    .font(.system(size: 24, weight: .medium, design: .serif))
-                    .foregroundColor(.gray)
+                    .font(.system(size: 26, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
             })
             .font(.system(size: 20, weight: .medium, design: .serif))
             .frame(width: 350, height: 100)
@@ -85,8 +88,9 @@ struct ConfirmPage1View: View {
         .navigationBarTitle("Order Info", displayMode: .inline)
         .navigationBarItems(trailing: Text(String(totalPrice))
                                 .font(.system(size: 20, design: .serif))
-                                .foregroundColor(Color(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1))))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray))
     }
+    
     func setRegion(_ coordinate: CLLocationCoordinate2D) {
         region = MKCoordinateRegion(
             center: coordinate,

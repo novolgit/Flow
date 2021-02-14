@@ -8,6 +8,8 @@ import MapKit
 import SwiftUI
 
 struct ConfirmView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var currentPage = 0
     @State private var keyboardHeight: CGFloat = 0
     
@@ -48,7 +50,7 @@ struct ConfirmView: View {
             }
         }
 //        .keyboardAdaptive()
-        .background(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
+        .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
     }
 }
 

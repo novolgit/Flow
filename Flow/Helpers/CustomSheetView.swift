@@ -60,7 +60,7 @@ struct CustomSheetView: View {
                 BottomSheet(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
             }
             .background(BlurView())
-//            .background(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
+//                        .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
             .frame(width: geometry.size.width, height: self.maxHeight, alignment: .top)
 //            .background(Color(#colorLiteral(red: 0.9164158702, green: 0.9109681845, blue: 0.9206033349, alpha: 1)).opacity(0.9))
             .cornerRadius(Constants.radius)
@@ -179,7 +179,7 @@ struct BottomSheet : View {
                         .frame(width: UIScreen.main.bounds.width*0.87, height: UIScreen.main.bounds.height*0.28)
 //                        .background(
 //                            Group {
-//                                NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+//                                NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
 //                            }
 //                        )
 //                        .padding()

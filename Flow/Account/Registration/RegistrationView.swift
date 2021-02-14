@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var accountName: String = ""
     @State private var accountPassword: String = ""
     
@@ -19,7 +21,7 @@ struct RegistrationView: View {
                 VStack {
                     Text("Flow")
                         .font(.system(size: 50, weight: .bold, design: .serif))
-                        .foregroundColor(.offSecondaryGray)
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                         .padding()
                     HStack{
                         Image(systemName: "person")

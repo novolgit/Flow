@@ -9,6 +9,7 @@ import SwiftUI
 import PassKit
 
 struct PaymentButtonView: View {
+    @Environment(\.colorScheme) var colorScheme
     
     var height: CGFloat {
         #if os(macOS)
@@ -24,6 +25,8 @@ struct PaymentButtonView: View {
             .frame(height: height)
             .frame(maxWidth: .infinity)
             .accessibility(label: Text("Buy with Apple Pay"))
+            .font(.system(size: 20, weight: .light, design: .serif))
+            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
             .cornerRadius(25)
     }
 }

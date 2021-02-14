@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FeaturedTabView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var modelData: ModelData
     @State var index: Int
     
@@ -17,10 +19,11 @@ struct FeaturedTabView: View {
                 HStack{
                     VStack(alignment: .leading){
                         Text(flower.name)
-                            .font(.system(size: 24, weight: .bold, design: .serif)).foregroundColor(.gray)
+                            .font(.system(size: 24, weight: .bold, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                         Text(flower.descriptions)
-                            .font(.system(size: 19, weight: .medium, design: .serif))
-                            .foregroundColor(.gray)
+                            .font(.system(size: 18, weight: .regular, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                     }
                     .padding()
                     Image(flower.image)
@@ -30,14 +33,16 @@ struct FeaturedTabView: View {
                 }
 //                            .padding()
                 .frame(width: UIScreen.main.bounds.width*0.90, height: self.index == flower.id ? UIScreen.main.bounds.height*0.30 : UIScreen.main.bounds.height*0.28)
+                
             }
             .background(
                 Group {
-                    NeuButtonsView2(radius: 25, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                    NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                 }
             )
             .padding()
         }
+        .animation(.easeInOut(duration: 0.3))
     }
 }
 

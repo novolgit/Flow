@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TopStoresTabView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var modelData: ModelData
     @State var index: Int
     
@@ -17,18 +19,18 @@ struct TopStoresTabView: View {
                 VStack{
                     HStack {
                             Text(store.name)
-                                .font(.system(size: 24, weight: .medium, design: .serif))
-                                .foregroundColor(.gray)
+                                .font(.system(size: 24, weight: .bold, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                         Spacer()
                         NavigationLink(
                             destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city),
                             label: {
                                     Image(systemName: "ellipsis")
                             })
-                            .frame(width: 50, height: 50)
+                            .frame(width: 40, height: 40)
                             .background(
                                 Group {
-                                    NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 2, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
+                                    NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
                                 }
                             )
                     }
@@ -42,13 +44,27 @@ struct TopStoresTabView: View {
                         Spacer()
 //                                .frame(width: UIScreen.main.bounds.width*0.5, height: 150)
                         VStack{
-                            Text(store.hours)
-                                .font(.system(size: 19, weight: .medium, design: .serif))
-                                .foregroundColor(.gray)
-                            Text(store.description)
-                                .font(.system(size: 16, weight: .medium, design: .serif))
-                                .foregroundColor(.gray)
+                            HStack {
+                                Text("working days")
+                                    .font(.system(size: 14, weight: .regular, design: .serif))
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                Spacer()
+                                Text(store.days)
+                                    .font(.system(size: 14, weight: .regular, design: .serif))
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                            }
+                            Spacer()
+                            HStack {
+                                Text("working hours")
+                                    .font(.system(size: 14, weight: .regular, design: .serif))
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                Spacer()
+                                Text(store.hours)
+                                    .font(.system(size: 14, weight: .regular, design: .serif))
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                            }
                         }
+                        .padding()
                     }
                 }
                 .padding()
@@ -56,7 +72,7 @@ struct TopStoresTabView: View {
             }
             .background(
                 Group {
-                    NeuButtonsView2(radius: 25, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                    NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                 }
             )
             .padding()

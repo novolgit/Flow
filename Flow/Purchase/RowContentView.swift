@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RowContentView : View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @Binding var flower: Flower
     @Binding var flowers: [Flower]
     @Binding var isSet: Bool
@@ -22,21 +24,23 @@ struct RowContentView : View {
                 HStack{
                     VStack(alignment: .leading) {
                         Text("Name")
-                            .font(.system(size: 16, weight: .medium, design: .serif))
-                            .foregroundColor(Color.gray)
+                            .font(.system(size: 16, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.7) : Color.offSecondaryGray.opacity(0.7))
                         Text(flower.name)
-                            .font(.system(size: 20, weight: .medium, design: .serif))
+                            .font(.system(size: 18, weight: .regular, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         
                     }
                     Spacer()
                     VStack(alignment: .leading) {
                         Text("Price")
-                            .font(.system(size: 16, weight: .medium, design: .serif))
-                            .foregroundColor(Color.gray)
+                            .font(.system(size: 16, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.7) : Color.offSecondaryGray.opacity(0.7))
                         
                         
                         Text(String(flower.price) + "$")
-                            .font(.system(size: 20, weight: .medium, design: .serif))
+                            .font(.system(size: 18, weight: .regular, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         
                     }
                     //                    VStack{}.frame(width: !isSet ? 39 : 10)
@@ -45,7 +49,7 @@ struct RowContentView : View {
                             isSet.toggle()
                         }) {
                             Image(systemName: isSet ? "cart.badge.minus.fill" : "cart.badge.plus")
-                                .foregroundColor(Color.gray)
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                             
                         }
                     }
@@ -55,18 +59,19 @@ struct RowContentView : View {
                 .frame(width : geo.size.width, height: 100)
                 .background(
                     Group {
-                        NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                        NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                     }
                 )
                 ZStack {
                     Image(systemName: "trash")
-                        .font(.system(size: 20))
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .scaleEffect(scale)
                 }
                 .frame(width: 100, height: geo.size.height)
                 .background(
                     Group {
-                        NeuButtonsView(radius: 10, color: Color.purple.opacity(0.3), whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                        NeuButtonsView(radius: 10, color: Color.purple.opacity(0.3), whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
                     }
                 )
                 .onTapGesture {
@@ -76,17 +81,19 @@ struct RowContentView : View {
                 .padding()
                 ZStack {
                     Image(systemName: "app.gift.fill")
-                        .font(.system(size: 20))
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .overlay(
                             Image(systemName: "star")
-                                .font(.system(size: 10))
+                                .font(.system(size: 10, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                 .offset(y: self.offsetY)
                         )
                 }
                 .frame(width: 100, height: geo.size.height)
                 .background(
                     Group {
-                        NeuButtonsView(radius: 10, color: Color.pink.opacity(0.3), whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                        NeuButtonsView(radius: 10, color: Color.pink.opacity(0.3), whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
                     }
                 )
                 .onTapGesture {

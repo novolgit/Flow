@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ConfirmPage3View: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var modelData: ModelData
     
     @State private var payment: String = "ApplePay"
@@ -26,11 +28,12 @@ struct ConfirmPage3View: View {
                 Image(systemName: "chevron.left.circle")
                     .resizable()
                     .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.gray)
+                    .font(.system(size: 20, weight: .light, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .padding(7)
                     .background(
                         Group {
-                            NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
+                            NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
                         }
                     )
                 })
@@ -41,11 +44,12 @@ struct ConfirmPage3View: View {
                 Image(systemName: "chevron.right.circle")
                     .resizable()
                     .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.gray)
+                    .font(.system(size: 20, weight: .light, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .padding(7)
                     .background(
                         Group {
-                            NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
+                            NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
                         }
                     )
                 })
@@ -55,7 +59,8 @@ struct ConfirmPage3View: View {
             VStack {
                 HStack{
                     Text("Choose payment method")
-                        .font((.system(size: 20, design: .serif)))
+                        .font(.system(size: 20, weight: .regular, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     Spacer()
                 Menu(payment) {
                     Button("Apple Pay", action: {
@@ -64,14 +69,16 @@ struct ConfirmPage3View: View {
                     Button("Card", action: {
                         payment = "Card"
                     })
+                    .font(.system(size: 20, weight: .light, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 }
-                .foregroundColor(.gray)
-                .font(.system(size: 20, design: .serif))
+                .font(.system(size: 20, weight: .light, design: .serif))
+                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 .padding()
                 .frame(width: 130, height: 60)
                 .background(
                     Group {
-                        NeuButtonsView2(radius: 15, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                        NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                     }
                 )
             }
@@ -88,7 +95,7 @@ struct ConfirmPage3View: View {
         }
         .navigationBarTitle("Payment", displayMode: .inline)
         .navigationBarItems(trailing: Text(String(totalPrice))
-                                .font(.system(size: 20, design: .serif))
-                                .foregroundColor(Color(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1))))
+                                .font(.system(size: 20, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray))
     }
 }

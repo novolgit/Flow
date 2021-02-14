@@ -8,35 +8,41 @@
 import SwiftUI
 
 struct NearlyStores: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var modelData: ModelData
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 0) {
                 ForEach(modelData.stores) { store in
-                VStack{
-                    Text(store.name)
-                        .font(.system(size: 14, weight: .bold, design: .serif))
-                        .foregroundColor(.gray)
-                    Spacer()
-                    Text(store.hours)
-                        .font(.system(size: 12, weight: .bold, design: .serif))
-                        .foregroundColor(.gray)
-                    }
-                .padding()
+                    NavigationLink(
+                        destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city),
+                        label: {
+                            ZStack{
+                                Image(store.image)
+                                    .resizable()
+                                    .cornerRadius(10)
+                                Text(store.name)
+                                    .multilineTextAlignment(.center)
+                                    .font(.system(size: 16, weight: .black, design: .serif))
+                                    .foregroundColor(store.textColor == "white" ? .white : .offSecondaryGray)
+                            }
+                        })
                 }
-                .frame(width: 100, height: 110)
+                .frame(width: 120, height: 150)
                 .background(
                     Group {
-                        NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
+                        NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
                     }
                 )
-                .padding()
+                .padding(.horizontal, 8)
+                .padding(.vertical)
             }
         }
         .background(
             Group {
-                NeuButtonsView2(radius: 25, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
             }
         )
     }

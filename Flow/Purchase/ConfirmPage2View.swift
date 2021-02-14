@@ -9,6 +9,8 @@ import SwiftUI
 import Combine
 
 struct ConfirmPage2View: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var entrance: String = ""
     @State private var floor: String = ""
     @State private var kv: String = ""
@@ -44,11 +46,12 @@ struct ConfirmPage2View: View {
                     Image(systemName: "chevron.left.circle")
                         .resizable()
                         .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.gray)
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .padding(7)
                         .background(
                             Group {
-                                NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
+                                NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
                             }
                         )
                 })
@@ -61,11 +64,12 @@ struct ConfirmPage2View: View {
                     Image(systemName: "chevron.right.circle")
                         .resizable()
                         .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.gray)
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .padding(7)
                         .background(
                             Group {
-                                NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
+                                NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
                             }
                         )
                 })
@@ -77,16 +81,16 @@ struct ConfirmPage2View: View {
                 }) {
                     HStack {
                         Image(systemName: "figure.stand.line.dotted.figure.stand")
-                            .font(.title)
-                            .foregroundColor(Color(#colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.1215686275, alpha: 1)))
+                            .font(.system(size: 26, weight: .regular, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Text("Delivery")
-                            .font(.system(size: 20, weight: .light, design: .serif))
-                            .foregroundColor(Color(#colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.1215686275, alpha: 1)))
+                            .font(.system(size: 20, weight: .regular, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         
                     }
                     .padding()
                     .frame(width: UIScreen.main.bounds.width*0.48, height: 110)
-                    .foregroundColor(.gray)
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                     .contentShape(RoundedRectangle(cornerRadius: 15.0))
                     .background(
                         Group {
@@ -108,11 +112,11 @@ struct ConfirmPage2View: View {
                 }) {
                     HStack {
                         Image(systemName: "figure.walk")
-                            .font(.title)
-                            .foregroundColor(Color(#colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.1215686275, alpha: 1)))
+                            .font(.system(size: 26, weight: .regular, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Text("pickup")
-                            .font(.system(size: 20, weight: .light, design: .serif))
-                            .foregroundColor(Color(#colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.1215686275, alpha: 1)))
+                            .font(.system(size: 20, weight: .regular, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         
                     }
                     .frame(width: UIScreen.main.bounds.width*0.48, height: 110)
@@ -140,10 +144,12 @@ struct ConfirmPage2View: View {
 //                            .font(.system(size: 20, design: .serif))
 //                            .foregroundColor(addresEmpty ? Color.red : Color.black)
                         Image(systemName: "location")
-                            .foregroundColor(addresEmpty ? Color.red : Color.black)
+                            .font(.system(size: 20, weight: .light, design: .serif))
+                            .foregroundColor(addresEmpty ? Color.red : .offSecondaryGray)
                             .scaleEffect(!addresEmpty ? 1 : 1.25)
                             TextField("addres", text: $addres)
-                                .font(.system(size: 20, design: .serif))
+                                .font(.system(size: 20, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
 //                        Divider()
                         
                     }
@@ -153,7 +159,10 @@ struct ConfirmPage2View: View {
                     }, label: {
                         HStack {
                             Text("Map")
+                                .font(.system(size: 20, weight: .light, design: .serif))
+                                .foregroundColor(Color(.systemBlue))
                             Image(systemName: "map")
+                                .foregroundColor(Color(.systemBlue))
                         }
                     })
                 }
@@ -169,8 +178,8 @@ struct ConfirmPage2View: View {
                 .padding(.vertical,3)
                 HStack{
                         TextField("entrance", text: $entrance)
-                            .font(.system(size: 20, design: .serif))
-                            .foregroundColor(.gray)
+                            .font(.system(size: 20, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                             .keyboardType(.decimalPad)
                     .padding()
                     .frame(height: 60)
@@ -188,8 +197,8 @@ struct ConfirmPage2View: View {
 //                            .font(.system(size: 20, design: .serif))
                         
                         TextField("floor", text: $floor)
-                            .font(.system(size: 20, design: .serif))
-                            .foregroundColor(.gray)
+                            .font(.system(size: 20, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                             .keyboardType(.decimalPad)
 //                        Divider()
                     }
@@ -211,9 +220,11 @@ struct ConfirmPage2View: View {
 //                    Text("Phone")
 //                        .font(.system(size: 20, design: .serif))
                     Image(systemName: "phone")
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     TextField("phone", text: $phone)
-                        .font(.system(size: 20, design: .serif))
-                        .foregroundColor(.gray)
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .keyboardType(.phonePad)
 //                    Divider()
                 }
@@ -232,6 +243,8 @@ struct ConfirmPage2View: View {
                 .matchedGeometryEffect(id: "phone", in: self.namespace)
                 HStack{
                     Image(systemName: "timer")
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     DatePicker(
                         "Time",
                         selection: $pickupTime,
@@ -246,7 +259,7 @@ struct ConfirmPage2View: View {
                 .frame(height: 60)
                 .background(
                     Group {
-                        NeuButtonsView2(radius: 15, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                        NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                     }
                 )
                 .padding(.horizontal,16)
@@ -285,8 +298,8 @@ struct ConfirmPage2View: View {
                             in: range,
                             displayedComponents: .hourAndMinute
                         )
-                        .font(.system(size: 20, design: .serif))
-                        .foregroundColor(.gray)
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         
                         //                                .datePickerStyle(GraphicalDatePickerStyle())
                     }
@@ -294,7 +307,7 @@ struct ConfirmPage2View: View {
                     .frame(height: 60)
                     .background(
                         Group {
-                            NeuButtonsView2(radius: 15, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                            NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                         }
                     )
                     .padding(.horizontal,16)
@@ -322,8 +335,9 @@ struct ConfirmPage2View: View {
                 }
             }, label: {
                 Text("Next")
-                    .foregroundColor(.gray)
-                    .font(.system(size: 24, weight: .medium, design: .serif))
+                    .font(.system(size: 26, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                    .animation(.easeOut(duration:0.8))
                 
             })
             .frame(width: 350, height: 100)
@@ -360,7 +374,7 @@ struct ConfirmPage2View: View {
 //        .keyboardAdaptive()
         .navigationBarTitle("Order Data", displayMode: .inline)
         .navigationBarItems(trailing: Text(String(totalPrice))
-                                .font(.system(size: 20, design: .serif))
-                                .foregroundColor(Color(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1))))
+                                .font(.system(size: 20, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray))
     }
 }

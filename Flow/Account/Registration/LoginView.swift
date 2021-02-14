@@ -11,17 +11,21 @@ import PhotosUI
 import Combine
 
 struct LoginView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @StateObject var accountCreation = AccountCreationViewModel()
-    @AppStorage("log_Status") var status = false
+    
+    @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
     
     var body: some View {
+        VStack{
                 if status{
                     Text("Logged Successfully")
                 }
                 else{
                     
                     ZStack{
-                                  LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd)
+                                  LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
                                     .ignoresSafeArea(edges: .all)
                         
                             MainView()
@@ -36,6 +40,16 @@ struct LoginView: View {
                     .navigationBarHidden(true)
 
                 }
+        }
+        .onAppear {
+                      
+                      NotificationCenter.default.addObserver(forName: NSNotification.Name("statusChange"), object: nil, queue: .main) { (_) in
+                          
+                         let status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+                             
+                          self.status = status
+                      }
+                  }
 //            HStack{
 //                Image(systemName: "phone")
 //                TextField("Phone", text: $accountPhone)
@@ -99,6 +113,8 @@ struct LoginView_Previews: PreviewProvider {
 }
 
 struct MainView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var accountCreation : AccountCreationViewModel
     
     init() {
@@ -109,8 +125,8 @@ struct MainView: View {
         VStack{
             
             Text("Flow")
-                .font(.system(size: 40, weight: .bold, design: .serif))
-            
+                .font(.system(size: 40, weight: .black, design: .serif))
+                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
             ZStack{
 
                 if accountCreation.pageNumber == 0{
@@ -133,6 +149,8 @@ struct MainView: View {
 }
 
 struct Login: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var accountCreation : AccountCreationViewModel
     
     @State private var numberLimit = 11
@@ -143,9 +161,12 @@ struct Login: View {
             
             HStack{
                 Image(systemName: "phone")
+                    .font(.system(size: 18, weight: .light, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 TextField("Phone", text: $accountCreation.phNumber)
                     .onReceive(Just(accountCreation.phNumber)) { _ in limitNumber(numberLimit) }
-                    .font(.system(size: 20, design: .serif))
+                    .font(.system(size: 20, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .foregroundColor(.gray)
                     .disableAutocorrection(true)
                     .keyboardType(.phonePad)
@@ -161,32 +182,38 @@ struct Login: View {
             .padding(.horizontal,22)
             .padding(.vertical,3)
             
+            HStack {
+                Spacer()
                 Button(action: accountCreation.login, label: {
-                
-                HStack{
                     
-                    Spacer()
-                    
-                    Text("Next")
-                        .font(.system(size: 20, design: .serif))
-                    
-                    Spacer()
-                    
-                    Image(systemName: "arrow.right")
-                }
-            })
-            .foregroundColor(accountCreation.phNumber == "" ? .gray : .offSecondaryGray)
-            .padding()
-            .frame(height: 70)
-            .background(
-                Group {
-                    CustomTappedAccountButton5()
-                }
-            )
-            .padding(.horizontal,22)
-            .padding(.vertical,3)
-                .scaleEffect(CGSize(width: accountCreation.phNumber == "" ? 0.0 : 1.0, height:  accountCreation.phNumber == "" ? 0.0 : 1.0))
+                    HStack{
+                        
+                        Spacer()
+                        
+                        Text("Next")
+                            .font(.system(size: 20, weight: .regular, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "arrow.right")
+                            .font(.system(size: 18, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                    }
+                })
+                .foregroundColor(accountCreation.phNumber == "" ? .gray : .offSecondaryGray)
+                .padding()
+                .frame(height: 70)
+                .background(
+                    Group {
+                        CustomTappedAccountButton5()
+                    }
+                )
+                .padding(.horizontal,22)
+                .padding(.vertical,3)
+                    .scaleEffect(CGSize(width: accountCreation.phNumber == "" ? 0.0 : 1.0, height:  accountCreation.phNumber == "" ? 0.0 : 1.0))
                 .animation(.spring())
+            }
             
             SignIn()
         }
@@ -200,6 +227,8 @@ struct Login: View {
 }
 
 struct Register: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var accountCreation : AccountCreationViewModel
     
     init() {
@@ -212,8 +241,11 @@ struct Register: View {
             
             HStack{
                 Image(systemName: "person")
+                    .font(.system(size: 18, weight: .light, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 TextField("Name", text: $accountCreation.name)
-                    .font(.system(size: 20, design: .serif))
+                    .font(.system(size: 20, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .foregroundColor(.gray)
                     .disableAutocorrection(true)
             }
@@ -231,11 +263,14 @@ struct Register: View {
             HStack{
                 VStack {
                     Image(systemName: "info")
+                        .font(.system(size: 18, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .padding(.top, 13)
                     Spacer()
                 }
                 TextEditor(text: $accountCreation.bio)
-                    .font(.system(size: 20, design: .serif))
+                    .font(.system(size: 20, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .foregroundColor(.gray)
                     .lineSpacing(5)
             }
@@ -257,11 +292,14 @@ struct Register: View {
                 Spacer()
                 
                 Text("Next")
-                    .font(.system(size: 20, design: .serif))
+                    .font(.system(size: 20, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 
                 Spacer()
                 
                 Image(systemName: "arrow.right")
+                    .font(.system(size: 18, weight: .light, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
             }
         })
         .foregroundColor(accountCreation.name == "" ? .gray : .offSecondaryGray)
@@ -281,6 +319,8 @@ struct Register: View {
 }
 
 struct ImageRegister: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var accountCreation : AccountCreationViewModel
     @State var currentImage = 0
     var body: some View {
@@ -290,7 +330,7 @@ struct ImageRegister: View {
             
             Text("Add Profile Picture")
                 .font(.system(size: 24, weight: .medium, design: .serif))
-                .foregroundColor(.offSecondaryGray)
+                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                 .padding()
                         
                         VStack{
@@ -300,7 +340,8 @@ struct ImageRegister: View {
                                 ZStack {
                                     Image(systemName: "plus.circle")
                                         .resizable()
-                                        .foregroundColor(.gray)
+                                      
+                                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         .frame(width: 60/2, height: 60/2)
                                         .frame(width:130/2, height: 130/2)
                                         .offset(x: accountCreation.pageNumber != 2 ? 30 : 0, y: accountCreation.pageNumber != 2 ? -30 : 0)
@@ -308,7 +349,8 @@ struct ImageRegister: View {
                                         .animation(.spring())
                                     Image(systemName: "person")
                                         .resizable()
-                                        .foregroundColor(.gray)
+                                        
+                                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         .frame(width: 60, height: 60)
                                         .frame(width:130, height: 130)
                                 }
@@ -329,40 +371,46 @@ struct ImageRegister: View {
                         .onTapGesture {
                             accountCreation.picker.toggle()
                         }
-            
-                
+            HStack {
+                Spacer()
                 Button(action: accountCreation.signUp, label: {
-                    
-                    HStack{
                         
-                        Spacer()
-                        
-                        Text("Registrate")
-                            .font(.system(size: 20, design: .serif))
-                        
-                        Spacer()
-                        
-                        Image(systemName: "arrow.right")
-                    }
-                })
-                .foregroundColor(accountCreation.name == "" ? .gray : .offSecondaryGray)
-                .padding()
-                .frame(height: 70)
-                .background(
-                    Group {
-                        CustomTappedAccountButton5()
-                    }
-                )
-                .padding(.horizontal,22)
-                .padding(.vertical,3)
-                .scaleEffect(CGSize(width: accountCreation.accountImage[0].count == 0 ? 0.0 : 1.0, height:  accountCreation.accountImage[0].count == 0 ? 0.0 : 1.0))
-                    .animation(.spring())
+                        HStack{
+                            
+                            Spacer()
+                            
+                            Text("Registrate")
+                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "arrow.right")
+                                .font(.system(size: 18, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        }
+                    })
+                    .foregroundColor(accountCreation.name == "" ? .gray : .offSecondaryGray)
+                    .padding()
+                    .frame(height: 70)
+                    .background(
+                        Group {
+                            CustomTappedAccountButton5()
+                        }
+                    )
+                    .padding(.horizontal,22)
+                    .padding(.vertical,3)
+                    .scaleEffect(CGSize(width: accountCreation.accountImage[0].count == 0 ? 0.0 : 1.0, height:  accountCreation.accountImage[0].count == 0 ? 0.0 : 1.0))
+                .animation(.spring())
+            }
         }
         .toolbar(content: {
             HStack{
                 Spacer()
                 Button(action: accountCreation.signUp, label: {
                     Text("Skip")
+                        .font(.system(size: 18, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                 })
                 .padding()
             }

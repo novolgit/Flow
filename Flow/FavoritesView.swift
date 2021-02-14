@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var modelData: ModelData
     
     @State var columnsStores = Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)
@@ -21,8 +23,8 @@ struct FavoritesView: View {
             VStack {
                 HStack{
                     Text("Favorite Stores")
-                        .foregroundColor(.offSecondaryGray)
-                        .font(.system(size: 34, weight: .bold, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                        .font(.system(size: 32, weight: .black, design: .serif))
                     Spacer()
                     
                     Button {
@@ -36,14 +38,14 @@ struct FavoritesView: View {
                         }
                     } label: {
                         Image(systemName: self.columnsStores.count == 2 ? "rectangle.grid.2x2" : "rectangle.grid.1x2")
-                            .font(.system(size: 24))
+                            .font(.system(size: 24, weight: .light, design: .serif))
                             .rotationEffect(.degrees(self.columnsStores.count == 2 ? 0 : 360))
-                            .foregroundColor(.offSecondaryGray)
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                     }
                     .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .background(
                         Group {
-                            NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
+                            NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                         }
                     )
                 }
@@ -55,37 +57,45 @@ struct FavoritesView: View {
                     }
                 }
                 .padding(.bottom, 14)
-                Button(action: {
-                    isMoreStores = !isMoreStores
-                }, label: {
-                    Image(systemName: isMoreStores ? "chevron.up" : "chevron.down")
-                        .font(.system(size: 22, weight: .bold, design: .serif))
-                        .foregroundColor(isMoreStores ? .offSecondaryGray : .gray)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        isMoreStores = !isMoreStores
+                    }, label: {
+                        HStack {
+                            Text(!isMoreStores ? "More" : "Less")
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                .font(.system(size: 16, weight: .ultraLight, design: .serif))
+                            Image(systemName: isMoreStores ? "chevron.up" : "chevron.down")
+                                .font(.system(size: 22, weight: .ultraLight, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        }
 
-                })
-                .frame(width: UIScreen.main.bounds.width*0.15, height: 45)
-                .foregroundColor(.gray)
-                .contentShape(RoundedRectangle(cornerRadius: 15.0))
-                .background(
-                    Group {
-                        if !isMoreStores{
-                            Group {
-                                CustomTappedAccountButton3()
-                            }
-                        } else{
-                            Group {
-                                CustomConfirmButtonsView3()
+                    })
+                    .frame(width: UIScreen.main.bounds.width*0.25, height: 45)
+                    .foregroundColor(.gray)
+                    .contentShape(RoundedRectangle(cornerRadius: 15.0))
+                    .background(
+                        Group {
+                            if !isMoreStores{
+                                Group {
+                                    CustomTappedAccountButton3()
+                                }
+                            } else{
+                                Group {
+                                    CustomConfirmButtonsView3()
+                                }
                             }
                         }
-                    }
                 )
+                }
             }
             .padding()
             VStack {
                 HStack{
                     Text("Favorite Flowers")
-                        .foregroundColor(.offSecondaryGray)
-                        .font(.system(size: 34, weight: .bold, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                        .font(.system(size: 32, weight: .black, design: .serif))
                     Spacer()
                     
                     Button {
@@ -100,13 +110,13 @@ struct FavoritesView: View {
                     } label: {
                         Image(systemName: self.columnsFlowers.count == 2 ? "rectangle.grid.2x2" : "rectangle.grid.1x2")
                             .rotationEffect(.degrees(self.columnsFlowers.count == 2 ? 0 : 360))
-                            .font(.system(size: 24))
-                            .foregroundColor(.offSecondaryGray)
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                            .font(.system(size: 24, weight: .light, design: .serif))
                     }
                     .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .background(
                         Group {
-                            NeuButtonsView2(radius: 100, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
+                            NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
                         }
                     )
                 }
@@ -117,34 +127,42 @@ struct FavoritesView: View {
                     }
                 }
                 .padding(.bottom, 14)
-                Button(action: {
-                    isMoreFlowers = !isMoreFlowers
-                }, label: {
-                    Image(systemName: isMoreFlowers ? "chevron.up" : "chevron.down")
-                        .font(.system(size: 22, weight: .bold, design: .serif))
-                        .foregroundColor(isMoreFlowers ? .offSecondaryGray : .gray)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        isMoreFlowers = !isMoreFlowers
+                    }, label: {
+                        HStack {
+                            Text(!isMoreFlowers ? "More" : "Less")
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                .font(.system(size: 16, weight: .ultraLight, design: .serif))
+                            Image(systemName: isMoreFlowers ? "chevron.up" : "chevron.down")
+                                .font(.system(size: 22, weight: .ultraLight, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        }
 
-                })
-                .frame(width: UIScreen.main.bounds.width*0.15, height: 45)
-                .foregroundColor(.gray)
-                .contentShape(RoundedRectangle(cornerRadius: 15.0))
-                .background(
-                    Group {
-                        if !isMoreFlowers{
-                            Group {
-                                CustomTappedAccountButton3()
-                            }
-                        } else{
-                            Group {
-                                CustomConfirmButtonsView3()
+                    })
+                    .frame(width: UIScreen.main.bounds.width*0.25, height: 45)
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                    .contentShape(RoundedRectangle(cornerRadius: 15.0))
+                    .background(
+                        Group {
+                            if !isMoreFlowers{
+                                Group {
+                                    CustomTappedAccountButton3()
+                                }
+                            } else{
+                                Group {
+                                    CustomConfirmButtonsView3()
+                                }
                             }
                         }
-                    }
                 )
+                }
             }
             .padding()
             }
-        .background(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
+        .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
         .navigationBarTitle("Favorites", displayMode: .inline)
         }
     }

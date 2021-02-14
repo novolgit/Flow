@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct AccountView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @StateObject var accountCreation = AccountCreationViewModel()
     
-    @AppStorage("log_Status") var userStatus = false
-    @AppStorage("current_user") var userName = ""
-    @AppStorage("current_phone") var userPhone = ""
-    @AppStorage("current_bonuses") var userBonuses = 0
-    @AppStorage("current_bio") var userBio = ""
-    @AppStorage("current_image") var userImage = ""
+    @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+    @State var userName = UserDefaults.standard.value(forKey: "userName") as? String ?? "Account"
+    @State var userBonuses = UserDefaults.standard.value(forKey: "userBonuses") as? Int ?? 0
+    @State var userPhone = UserDefaults.standard.value(forKey: "userPhNumber") as? String ?? ""
+    @State var userImage = UserDefaults.standard.value(forKey: "userImage") as? Array<Any> ?? [0]
+//    @AppStorage("userStatus") var userStatus = false
+//    @AppStorage("current_user") var userName = ""
+//    @AppStorage("current_phone") var userPhone = ""
+//    @AppStorage("current_bonuses") var userBonuses = 0
+//    @AppStorage("current_bio") var userBio = ""
+//    @AppStorage("current_image") var userImage = ""
     
     @State private var currentAmount: CGFloat = 0
     @State private var finalAmount: CGFloat = 1
@@ -33,11 +40,11 @@ struct AccountView: View {
                                     destination: BonusView(accountBonuses: accountCreation.bonuses)){
                                     VStack {
                                         Text("\(userBonuses)")
-                                            .font(.system(size: 30, design: .serif))
-                                            .foregroundColor(.gray)
+                                            .font(.system(size: 30, weight: .regular, design: .serif))
+                                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         Text("Bonuses")
-                                            .font(.system(size: 20, design: .serif))
-                                            .foregroundColor(.gray)
+                                            .font(.system(size: 20, weight: .light, design: .serif))
+                                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                     }
                                     .frame(width:130, height: 130)
                                     .background(
@@ -49,12 +56,13 @@ struct AccountView: View {
                                 Spacer()
                                 VStack{
                                     
-                                    if userStatus {
-                                    if accountCreation.accountImage[0].count == 0 {
+                                    if status {
+                                        if userImage.isEmpty {
                                         ZStack {
                                             Image(systemName: "plus.circle")
                                                 .resizable()
-                                                .foregroundColor(.gray)
+                                                .font(.system(size: 30, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                                 .frame(width: 60/2, height: 60/2)
                                                 .frame(width:130/2, height: 130/2)
                                                 .offset(x: accountCreation.pageNumber != 2 ? 30 : 0, y: accountCreation.pageNumber != 2 ? -30 : 0)
@@ -62,7 +70,8 @@ struct AccountView: View {
                                                 .animation(.spring())
                                             Image(systemName: "person")
                                                 .resizable()
-                                                .foregroundColor(.gray)
+                                                .font(.system(size: 30, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                                 .frame(width: 60, height: 60)
                                                 .frame(width:130, height: 130)
                                         }
@@ -75,17 +84,24 @@ struct AccountView: View {
                                             accountCreation.picker.toggle()}
                                     }
                                     else{
-                                        Image("120x120")
+                                        Image("\(userImage[0])")
                                             .resizable()
                                             .clipShape(Circle())
-                                            .frame(width:200, height: 200)
+                                            .frame(width:120, height: 120)
+                                            .frame(width:130, height: 130)
+                                            .background(
+                                                Group {
+                                                    CustomAccountButtonsView()
+                                                }
+                                            )
                                             .onTapGesture {
                                                 accountCreation.picker.toggle()}
                                     }
                                 } else {
                                     Image(systemName: "person")
                                         .resizable()
-                                        .foregroundColor(.gray)
+                                        .font(.system(size: 30, weight: .light, design: .serif))
+                                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         .frame(width: 60, height: 60)
                                         .frame(width:130, height: 130)
                                         .background(
@@ -100,7 +116,7 @@ struct AccountView: View {
                             .frame(width: UIScreen.main.bounds.width*0.90, height: UIScreen.main.bounds.height*0.25)
                             .background(
                                 Group {
-                                    NeuButtonsView2(radius: 25, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                                    NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                                 }
                             )
                             ZStack{}.frame(height:10)
@@ -110,14 +126,17 @@ struct AccountView: View {
                                         destination: SettingsView(accountName: userName, accountPhone: userPhone)){
                                         VStack{
                                             Image(systemName: "gearshape.2")
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                             Text("Settings")
-                                                .font(.system(size: 16, design: .serif))
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         }
                                                                             .frame(width: UIScreen.main.bounds.width*0.312, height: 135)
                                         .contentShape(RoundedRectangle(cornerRadius: 20.0))
                                         .background(
                                             Group {
-                                                NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
+                                                NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
                                             }
                                         )
                                     }
@@ -125,76 +144,90 @@ struct AccountView: View {
                                         destination: AboutUsView()){
                                         VStack{
                                             Image(systemName: "archivebox")
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                             Text("History")
-                                                .font(.system(size: 16, design: .serif))
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         }
                                     }
                                     .frame(width: UIScreen.main.bounds.width*0.312, height: 135)
                                     .contentShape(RoundedRectangle(cornerRadius: 20.0))
                                     .background(
                                         Group {
-                                            NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
+                                            NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
                                         }
                                     )
                                     NavigationLink(
                                         destination: AboutUsView()){
                                         VStack{
                                             Image(systemName: "person.2")
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                             Text("About us")
-                                                .font(.system(size: 16, design: .serif))
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         }
                                     }
                                     .frame(width: UIScreen.main.bounds.width*0.312, height: 135)
                                     .contentShape(RoundedRectangle(cornerRadius: 20.0))
                                     .background(
                                         Group {
-                                            NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
+                                            NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
                                         }
                                     )
                                     NavigationLink(
                                         destination: PromoView()){
                                         VStack{
                                             Image(systemName: "gift")
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                             Text("Promo")
-                                                .font(.system(size: 16, design: .serif))
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         }
                                     }
                                     .frame(width: UIScreen.main.bounds.width*0.312, height: 135)
                                     .contentShape(RoundedRectangle(cornerRadius: 20.0))
                                     .background(
                                         Group {
-                                            NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
+                                            NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
                                         }
                                     )
                                     NavigationLink(
                                         destination: PromoView()){
                                         VStack{
                                             Image(systemName: "star")
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                             Text("Favorites")
-                                                .font(.system(size: 16, design: .serif))
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         }
                                     }
                                     .frame(width: UIScreen.main.bounds.width*0.312, height: 135)
                                     .contentShape(RoundedRectangle(cornerRadius: 20.0))
                                     .background(
                                         Group {
-                                            NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
+                                            NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
                                         }
                                     )
                                     NavigationLink(
                                         destination: PromoView()){
                                         VStack{
                                             Text("F")
-                                                .font(.system(size: 18, weight: .bold, design: .serif))
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                             Text("Rate Us")
-                                                .font(.system(size: 16, design: .serif))
+                                                .font(.system(size: 18, weight: .light, design: .serif))
+                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         }
                                     }
                                     .frame(width: UIScreen.main.bounds.width*0.312, height: 135)
                                     .contentShape(RoundedRectangle(cornerRadius: 20.0))
                                     .background(
                                         Group {
-                                            NeuButtonsView2(radius: 20, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
+                                            NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
                                         }
                                     )
                                 }
@@ -204,7 +237,7 @@ struct AccountView: View {
                             .frame(width: UIScreen.main.bounds.width*0.90)
                             .background(
                                 Group {
-                                    NeuButtonsView2(radius: 25, whiteColorOpacity: Color.white.opacity(0.7), blackColorOpacity: Color.black.opacity(0.2), shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                                    NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                                 }
                                 )
                             ZStack{}.frame(height:20)
@@ -216,27 +249,38 @@ struct AccountView: View {
                             .frame(width: UIScreen.main.bounds.width*0.90)
                         }
                         .padding()
-                        .navigationBarTitle(userStatus ? userName : "Account" , displayMode: .inline)
+                        .navigationBarTitle(status ? userName : "Account", displayMode: .inline)
                         .toolbar(content: {
-                            if !userStatus {
+                            if !status {
                             NavigationLink(
                                 destination: LoginView(),
                                 label: {
                                     Text("Sign In")
+                                        
                                 })
                             } else {
                             Button(
                                 action: accountCreation.signOut,
                                 label: {
                                     Text("Sign Out")
+                                        
                                 })
                             }
                         })
                     }
-                    .background(LinearGradient(Color.offGrayLinearStart, Color.offGrayLinearEnd))
-                    .onAppear() {
-                        self.accountCreation.subscribe()
-                    }
+                    .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
+                    .onAppear {
+                                  
+                                  NotificationCenter.default.addObserver(forName: NSNotification.Name("statusChange"), object: nil, queue: .main) { (_) in
+                                      
+                                     let status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+                                         
+                                      self.status = status
+                                  }
+                              }
+//                    .onAppear() {
+//                        self.accountCreation.subscribe()
+//                    }
     }
 }
 

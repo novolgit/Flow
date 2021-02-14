@@ -14,6 +14,8 @@ struct Store: Codable, Identifiable {
     var city, hours, description, name, image, phone: String
     var id: Int
     var rating: Int
+    var textColor: String
+    var days: String
     private var coordinates: Coordinates
     var locationCoordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(
