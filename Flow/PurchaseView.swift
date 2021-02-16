@@ -24,6 +24,8 @@ struct PurchaseView: View {
                     HStack{
                         Spacer()
                         Image(systemName: "hand.draw")
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                            .font(.system(size: 20, weight: .light, design: .serif))
                             .rotation3DEffect(
                                 .degrees(180),
                                 axis: (x: 0.0, y: 1.0, z: 0.0)
@@ -36,7 +38,7 @@ struct PurchaseView: View {
                             sortByNameList()[0..<3]
 //                                    : sortByPriceList()
                         ) { flower in
-                            RowContentView(flower: $modelData.flowers[getIndex(flower: flower)],flowers: $modelData.flowers, isSet: $modelData.flowers[getIndex(flower: flower)].isSelected)
+                            RowContentView(flower: $modelData.flowers[getIndex(flower: flower)],flowers: $modelData.flowers, isSet: $modelData.flowers[getIndex(flower: flower)].isPurchase)
                                 .frame(height: 85)
                                 .padding(14)
                         }
@@ -55,7 +57,7 @@ struct PurchaseView: View {
                                                         .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
                                                 }
                                                })
-                                    .frame(width: UIScreen.main.nativeBounds.width * 0.225, height: UIScreen.main.nativeBounds.height * 0.06)
+                                    .frame(width: UIScreen.main.nativeBounds.width * 0.225, height: UIScreen.main.nativeBounds.height * 0.05)
                                     .background(
                                         Group {
                                                     CustomConfirmButtonsView3()
@@ -98,6 +100,8 @@ struct PurchaseView: View {
                         })
                         Button("Color", action: {})
                     }
+                    .font(.system(size: 20, weight: .light, design: .serif))
+                    .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
                 }
             )
         }
@@ -122,7 +126,7 @@ struct PurchaseView: View {
         var price : Double = 0
         
         modelData.flowers.forEach { (flower) in
-            if flower.isSelected {
+            if flower.isPurchase {
                 price += Double(flower.price)
             }
         }
@@ -132,15 +136,15 @@ struct PurchaseView: View {
     
     func detectChoose()->Bool{
         
-        var isSelected : Bool = false
+        var isPurchase : Bool = false
         
         modelData.flowers.forEach { (flower) in
-            if flower.isSelected {
-                isSelected = true
+            if flower.isPurchase {
+                isPurchase = true
             }
         }
         
-        return isSelected
+        return isPurchase
     }
     
     func getIndex(flower: Flower)->Int{
@@ -155,5 +159,6 @@ struct BinView_Previews: PreviewProvider {
     static var previews: some View {
         PurchaseView()
             .environmentObject(ModelData())
+            .preferredColorScheme(.dark)
     }
 }

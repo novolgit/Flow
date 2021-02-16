@@ -10,9 +10,16 @@ import SwiftUI
 struct FlowerDetail: View {
     @Environment(\.colorScheme) var colorScheme
     
+    @EnvironmentObject var modelData: ModelData
+    
     var flowerDetail: Flower
     
+    var flowerIndex: Int {
+        modelData.flowers.firstIndex(where: { $0.id == flowerDetail.id })!
+    }
+    
     var body: some View {
+        GeometryReader { geometry in
         VStack {
             ZStack{
                 Image(flowerDetail.image)
@@ -25,33 +32,17 @@ struct FlowerDetail: View {
                             CustomAccountButtonsView3()
                         }
                     )
-                    .offset(y: 10)
+                    .offset(y: geometry.size.height * 0.1)
                 Text(flowerDetail.name)
                     .lineLimit(3)
                     .multilineTextAlignment(.center)
                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                     .font(.system(size: 25, weight: .black, design: .serif))
-                    .offset(y: 10)
+                    .offset(y: geometry.size.height * 0.1)
                     .padding(80)
-                Button(action: {
-                    
-                }, label: {
-                    ZStack {
-                        Image(systemName: "heart.fill")
-                            .resizable()
-                            .frame(width: 38, height: 36)
-                            .foregroundColor(colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray)
-                            .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
-                            .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
-                        Image(systemName: "heart")
-                            .resizable()
-                            .font(.system(size: 10, weight: .ultraLight, design: .serif))
-                            .frame(width: 38, height: 36)
-                            .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.1) : Color.offSecondaryGray.opacity(0.1))
-                    }
-                        
-                })
-                .offset(x: 160, y: -130)
+                FlowerCustomButtonStyle(isSet: $modelData.flowers[flowerIndex].isSelected, size: 35)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0))
+                    .offset(x: geometry.size.width * 0.4, y: -geometry.size.height * 0.1)
             }
             VStack{
                 ZStack{
@@ -66,10 +57,10 @@ struct FlowerDetail: View {
                             NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2.5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                         }
                     )
-                    .offset(x: 125)
+                    .offset(x: geometry.size.width * 0.35)
                     .padding()
                 }
-                .offset(y: -58)
+                .offset(x: -geometry.size.width * 0.05, y: -geometry.size.height * 0.055)
                 VStack(alignment: .leading) {
                     Text("Some about \(flowerDetail.name)")
                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
@@ -81,7 +72,7 @@ struct FlowerDetail: View {
                         .font(.system(size: 18, weight: .regular, design: .serif))
                     Spacer()
                 }
-                .offset(y: -100)
+                .offset(y: -geometry.size.width * 0.25)
             }
             .padding()
             .background(
@@ -89,10 +80,11 @@ struct FlowerDetail: View {
                     NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
                 }
             )
-            .offset(y: 20)
+            .offset(y: geometry.size.height * 0.1)
             .frame(height: 300)
 //            .frame(width: UIScreen.main.bounds.width)
             .padding()
+        }
         }
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         .navigationBarTitle(flowerDetail.name, displayMode: .inline)
@@ -103,6 +95,7 @@ struct FlowerDetail: View {
 struct FlowerDetail_Previews: PreviewProvider {
     static var previews: some View {
         FlowerDetail(flowerDetail: ModelData().flowers[80])
+            .environmentObject(ModelData())
             .preferredColorScheme(.dark)
             .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
             .previewDisplayName("iPhone 8")

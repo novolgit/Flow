@@ -23,7 +23,7 @@ struct TopStoresTabView: View {
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                         Spacer()
                         NavigationLink(
-                            destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
+                            destination: StoreDetail(store: store, coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
                             label: {
                                     Image(systemName: "ellipsis")
                             })

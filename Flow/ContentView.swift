@@ -14,11 +14,11 @@ extension Color {
         Scanner(string: hex).scanHexInt64(&int)
         let a, r, g, b: UInt64
         switch hex.count {
-        case 3: // RGB (12-bit)
+        case 3:
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
+        case 6:
             (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
+        case 8:
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
             (a, r, g, b) = (1, 1, 1, 0)
@@ -36,7 +36,6 @@ extension Color {
 
 
 extension Color {
-    
     //lightMode
     static let offWhite = Color.init(hex: "#ffffff")
     static let offGray = Color(#colorLiteral(red: 0.9215686275, green: 0.937254902, blue: 0.9490196078, alpha: 1))
@@ -56,6 +55,15 @@ extension Color {
     
     static let offGrayLinearStartDark = Color(#colorLiteral(red: 0.07843137255, green: 0.09411764706, blue: 0.1058823529, alpha: 1))
     static let offGrayLinearEndDark = Color(#colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1))
+    
+    //red
+    static let redd = Color.init(hex: "#9a151a")
+    static let reddDark = Color.init(hex: "#9a151a")
+//    static let reddDark = Color.init(hex: "#fc5d3f")
+    
+    //yellow
+    static let yelloww = Color.init(hex: "#ffd200")
+    static let yellowwDark = Color.init(hex: "#fce185")
 }
 
 extension LinearGradient {
@@ -118,7 +126,7 @@ struct ContentView: View {
             }
             .accentColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
             ZStack {
-                Image("120x120_clear")
+                Image("launch")
                     .resizable()
                     .renderingMode(.original)
                     .aspectRatio(contentMode: animate ? .fill : .fit)
@@ -147,5 +155,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().preferredColorScheme(.dark)
             .environmentObject(ModelData())
+        
     }
 }

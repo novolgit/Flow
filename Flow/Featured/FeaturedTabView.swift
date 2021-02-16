@@ -30,6 +30,7 @@ struct FeaturedTabView: View {
                         .resizable()
                         .frame(width: 180, height: 180)
                         .clipShape(Circle())
+                        .aspectRatio(contentMode: .fit)
                         .frame(width: 180, height: 180)
                         .background(
                             Group {
@@ -39,7 +40,7 @@ struct FeaturedTabView: View {
                         .padding(.trailing, 10)
                 }
 //                            .padding()
-                .frame(width: UIScreen.main.bounds.width*0.90, height: self.index == flower.id ? UIScreen.main.bounds.height*0.30 : UIScreen.main.bounds.height*0.28)
+                .frame(maxWidth: UIScreen.main.bounds.width*0.90, maxHeight: UIScreen.main.bounds.height*0.30)
                 
             }
             .background(
@@ -49,7 +50,6 @@ struct FeaturedTabView: View {
             )
             .padding()
         }
-        .animation(.easeInOut(duration: 0.3))
     }
 }
 

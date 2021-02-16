@@ -16,6 +16,21 @@ struct FavoritesView: View {
     @State var columnsFlowers = Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)
     @State var isMoreStores = false
     @State var isMoreFlowers = false
+    @State private var showFavoritesFlowerOnly = false
+    @State private var showFavoritesStoreOnly = false
+    @State var flowerID = Flower.ID()
+    
+    var filteredStores: [Store] {
+        modelData.stores.filter { store in
+            (showFavoritesStoreOnly || store.isSelected)
+        }
+    }
+    
+    var filteredFlowers: [Flower] {
+        modelData.flowers.filter { flower in
+            (showFavoritesFlowerOnly || flower.isSelected)
+        }
+    }
 
     var body: some View {
         NavigationView{
@@ -25,8 +40,7 @@ struct FavoritesView: View {
                     Text("Favorite Stores")
                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                         .font(.system(size: 28, weight: .black, design: .serif))
-                    Spacer()
-                    
+                    Spacer() 
                     Button {
                         withAnimation(.spring()){
                             if self.columnsStores.count == 2{
@@ -42,7 +56,7 @@ struct FavoritesView: View {
                             .rotationEffect(.degrees(self.columnsStores.count == 2 ? 0 : 360))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                     }
-                    .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: 50, height: 50)
                     .background(
                         Group {
                             NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
@@ -51,21 +65,74 @@ struct FavoritesView: View {
                 }
                 .padding(.horizontal)
                 .padding(.top,25)
-                LazyVGrid(columns: self.columnsStores,spacing: 25){
-                    ForEach(modelData.stores[isMoreStores ? 0..<5 : 0..<2]){store in
-                        StoreGridView(columns: self.$columnsStores, store: store)
+                if filteredStores.isEmpty {
+                    VStack {
+                        Text("You haven't Favorite Stores yet...")
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                            .font(.system(size: 20, weight: .regular, design: .serif))
+                            .padding()
+                        HStack {
+                            Spacer()
+                            HStack {
+                                NavigationLink(
+                                    destination: StoresDetailView(),
+                                    label: {
+                                        Text("See all Stores")
+                                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                            .font(.system(size: 20, weight: .light, design: .serif))
+                                })
+                            Image(systemName: "arrow.right")
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                .font(.system(size: 20, weight: .ultraLight, design: .serif))
+                            }
+                            .padding()
+                            .frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.1)
+                            .background(
+                                Group {
+                                            CustomConfirmButtonsView3()
+                                    }
+                            )
+                        }
                     }
+                    .padding()
+                } else {
+                    LazyVGrid(columns: self.columnsStores,spacing: 25){
+                        ForEach(filteredStores[isMoreStores ? 0..<filteredStores.count : filteredStores.count == 1 ? 0..<1 : 0..<2]){store in
+                            StoreGridView(columns: self.$columnsStores, store: store)
+                        }
+                    }
+                    .padding(.bottom, 14)
+                    .animation(.spring())
                 }
-                .padding(.bottom, 14)
+                if !filteredStores.isEmpty {
                 HStack {
+                    HStack {
+                        NavigationLink(
+                            destination: StoresDetailView(),
+                            label: {
+                                Text("More stores")
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                    .font(.system(size: 16, weight: .light, design: .serif))
+                        })
+                    Image(systemName: "arrow.right")
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        .font(.system(size: 22, weight: .ultraLight, design: .serif))
+                    }
+                    .padding()
+                    .frame(height: 45)
+                    .background(
+                        Group {
+                                CustomTappedAccountButton4()
+                            }
+                )
                     Spacer()
                     Button(action: {
                         isMoreStores = !isMoreStores
                     }, label: {
                         HStack {
-                            Text(!isMoreStores ? "More" : "Less")
+                            Text(!isMoreStores ? "All" : "Less")
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                .font(.system(size: 16, weight: .ultraLight, design: .serif))
+                                .font(.system(size: 16, weight: .light, design: .serif))
                             Image(systemName: isMoreStores ? "chevron.up" : "chevron.down")
                                 .font(.system(size: 22, weight: .ultraLight, design: .serif))
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
@@ -73,7 +140,7 @@ struct FavoritesView: View {
 
                     })
                     .frame(width: UIScreen.main.bounds.width*0.25, height: 45)
-                    .foregroundColor(.gray)
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .background(
                         Group {
                             if !isMoreStores{
@@ -87,6 +154,8 @@ struct FavoritesView: View {
                             }
                         }
                 )
+                }
+                .padding()
                 }
             }
             .padding()
@@ -112,7 +181,7 @@ struct FavoritesView: View {
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                             .font(.system(size: 24, weight: .light, design: .serif))
                     }
-                    .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: 50, height: 50)
                     .background(
                         Group {
                             NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1.125, xBlack: 2.5, yBlack: 2.5, xWhite: -1.125, yWhite: -1.125)
@@ -120,19 +189,72 @@ struct FavoritesView: View {
                     )
                 }
                 .padding(.horizontal)
-                LazyVGrid(columns: self.columnsFlowers,spacing: 25){
-                    ForEach(modelData.flowers[isMoreFlowers ? 0..<5 : 0..<2]){flower in
-                        FlowerGridView(columns: self.$columnsFlowers, flower: flower)
+                if filteredFlowers.isEmpty {
+                    VStack {
+                        Text("You haven't Favorite Flowers yet...")
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                            .font(.system(size: 20, weight: .regular, design: .serif))
+                            .padding()
+                        HStack {
+                            Spacer()
+                            HStack {
+                                NavigationLink(
+                                    destination: AssortmentDetailsView(),
+                                    label: {
+                                        Text("See all Flowers")
+                                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                            .font(.system(size: 20, weight: .light, design: .serif))
+                                })
+                            Image(systemName: "arrow.right")
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                .font(.system(size: 20, weight: .ultraLight, design: .serif))
+                            }
+                            .padding()
+                            .frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.1)
+                            .background(
+                                Group {
+                                            CustomConfirmButtonsView3()
+                                    }
+                        )
+                        }
                     }
+                    .padding()
+                } else {
+                    LazyVGrid(columns: self.columnsFlowers,spacing: 25){
+                        ForEach(filteredFlowers[isMoreFlowers ? 0..<filteredFlowers.count : filteredFlowers.count == 1 ? 0..<1 : 0..<2]){flower in
+                            FlowerGridView(columns: self.$columnsFlowers, flower: flower)
+                        }
+                    }
+                    .padding(.bottom, 14)
+                    .animation(.spring())
                 }
-                .padding(.bottom, 14)
+                if !filteredFlowers.isEmpty {
                 HStack {
+                    HStack {
+                        NavigationLink(
+                            destination: AssortmentDetailsView(),
+                            label: {
+                                Text("More flowers")
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                    .font(.system(size: 16, weight: .light, design: .serif))
+                        })
+                    Image(systemName: "arrow.right")
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        .font(.system(size: 22, weight: .ultraLight, design: .serif))
+                    }
+                    .padding()
+                    .frame(height: 45)
+                    .background(
+                        Group {
+                                CustomTappedAccountButton4()
+                            }
+                )
                     Spacer()
                     Button(action: {
                         isMoreFlowers = !isMoreFlowers
                     }, label: {
                         HStack {
-                            Text(!isMoreFlowers ? "More" : "Less")
+                            Text(!isMoreFlowers ? "All" : "Less")
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                 .font(.system(size: 16, weight: .ultraLight, design: .serif))
                             Image(systemName: isMoreFlowers ? "chevron.up" : "chevron.down")
@@ -157,6 +279,8 @@ struct FavoritesView: View {
                         }
                 )
                 }
+                .padding()
+            }
             }
             .padding()
             }
@@ -170,5 +294,7 @@ struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {
         FavoritesView()
             .environmentObject(ModelData())
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+            .previewDisplayName("iPhone 8")
     }
 }

@@ -12,6 +12,7 @@ struct Flower: Codable, Identifiable {
     var descriptions, image, name: String
     var id: Int
     var isSelected: Bool
+    var isPurchase: Bool
     var flower: String
     var group, subGroup: String?
 }

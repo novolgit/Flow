@@ -100,7 +100,7 @@ struct ConfirmPage2View: View {
                     .contentShape(RoundedRectangle(cornerRadius: 15.0))
                     .background(
                         Group {
-                            if !isTap{
+                            if isTap{
                                 Group {
                                     CustomTappedAccountButton3()
                                 }
@@ -130,7 +130,7 @@ struct ConfirmPage2View: View {
                     .contentShape(RoundedRectangle(cornerRadius: 15.0))
                     .background(
                         Group {
-                            if isTap{
+                            if !isTap{
                                 Group {
                                     CustomTappedAccountButton3()
                                 }
@@ -151,7 +151,7 @@ struct ConfirmPage2View: View {
 //                            .foregroundColor(addresEmpty ? Color.red : Color.black)
                         Image(systemName: "location")
                             .font(.system(size: 20, weight: .light, design: .serif))
-                            .foregroundColor(addresEmpty ? Color.red : .offSecondaryGray)
+                            .foregroundColor(addresEmpty ? Color.redd : .offSecondaryGray)
                             .scaleEffect(!addresEmpty ? 1 : 1.25)
                             TextField("addres", text: $addres)
                                 .font(.system(size: 20, weight: .light, design: .serif))
@@ -277,7 +277,7 @@ struct ConfirmPage2View: View {
 //                        Text("Phone")
 //                            .font(.system(size: 20, design: .serif))
                         Image(systemName: "phone")
-                            .foregroundColor(addresEmpty ? Color.red : Color.black)
+                            .foregroundColor(addresEmpty ? Color.redd : Color.black)
                         TextField("phone", text: $phone)
                             .font(.system(size: 20, design: .serif))
                             .keyboardType(.decimalPad)

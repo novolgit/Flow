@@ -21,6 +21,8 @@ struct FeaturedView: View {
     
     @State var featuredIndex = 1
     @State var topStoresIndex = 1
+    
+    @State var CImage = UserDefaults.standard.value(forKey: "CImage") as? UIImage ?? nil
     //    @State var account: AccountFirebase?
     
     var chart: Chart
@@ -36,13 +38,22 @@ struct FeaturedView: View {
                 VStack {
                     VStack{}.frame(height: 30)
                     HStack {
+//                        Button(action: {
+//                            takeScreenshot()
+//                        }, label: {
+//                            Text("Button")
+//                        })
                         Text("Featured")
                             .font(.system(size: 28, weight: .black, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                         Spacer()
-                        Image(systemName: "tablecells")
-                            .font(.system(size: 18, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        Image(systemName: "hand.draw")
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                            .font(.system(size: 20, weight: .light, design: .serif))
+                            .rotation3DEffect(
+                                .degrees(180),
+                                axis: (x: 0.0, y: 1.0, z: 0.0)
+                            )
                     }
                     .padding(.horizontal)
                     FeaturedTabView(index: featuredIndex)
@@ -55,7 +66,7 @@ struct FeaturedView: View {
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Spacer()
                         Image(systemName: "hand.tap")
-                            .font(.system(size: 18, weight: .light, design: .serif))
+                            .font(.system(size: 20, weight: .light, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     }
                     .padding(.horizontal)
@@ -66,7 +77,7 @@ struct FeaturedView: View {
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Spacer()
                         Image(systemName: "scroll")
-                            .font(.system(size: 18, weight: .light, design: .serif))
+                            .font(.system(size: 20, weight: .light, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     }
                     .padding(.horizontal)
@@ -78,7 +89,7 @@ struct FeaturedView: View {
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         Spacer()
                         Image(systemName: "tablecells")
-                            .font(.system(size: 18, weight: .light, design: .serif))
+                            .font(.system(size: 20, weight: .light, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     }
                     .padding(.horizontal)
@@ -108,7 +119,9 @@ struct FeaturedView: View {
                                             
                                         }
                                         else {
-                                            Image(systemName: "person.circle")
+                                            Image(uiImage: loadImageFromDiskWith(fileName: "profileImage.jpg") ?? UIImage(named: "120x120_clear")!)
+                                                .resizable()
+                                                .clipShape(Circle())
                                                 .font(.system(size: 18, weight: .light, design: .serif))
                                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                                 
@@ -127,14 +140,41 @@ struct FeaturedView: View {
         }
         
     }
+//    func takeScreenshot(shouldSave: Bool = true) -> UIImage? {
+//        print("takeScreenshot")
+//        var screenshotImage :UIImage?
+//        let layer = UIApplication.shared.keyWindow!.layer
+//        let scale = UIScreen.main.scale
+//        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+//        guard let context = UIGraphicsGetCurrentContext() else {return nil}
+//        layer.render(in:context)
+//        screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        UserDefaults.standard.set(screenshotImage, forKey: "CImage")
+//        print(screenshotImage)
+//        return screenshotImage
+//    }
+    
+    func loadImageFromDiskWith(fileName: String) -> UIImage? {
+
+      let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+
+        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+
+        if let dirPath = paths.first {
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+            let image = UIImage(contentsOfFile: imageUrl.path)
+            return image
+
+        }
+
+        return nil
+    }
 }
 
 struct FeaturedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedView(chart: ModelData().charts[0]).preferredColorScheme(.dark)
-            .environmentObject(ModelData())
-            .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
-            .previewDisplayName("iPhone 11")
         FeaturedView(chart: ModelData().charts[0]).preferredColorScheme(.dark)
             .environmentObject(ModelData())
             .previewDevice(PreviewDevice(rawValue: "iPhone 8"))

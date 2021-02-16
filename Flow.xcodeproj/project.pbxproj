@@ -24,6 +24,7 @@
 		2F261D55259CF23200A2507D /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F261D54259CF23200A2507D /* PurchaseView.swift */; };
 		2F261D58259CF8EB00A2507D /* ConstructorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F261D57259CF8EB00A2507D /* ConstructorView.swift */; };
 		2F302C4225B9FDDC00530E19 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F302C4125B9FDDC00530E19 /* AccountSettingsView.swift */; };
+		2F310A2925DAAD660003BA90 /* StoresDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F310A2825DAAD660003BA90 /* StoresDetailView.swift */; };
 		2F33A23925B4CFB5000E92E6 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F33A23825B4CFB5000E92E6 /* SceneKitView.swift */; };
 		2F447FB3259D791400019EA6 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F447FB2259D791400019EA6 /* ConfirmView.swift */; };
 		2F45380125C4CC13001B57F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F45380025C4CC13001B57F4 /* GoogleService-Info.plist */; };
@@ -96,6 +97,7 @@
 		2F261D54259CF23200A2507D /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
 		2F261D57259CF8EB00A2507D /* ConstructorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorView.swift; sourceTree = "<group>"; };
 		2F302C4125B9FDDC00530E19 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		2F310A2825DAAD660003BA90 /* StoresDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresDetailView.swift; sourceTree = "<group>"; };
 		2F33A23825B4CFB5000E92E6 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 		2F447FB2259D791400019EA6 /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		2F45380025C4CC13001B57F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -254,8 +256,9 @@
 			isa = PBXGroup;
 			children = (
 				2F65C90625AC59E70009A74A /* StoreDetail.swift */,
-				2F0DD38725B33B9700081A93 /* AssortmentDetailsView.swift */,
 				2F18EB4825C474DF00206355 /* FlowerDetail.swift */,
+				2F0DD38725B33B9700081A93 /* AssortmentDetailsView.swift */,
+				2F310A2825DAAD660003BA90 /* StoresDetailView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F69183525BA537000F700AD /* IndicatorView.swift in Sources */,
+				2F310A2925DAAD660003BA90 /* StoresDetailView.swift in Sources */,
 				2F79519725AB823F00517E73 /* BonusView.swift in Sources */,
 				2F59065E25ABC66400686CFA /* StoreListData.swift in Sources */,
 				2F261D55259CF23200A2507D /* PurchaseView.swift in Sources */,
@@ -709,7 +713,7 @@
 				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.821.27;
+				CURRENT_PROJECT_VERSION = 2.821.29;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;
@@ -737,7 +741,7 @@
 				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.821.27;
+				CURRENT_PROJECT_VERSION = 2.821.29;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;

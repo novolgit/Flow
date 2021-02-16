@@ -22,7 +22,7 @@ struct AccountSettingsView: View {
                         .foregroundColor(.gray)
                     Text(accountName)
                         .font(.system(size: 20, design: .serif))
-                        .foregroundColor(.red)
+                        .foregroundColor(.redd)
                 }
                 Spacer()
             }

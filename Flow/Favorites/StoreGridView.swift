@@ -19,9 +19,17 @@ struct StoreGridView: View {
     
     @Namespace private var namespace
     
+    @State private var showFavoritesOnly = false
+    @State var flowerID = Flower.ID()
+    
     var store : Store
+    
     var frame: CGFloat {
-        columns.count == 2  ? UIScreen.main.nativeBounds.width * 0.19 : UIScreen.main.nativeBounds.width * 0.195
+        columns.count == 2 ? UIScreen.main.bounds.width * 0.38 : UIScreen.main.bounds.width * 0.4
+    }
+    
+    var storeIndex: Int {
+        modelData.stores.firstIndex(where: { $0.id == store.id })!
     }
 
     var body: some View {
@@ -30,11 +38,7 @@ struct StoreGridView: View {
                     ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top))  {
                         Button {
                         } label: {
-                            Image(systemName: "heart.fill")
-                                .resizable()
-                                .frame(width: frame * 0.17, height: frame * 0.15)
-                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                                .font(.system(size: 20, weight: .ultraLight, design: .serif))
+                            FavoriteStoreButton(isSet: $modelData.stores[storeIndex].isSelected, width: 26, height: 24)
                         }
                         .frame(width: frame * 0.225, height: frame * 0.225)
                         .background(
@@ -47,7 +51,7 @@ struct StoreGridView: View {
                     VStack{
                         HStack{
                         NavigationLink(
-                            destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
+                            destination: StoreDetail(store: store, coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
                             label: {
                                 HStack {
                                     Image(systemName: "ellipsis")
@@ -126,7 +130,7 @@ struct StoreGridView: View {
                     VStack{
                         HStack {
                             NavigationLink(
-                                destination: StoreDetail(coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
+                                destination: StoreDetail(store: store, coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
                                 label: {
                                     HStack {
                                         Image(systemName: "ellipsis")
@@ -148,11 +152,7 @@ struct StoreGridView: View {
                             Spacer()
                             Button {
                             } label: {
-                                Image(systemName: "heart.fill")
-                                    .resizable()
-                                    .frame(width: frame * 0.17, height: frame * 0.15)
-                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                                    .font(.system(size: 20, weight: .ultraLight, design: .serif))
+                                FavoriteStoreButton(isSet: $modelData.stores[storeIndex].isSelected, width: 26, height: 24)
                             }
                             .frame(width: frame * 0.225, height: frame * 0.225)
                             .background(

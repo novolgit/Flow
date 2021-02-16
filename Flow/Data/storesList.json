@@ -9,6 +9,7 @@
       "image": "babochka",
       "rating": 4,
       "days": "mon-fri",
+      "isSelected": false,
       "textColor": "white",
       "coordinates": {
          "longitude": 37.47615731238154,
@@ -25,6 +26,7 @@
       "image": "lasFlores",
       "rating": 3,
       "days": "mon-fri",
+      "isSelected": false,
       "textColor": "black",
       "coordinates": {
          "longitude": 37.47260249999998,
@@ -41,6 +43,7 @@
       "image": "GorodskayaBazaCvetovLobnya",
       "rating": 5,
       "days": "mon-fri",
+      "isSelected": false,
       "textColor": "black",
       "coordinates": {
          "longitude": 37.445006000000014,
@@ -57,6 +60,7 @@
       "image": "FloramarktMoscowButyrskaya",
       "rating": 2,
       "days": "mon-fri",
+      "isSelected": false,
       "textColor": "black",
       "coordinates": {
          "longitude": 37.58306799999997,
@@ -73,6 +77,7 @@
       "image": "JollyBunchMoscow",
       "rating": 1,
       "days": "mon-fri",
+      "isSelected": false,
       "textColor": "red",
       "coordinates": {
          "longitude": 37.656209,

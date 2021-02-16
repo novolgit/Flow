@@ -16,6 +16,7 @@ struct Store: Codable, Identifiable {
     var rating: Int
     var textColor: String
     var days: String
+    var isSelected: Bool
     private var coordinates: Coordinates
     var locationCoordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(

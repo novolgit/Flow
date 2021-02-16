@@ -72,7 +72,7 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
-		<string>120x120_clear</string>
+		<string>launch</string>
 	</dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

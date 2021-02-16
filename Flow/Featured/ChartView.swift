@@ -40,23 +40,8 @@ struct ChartView: View {
 
                 Spacer()
 
-                Button(action: {
-                    withAnimation {
-                        self.showDetail.toggle()
-                    }
-                }) {
-                    Image(systemName: "chevron.right.circle")
-                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        .imageScale(.large)
-                        .rotationEffect(.degrees(showDetail ? 90*5 : 0))
-                        .scaleEffect(showDetail ? 1.25 : 1)
-                        .padding(8)
-                        .background(
-                            Group {
-                                NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
-                            }
-                        )
-                }
+                ChevronCustomButtonStyle(isSet: $showDetail, size: 24)
+                            .animation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0))
             }
             if showDetail {
                 Divider()
@@ -160,7 +145,7 @@ struct ChartGraph: View {
         case \.bouquet:
             return .red
         case \.stores:
-            return .yellow
+            return .yelloww
         default:
             return .black
         }

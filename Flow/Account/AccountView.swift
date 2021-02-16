@@ -17,20 +17,12 @@ struct AccountView: View {
     @State var userBonuses = UserDefaults.standard.value(forKey: "userBonuses") as? Int ?? 0
     @State var userPhone = UserDefaults.standard.value(forKey: "userPhNumber") as? String ?? ""
     @State var userImage = UserDefaults.standard.value(forKey: "userImage") as? Array<Any> ?? [0]
-//    @AppStorage("userStatus") var userStatus = false
-//    @AppStorage("current_user") var userName = ""
-//    @AppStorage("current_phone") var userPhone = ""
-//    @AppStorage("current_bonuses") var userBonuses = 0
-//    @AppStorage("current_bio") var userBio = ""
-//    @AppStorage("current_image") var userImage = ""
-    
     @State private var currentAmount: CGFloat = 0
     @State private var finalAmount: CGFloat = 1
     @State private var isToggled = false
     
 //    var account: AccountFirebase
-    var columns: [GridItem] =
-        Array(repeating: .init(.flexible()), count: 2)
+    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
                     ScrollView(showsIndicators: false) {
@@ -80,11 +72,9 @@ struct AccountView: View {
                                                 CustomAccountButtonsView()
                                             }
                                     )
-                                        .onTapGesture {
-                                            accountCreation.picker.toggle()}
                                     }
                                     else{
-                                        Image("\(userImage[0])")
+                                        Image(uiImage: loadImageFromDiskWith(fileName: "profileImage.jpg") ?? UIImage(named: "120x120_clear")!)
                                             .resizable()
                                             .clipShape(Circle())
                                             .frame(width:120, height: 120)
@@ -94,8 +84,6 @@ struct AccountView: View {
                                                     CustomAccountButtonsView()
                                                 }
                                             )
-                                            .onTapGesture {
-                                                accountCreation.picker.toggle()}
                                     }
                                 } else {
                                     Image(systemName: "person")
@@ -257,14 +245,16 @@ struct AccountView: View {
                                 destination: LoginView(),
                                 label: {
                                     Text("Sign In")
-                                        
+                                        .font(.system(size: 20, weight: .light, design: .serif))
+                                        .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
                                 })
                             } else {
                             Button(
                                 action: accountCreation.signOut,
                                 label: {
                                     Text("Sign Out")
-                                        
+                                        .font(.system(size: 20, weight: .light, design: .serif))
+                                        .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
                                 })
                             }
                         })
@@ -282,6 +272,23 @@ struct AccountView: View {
 //                    .onAppear() {
 //                        self.accountCreation.subscribe()
 //                    }
+    }
+    
+    func loadImageFromDiskWith(fileName: String) -> UIImage? {
+
+      let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+
+        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+
+        if let dirPath = paths.first {
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+            let image = UIImage(contentsOfFile: imageUrl.path)
+            return image
+
+        }
+
+        return nil
     }
 }
 

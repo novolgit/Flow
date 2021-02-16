@@ -48,8 +48,33 @@ struct RowContentView : View {
                         Button(action: {
                             isSet.toggle()
                         }) {
-                            Image(systemName: isSet ? "cart.badge.minus.fill" : "cart.badge.plus")
-                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                            ZStack{
+                                if flower.isPurchase {
+                                    Image(systemName: "cart.fill.badge.minus")
+                                        .resizable()
+                                        .frame(width: 30, height: 26)
+                                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                                    Image(systemName: "cart.badge.minus")
+                                        .resizable()
+                                        .font(.system(size: 10, weight: .ultraLight, design: .serif))
+                                        .frame(width: 30, height: 26)
+                                        .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.1) : Color.offSecondaryGray.opacity(0.1))
+                                } else {
+                                    Image(systemName: "cart.badge.plus")
+                                        .resizable()
+                                        .frame(width: 30, height: 26)
+                                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                                    Image(systemName: "cart.badge.plus")
+                                        .resizable()
+                                        .font(.system(size: 10, weight: .ultraLight, design: .serif))
+                                        .frame(width: 30, height: 26)
+                                        .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.1) : Color.offSecondaryGray.opacity(0.1))
+                                }
+                            }
                             
                         }
                     }
@@ -59,7 +84,7 @@ struct RowContentView : View {
                 .frame(width : geo.size.width, height: 100)
                 .background(
                     Group {
-                        NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                        NeuButtonsView2(radius: 10, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                     }
                 )
                 ZStack {
@@ -71,7 +96,7 @@ struct RowContentView : View {
                 .frame(width: 100, height: geo.size.height)
                 .background(
                     Group {
-                        NeuButtonsView(radius: 10, color: Color.purple.opacity(0.3), whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                        NeuButtonsView(radius: 10, color: Color.purple.opacity(0.3), whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                     }
                 )
                 .onTapGesture {
@@ -93,7 +118,7 @@ struct RowContentView : View {
                 .frame(width: 100, height: geo.size.height)
                 .background(
                     Group {
-                        NeuButtonsView(radius: 10, color: Color.pink.opacity(0.3), whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+                        NeuButtonsView(radius: 10, color: Color.pink.opacity(0.3), whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
                     }
                 )
                 .onTapGesture {

@@ -20,8 +20,13 @@ struct FlowerGridView: View {
     @Namespace private var namespace
     
     var flower : Flower
+    
     var frame: CGFloat {
-        columns.count == 2  ? UIScreen.main.nativeBounds.width * 0.19 : UIScreen.main.nativeBounds.width * 0.195
+        columns.count == 2 ? UIScreen.main.bounds.width * 0.38 : UIScreen.main.bounds.width * 0.4
+    }
+    
+    var flowerIndex: Int {
+        modelData.flowers.firstIndex(where: { $0.id == flower.id })!
     }
     
     var body: some View {
@@ -30,11 +35,7 @@ struct FlowerGridView: View {
                 ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top))  {
                     Button {
                     } label: {
-                        Image(systemName: "heart.fill")
-                            .resizable()
-                            .frame(width: frame * 0.17, height: frame * 0.15)
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                            .font(.system(size: 20, weight: .ultraLight, design: .serif))
+                        FavoriteFlowerButton(isSet: $modelData.flowers[flowerIndex].isSelected, width: 26, height: 24)
                     }
                     .frame(width: frame * 0.225, height: frame * 0.225)
                     .background(
@@ -113,11 +114,7 @@ struct FlowerGridView: View {
                             Spacer()
                             Button {
                             } label: {
-                                Image(systemName: "heart.fill")
-                                    .resizable()
-                                    .frame(width: frame * 0.17, height: frame * 0.15)
-                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                                    .font(.system(size: 20, weight: .ultraLight, design: .serif))
+                                FavoriteFlowerButton(isSet: $modelData.flowers[flowerIndex].isSelected, width: 26, height: 24)
                             }
                             .frame(width: frame * 0.225, height: frame * 0.225)
                             .background(

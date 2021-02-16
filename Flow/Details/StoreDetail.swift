@@ -17,6 +17,14 @@ struct Marker: Identifiable {
 
 struct StoreDetail: View {
     @EnvironmentObject var modelData: ModelData
+    
+    @State private var region = MKCoordinateRegion()
+    @State var isTap = false
+    @State var tracking: MapUserTrackingMode = .follow
+    @State private var bottomSheetShown = false
+    @State private var showFavoritesOnly = false
+    
+    var store: Store
     var coordinate: CLLocationCoordinate2D
     var coordinateName: String
     var coordinateDescription: String
@@ -25,13 +33,12 @@ struct StoreDetail: View {
     var coordinateHours: String
     var coordinateCity: String
     var coordinateDays: String
-    @State private var region = MKCoordinateRegion()
-    @State var isTap = false
-    @State var tracking: MapUserTrackingMode = .follow
-    @State private var bottomSheetShown = false
     var manager = CLLocationManager()
     var managerDelegate = locationDelegate()
-    @State var isFavorite = false
+
+    var storeIndex: Int {
+        modelData.stores.firstIndex(where: { $0.id == store.id })!
+    }
     
     
     
@@ -57,7 +64,7 @@ struct StoreDetail: View {
                 isTap = !isTap
             }
 //            CustomSheetView2(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
-            CustomSheetView(isOpen: $isTap, maxHeight: UIScreen.main.nativeBounds.height * 0.35, minHeight: UIScreen.main.nativeBounds.height * 0.1, coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
+            CustomSheetView(isOpen: $isTap, maxHeight: UIScreen.main.bounds.height * 0.775, minHeight: UIScreen.main.bounds.height * 0.2, coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
             .edgesIgnoringSafeArea(.all)
             
         }
@@ -71,10 +78,10 @@ struct StoreDetail: View {
         .ignoresSafeArea(edges: .top)
 //        .navigationTitle(coordinateName, displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
-            self.isFavorite.toggle()
+            self.showFavoritesOnly.toggle()
         }, label: {
-            Image(systemName: isFavorite ? "star.fill" : "star")
-                .foregroundColor(.yellow)
+            StoreCustomButtonStyle(isSet: $modelData.stores[storeIndex].isSelected, size: 20)
+                .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0))
         }))
     }
     func setRegion(_ coordinate: CLLocationCoordinate2D) {
@@ -87,7 +94,7 @@ struct StoreDetail: View {
 
 struct StoreDetail_Previews: PreviewProvider {
     static var previews: some View {
-        StoreDetail(coordinate: CLLocationCoordinate2D(), coordinateName: "", coordinateDescription: "", coordinatePhone: "", coordinateImage: "", coordinateHours: "", coordinateCity: "", coordinateDays: "")
+        StoreDetail(store: ModelData().stores[0], coordinate: CLLocationCoordinate2D(), coordinateName: "", coordinateDescription: "", coordinatePhone: "", coordinateImage: "", coordinateHours: "", coordinateCity: "", coordinateDays: "")
             .environmentObject(ModelData())
             .preferredColorScheme(.dark)
     }
