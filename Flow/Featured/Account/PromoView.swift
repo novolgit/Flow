@@ -11,6 +11,7 @@ struct PromoView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @State private var promoText: String = ""
+    
     var body: some View {
         VStack{
             HStack{

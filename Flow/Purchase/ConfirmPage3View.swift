@@ -61,38 +61,37 @@ struct ConfirmPage3View: View {
                 })
             }
             .padding()
-            
             VStack {
                 HStack{
                     Text("Choose payment method")
                         .font(.system(size: 20, weight: .regular, design: .serif))
                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     Spacer()
-                Menu(payment) {
-                    Button("Apple Pay", action: {
-                        payment = "ApplePay"
-                    })
-                    Button("Card", action: {
-                        payment = "Card"
-                    })
+                    Menu(payment) {
+                        Button("Apple Pay", action: {
+                            payment = "ApplePay"
+                        })
+                        Button("Card", action: {
+                            payment = "Card"
+                        })
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                    }
                     .font(.system(size: 20, weight: .light, design: .serif))
                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                    .padding()
+                    .frame(width: 130, height: 60)
+                    .background(
+                        Group {
+                            NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                        }
+                    )
                 }
-                .font(.system(size: 20, weight: .light, design: .serif))
-                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                .padding()
-                .frame(width: 130, height: 60)
-                .background(
-                    Group {
-                        NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
-                    }
-                )
-            }
                 .padding(.horizontal,16)
-                    .padding(.vertical,3)
+                .padding(.vertical,3)
             }
             if payment == "ApplePay" {
-                PaymentButtonView()
+                PayWithAppleView()
             }
             if payment == "Card" {
                 CreditCardView()

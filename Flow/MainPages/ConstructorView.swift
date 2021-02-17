@@ -26,7 +26,6 @@ struct ConstructorView: View {
     let imageSize: CGSize = CGSize(width: 1000, height: 1000)
     
     var body: some View {
-        //        GeometryReader { geometry in
         VStack{
             ZStack{
                 SceneKitView(modelsArray: $modelsArray, isDelete: $isDelete)
@@ -38,30 +37,27 @@ struct ConstructorView: View {
                             isDelete += 1
                         }, label: {
                             Image(systemName: "trash")
-                            //                                .resizable()
-                            //                                .frame(width: 30, height: 30)
+                                .font(.system(size: 22, weight: .ultraLight, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         })
                         Spacer()
                         Button(action: {
-                            
                         }, label: {
                             Image(systemName: "arrowshape.turn.up.left")
-                            //                                .resizable()
-                            //                                .frame(width: 30, height: 30)
+                                .font(.system(size: 22, weight: .ultraLight, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         })
                         Button(action: {
-                            
                         }, label: {
                             Image(systemName: "square.and.arrow.up")
-                            //                                .resizable()
-                            //                                .frame(width: 30, height: 30)
+                                .font(.system(size: 22, weight: .ultraLight, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         })
                         Button(action: {
-                            //                            _ = SceneKitView().asImage(size: imageSize)
                         }, label: {
                             Image(systemName: "cart.badge.plus")
-                            //                                .resizable()
-                            //                                .frame(width: 30, height: 30)
+                                .font(.system(size: 22, weight: .ultraLight, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         })
                     }
                     .padding()
@@ -70,10 +66,7 @@ struct ConstructorView: View {
             }
             VStack{
                 if !show {Button(action: {
-                    //                    withAnimation(.spring()) {
                     show.toggle()
-                    
-                    //                    }
                 }, label: {
                     Image(systemName: "chevron.compact.up")
                         .resizable()
@@ -89,21 +82,16 @@ struct ConstructorView: View {
                             .padding()
                             .matchedGeometryEffect(id: "ConstructorCapsule", in: self.namespace)
                             .onTapGesture {
-                                //                                withAnimation(.spring()) {
                                 show.toggle()
-                                
-                                //                                }
                             }
                         HStack{
                             HStack {
                                 Image(systemName: "magnifyingglass")
-                                
                                 TextField("search", text: $searchText, onEditingChanged: { isEditing in
                                     self.showCancelButton = true
                                 }, onCommit: {
                                     print("onCommit")
                                 }).foregroundColor(.primary)
-                                
                                 Button(action: {
                                     self.searchText = ""
                                 }) {
@@ -114,10 +102,9 @@ struct ConstructorView: View {
                             .foregroundColor(.secondary)
                             .background(Color(.secondarySystemBackground))
                             .cornerRadius(10.0)
-                            
                             if showCancelButton  {
                                 Button("Cancel") {
-                                    UIApplication.shared.endEditing(true) // this must be placed before the other commands here
+                                    UIApplication.shared.endEditing(true)
                                     self.searchText = ""
                                     self.showCancelButton = false
                                 }
@@ -127,7 +114,6 @@ struct ConstructorView: View {
                         }
                         .padding(.horizontal)
                         .navigationBarHidden(showCancelButton)
-                        //                .animation(.spring())
                     }
                 }
                 if !show {ScrollView(.horizontal, showsIndicators: false){
@@ -187,6 +173,20 @@ struct ConstructorView: View {
             .padding()
         }
     }
+    //    func takeScreenshot(shouldSave: Bool = true) -> UIImage? {
+    //        print("takeScreenshot")
+    //        var screenshotImage :UIImage?
+    //        let layer = UIApplication.shared.keyWindow!.layer
+    //        let scale = UIScreen.main.scale
+    //        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+    //        guard let context = UIGraphicsGetCurrentContext() else {return nil}
+    //        layer.render(in:context)
+    //        screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
+    //        UIGraphicsEndImageContext()
+    //        UserDefaults.standard.set(screenshotImage, forKey: "CImage")
+    //        print(screenshotImage)
+    //        return screenshotImage
+    //    }
 }
 
 struct ConstructorView_Previews: PreviewProvider {

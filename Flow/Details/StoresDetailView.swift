@@ -35,52 +35,52 @@ struct StoresDetailView: View {
                 NavigationLink(
                     destination: StoreDetail(store: store, coordinate: store.locationCoordinate, coordinateName: store.name, coordinateDescription: store.description, coordinatePhone: store.phone, coordinateImage: store.image, coordinateHours: store.hours, coordinateCity: store.city, coordinateDays: store.days),
                     label: {
-                HStack {
-                    Image(store.image)
-                        .resizable()
-                        .frame(width: UIScreen.main.bounds.width * 0.225, height: UIScreen.main.bounds.height * 0.15)
-                        .clipShape(Circle())
-                    Spacer()
-                    Text(store.name)
-                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                        .font(.system(size: 18, weight: .regular, design: .serif))
-                    ZStack{
-                        if store.isSelected {
-                            Image(systemName: "star.fill")
+                        HStack {
+                            Image(store.image)
                                 .resizable()
-                                .frame(width: 30, height: 28)
-                                .foregroundColor(colorScheme == .light ? .yellowwDark : .yelloww)
-//                                .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
-//                                .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
-                            Image(systemName: "star")
-                                .resizable()
-                                .font(.system(size: 10, weight: .ultraLight, design: .serif))
-                                .frame(width: 30, height: 28)
-                                .foregroundColor(colorScheme == .dark ? Color.yellowwDark.opacity(0.1) : Color.yelloww.opacity(0.1))
-                        } else {
-                            Image(systemName: "star")
-                                .resizable()
-                                .frame(width: 30, height: 28)
-                                .foregroundColor(colorScheme == .light ? .yellowwDark : .yelloww)
-//                                .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
-//                                .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
-                            Image(systemName: "star")
-                                .resizable()
-                                .font(.system(size: 10, weight: .ultraLight, design: .serif))
-                                .frame(width: 30, height: 28)
-                                .foregroundColor(colorScheme == .dark ? Color.yellowwDark.opacity(0.1) : Color.yelloww.opacity(0.1))
+                                .frame(width: UIScreen.main.bounds.width * 0.225, height: UIScreen.main.bounds.height * 0.15)
+                                .clipShape(Circle())
+                            Spacer()
+                            Text(store.name)
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                .font(.system(size: 18, weight: .regular, design: .serif))
+                            ZStack{
+                                if store.isSelected {
+                                    Image(systemName: "star.fill")
+                                        .resizable()
+                                        .frame(width: 30, height: 28)
+                                        .foregroundColor(colorScheme == .light ? .yellowwDark : .yelloww)
+                                    //                                .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                                    //                                .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                                    Image(systemName: "star")
+                                        .resizable()
+                                        .font(.system(size: 10, weight: .ultraLight, design: .serif))
+                                        .frame(width: 30, height: 28)
+                                        .foregroundColor(colorScheme == .dark ? Color.yellowwDark.opacity(0.1) : Color.yelloww.opacity(0.1))
+                                } else {
+                                    Image(systemName: "star")
+                                        .resizable()
+                                        .frame(width: 30, height: 28)
+                                        .foregroundColor(colorScheme == .light ? .yellowwDark : .yelloww)
+                                    //                                .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                                    //                                .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                                    Image(systemName: "star")
+                                        .resizable()
+                                        .font(.system(size: 10, weight: .ultraLight, design: .serif))
+                                        .frame(width: 30, height: 28)
+                                        .foregroundColor(colorScheme == .dark ? Color.yellowwDark.opacity(0.1) : Color.yelloww.opacity(0.1))
+                                }
+                            }
                         }
-                    }
-                }
-                .padding()
-                .frame(height: 100)
-                .background(
-                    Group {
-                        NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
-                    }
-                )
-                .padding(.horizontal)
-                .padding(.vertical, 2)
+                        .padding()
+                        .frame(height: 100)
+                        .background(
+                            Group {
+                                NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                            }
+                        )
+                        .padding(.horizontal)
+                        .padding(.vertical, 2)
                     })
             }
         }

@@ -13,7 +13,7 @@ struct AssortmentDetailsView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var modelData: ModelData
-    //    @State private var sort: Set<String> = modelData.flowers
+    
     @State private var showFavoritesOnly = false
     @State var flowerID = Flower.ID()
     @State var press = false
@@ -66,7 +66,6 @@ struct AssortmentDetailsView: View {
                                     Image(systemName: "hand.tap")
                                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                                         .font(.system(size: 20, weight: .light, design: .serif))
-                                    
                                 }
                                 .padding(.horizontal, 20)
                     ){
@@ -74,13 +73,11 @@ struct AssortmentDetailsView: View {
                             NavigationLink(
                                 destination: FlowerDetail(flowerDetail: flower),
                                 label: {
-                                    
                                     HStack{
                                         Image(flower.image)
                                             .resizable()
                                             .frame(width: UIScreen.main.bounds.width * 0.225, height: UIScreen.main.bounds.height * 0.15)
                                             .clipShape(Circle())
-                                        //                                .frame(width: 70, height: 100)
                                         Spacer()
                                         HStack{
                                             Text(flower.name)
@@ -96,8 +93,8 @@ struct AssortmentDetailsView: View {
                                                         .resizable()
                                                         .frame(width: 30, height: 28)
                                                         .foregroundColor(colorScheme == .light ? .reddDark : .redd)
-//                                                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
-//                                                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                                                    //                                                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                                                    //                                                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
                                                     Image(systemName: "heart")
                                                         .resizable()
                                                         .font(.system(size: 10, weight: .ultraLight, design: .serif))
@@ -108,8 +105,8 @@ struct AssortmentDetailsView: View {
                                                         .resizable()
                                                         .frame(width: 30, height: 28)
                                                         .foregroundColor(colorScheme == .light ? .reddDark : .redd)
-//                                                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
-//                                                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                                                    //                                                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                                                    //                                                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
                                                     Image(systemName: "heart")
                                                         .resizable()
                                                         .font(.system(size: 10, weight: .ultraLight, design: .serif))

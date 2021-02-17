@@ -29,21 +29,17 @@ struct RowContentView : View {
                         Text(flower.name)
                             .font(.system(size: 18, weight: .regular, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        
                     }
                     Spacer()
                     VStack(alignment: .leading) {
                         Text("Price")
                             .font(.system(size: 16, weight: .light, design: .serif))
                             .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.7) : Color.offSecondaryGray.opacity(0.7))
-                        
-                        
                         Text(String(flower.price) + "$")
                             .font(.system(size: 18, weight: .regular, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         
                     }
-                    //                    VStack{}.frame(width: !isSet ? 39 : 10)
                     VStack {
                         Button(action: {
                             isSet.toggle()
@@ -75,7 +71,6 @@ struct RowContentView : View {
                                         .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.1) : Color.offSecondaryGray.opacity(0.1))
                                 }
                             }
-                            
                         }
                     }
                     .padding()
@@ -100,7 +95,7 @@ struct RowContentView : View {
                     }
                 )
                 .onTapGesture {
-//                    withAnimation(.spring()){deleteItem()}
+                    withAnimation(.spring()){deleteItem()}
                 }
                 .offset(x:20)
                 .padding()
@@ -122,7 +117,7 @@ struct RowContentView : View {
                     }
                 )
                 .onTapGesture {
-                    // TO DO add to favorites
+                    withAnimation(.spring()){giftItem()}
                 }
                 .offset(x:20)
             }
@@ -140,7 +135,6 @@ struct RowContentView : View {
                                 self.scale = 0.5
                                 self.offset = .zero
                                 self.offsetY = 0
-                                
                             }
                         }
             )
@@ -149,9 +143,15 @@ struct RowContentView : View {
     }
     
     func deleteItem(){
-        flowers.removeAll { (flower) -> Bool in
-            return self.flower.id == flower.id
-        }
+        //        flowers.removeAll { (flower) -> Bool in
+        //            return self.flower.id == flower.id
+        //        }
+    }
+    
+    func giftItem(){
+        //        flowers.append(flower.id) { (flower) -> Bool in
+        //            return self.flower.id == flower.id
+        //        }
     }
 }
 

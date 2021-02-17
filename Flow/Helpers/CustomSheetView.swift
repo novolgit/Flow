@@ -18,11 +18,18 @@ fileprivate enum Constants {
 struct CustomSheetView: View {
     @Binding var isOpen: Bool
     
+    @GestureState private var translation: CGFloat = 0
+    
     let maxHeight: CGFloat
     let minHeight: CGFloat
-    //    let content: Content
     
-    @GestureState private var translation: CGFloat = 0
+    var coordinateImage: String
+    var coordinateName: String
+    var coordinateDescription: String
+    var coordinatePhone: String
+    var coordinateHours: String
+    var coordinateCity: String
+    var coordinateDays: String
     
     private var offset: CGFloat {
         isOpen ? 0 : maxHeight - minHeight
@@ -39,21 +46,6 @@ struct CustomSheetView: View {
             }
     }
     
-    //    init(isOpen: Binding<Bool>, maxHeight: CGFloat, @ViewBuilder content: () -> Content) {
-    //        self.minHeight = maxHeight * Constants.minHeightRatio
-    //        self.maxHeight = maxHeight*1.2
-    ////        self.content = content()
-    //        self._isOpen = isOpen
-    //    }
-    
-    var coordinateImage: String
-    var coordinateName: String
-    var coordinateDescription: String
-    var coordinatePhone: String
-    var coordinateHours: String
-    var coordinateCity: String
-    var coordinateDays: String
-    
     var body: some View {
         GeometryReader { geometry in
             VStack{
@@ -61,9 +53,7 @@ struct CustomSheetView: View {
                 BottomSheet(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
             }
             .background(BlurView())
-            //                        .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
             .frame(width: geometry.size.width, height: self.maxHeight, alignment: .top)
-            //            .background(Color(#colorLiteral(red: 0.9164158702, green: 0.9109681845, blue: 0.9206033349, alpha: 1)).opacity(0.9))
             .cornerRadius(Constants.radius)
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
@@ -83,14 +73,6 @@ struct CustomSheetView: View {
         }
     }
 }
-
-//struct HistoryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CustomSheetView(isOpen: .constant(false), maxHeight: 600) {
-//            Rectangle()
-//        }.edgesIgnoringSafeArea(.all)
-//    }
-//}
 
 struct BottomSheet : View {
     @Environment(\.colorScheme) var colorScheme
@@ -122,7 +104,6 @@ struct BottomSheet : View {
                             Text("City")
                                 .font(.system(size: 20, weight: .regular, design: .serif))
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                            
                             Spacer()
                             Text(coordinateCity)
                                 .font(.system(size: 20, weight: .regular, design: .serif))
@@ -130,23 +111,10 @@ struct BottomSheet : View {
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal)
-                        //                        HStack {
-                        //                            Text("Addres")
-                        //                                .font(.system(size: 20, weight: .regular, design: .serif))
-                        //                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        //
-                        //                            Spacer()
-                        //                            Text("Lenina 71")
-                        //                                .font(.system(size: 20, weight: .regular, design: .serif))
-                        //                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        //
-                        //                        }
-                        //                        .padding(.vertical, 10)
                         HStack {
                             Text("Days")
                                 .font(.system(size: 20, weight: .regular, design: .serif))
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                            
                             Spacer()
                             Text(coordinateDays)
                                 .font(.system(size: 20, weight: .regular, design: .serif))
@@ -158,7 +126,6 @@ struct BottomSheet : View {
                             Text("Phone")
                                 .font(.system(size: 20, weight: .regular, design: .serif))
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                            
                             Spacer()
                             Text(coordinatePhone)
                                 .font(.system(size: 20, weight: .regular, design: .serif))
@@ -170,7 +137,6 @@ struct BottomSheet : View {
                             Text("Hours")
                                 .font(.system(size: 20, weight: .regular, design: .serif))
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                            
                             Spacer()
                             Text(coordinateHours)
                                 .font(.system(size: 20, weight: .regular, design: .serif))
@@ -182,7 +148,6 @@ struct BottomSheet : View {
                             Text("Show Assortment")
                                 .font(.system(size: 20, weight: .regular, design: .serif))
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                            
                             Spacer()
                             NavigationLink(
                                 destination: AssortmentDetailsView(),
@@ -202,12 +167,6 @@ struct BottomSheet : View {
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal)
-                        //                        .background(
-                        //                            Group {
-                        //                                NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
-                        //                            }
-                        //                        )
-                        //                        .padding()
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("Description")
@@ -216,7 +175,6 @@ struct BottomSheet : View {
                                 Text(coordinateDescription)
                                     .font(.system(size: 20, weight: .regular, design: .serif))
                                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                
                             }
                             Spacer()
                         }
@@ -251,7 +209,6 @@ struct RatingView: View {
             if label.isEmpty == false {
                 Text(label)
             }
-            
             ForEach(1..<maximumRating + 1) { number in
                 self.image(for: number)
                     .foregroundColor(number > self.rating ? colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.1) : Color.offSecondaryGray.opacity(0.1) : colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
@@ -288,7 +245,6 @@ struct CustomSheetView2 : View {
             GeometryReader{reader in
                 VStack{
                     BottomSheet(
-                        //                        offset: $offset, value: (-reader.frame(in: .global).height + 150),
                         coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
                         .background(BlurView())
                         .offset(y: reader.frame(in: .global).height - 175)
@@ -309,7 +265,6 @@ struct CustomSheetView2 : View {
                                                 //                                    offset = 0
                                             }
                                         }
-                                        
                                     })
                                     .onEnded({ (value) in
                                         withAnimation(.easeIn){

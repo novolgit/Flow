@@ -11,6 +11,7 @@ struct FeaturedTabView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var modelData: ModelData
+    
     @State var index: Int
     
     var body: some View {
@@ -39,16 +40,14 @@ struct FeaturedTabView: View {
                         )
                         .padding(.trailing, 10)
                 }
-//                            .padding()
                 .frame(maxWidth: UIScreen.main.bounds.width*0.90, maxHeight: UIScreen.main.bounds.height*0.30)
-                
+                .background(
+                    Group {
+                        NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                    }
+                )
+                .padding()
             }
-            .background(
-                Group {
-                    NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
-                }
-            )
-            .padding()
         }
     }
 }

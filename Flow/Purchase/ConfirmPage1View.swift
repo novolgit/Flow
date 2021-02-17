@@ -20,10 +20,10 @@ struct ConfirmPage1View: View {
     var coordinateName: String
     
     var body: some View {
-        
         let markers = [
             Marker(location: MapMarker(coordinate: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)), name: coordinateName)
         ]
+        
         ScrollView(showsIndicators: false) {
             VStack{
                 HStack{
@@ -47,11 +47,6 @@ struct ConfirmPage1View: View {
                                 .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.5) : Color.offSecondaryGray.opacity(0.5))
                                 .offset(x: 1)
                         }
-                        //                        .background(
-                        //                            Group {
-                        //                                NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2, xBlack: 4, yBlack: 4, xWhite: -2, yWhite: -2)
-                        //                            }
-                        //                        )
                     })
                 }
                 .padding()

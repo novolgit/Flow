@@ -28,10 +28,10 @@ struct ConfirmPage2View: View {
     @Binding var currentPage: Int
     
     var totalPrice: Double
+    
     var range: ClosedRange<Date>{
         let now = Date().addingTimeInterval(1800)
         let tomorrow = Date().addingTimeInterval(86400)
-        
         return now...tomorrow
     }
     
@@ -109,7 +109,7 @@ struct ConfirmPage2View: View {
                                     CustomConfirmButtonsView3()
                                 }
                             }
-                        }.padding().animation(nil)
+                        }.padding().animation(.easeInOut)
                     )
                 }
                 Spacer()
@@ -123,10 +123,9 @@ struct ConfirmPage2View: View {
                         Text("pickup")
                             .font(.system(size: 20, weight: .regular, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        
                     }
                     .frame(width: UIScreen.main.bounds.width*0.48, height: 110)
-                    .foregroundColor(.gray)
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .contentShape(RoundedRectangle(cornerRadius: 15.0))
                     .background(
                         Group {
@@ -139,29 +138,23 @@ struct ConfirmPage2View: View {
                                     CustomConfirmButtonsView3()
                                 }
                             }
-                        }.padding().animation(nil)
+                        }.padding().animation(.easeInOut)
                     )
                 }
             }
             if isTap{
                 HStack{
                     HStack{
-//                        Text("Addres")
-//                            .font(.system(size: 20, design: .serif))
-//                            .foregroundColor(addresEmpty ? Color.red : Color.black)
                         Image(systemName: "location")
                             .font(.system(size: 20, weight: .light, design: .serif))
                             .foregroundColor(addresEmpty ? Color.redd : .offSecondaryGray)
                             .scaleEffect(!addresEmpty ? 1 : 1.25)
-                            TextField("addres", text: $addres)
-                                .font(.system(size: 20, weight: .light, design: .serif))
-                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-//                        Divider()
-                        
+                        TextField("addres", text: $addres)
+                            .font(.system(size: 20, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     }
                     Spacer()
                     Button(action: {
-                        
                     }, label: {
                         HStack {
                             Text("Map")
@@ -175,38 +168,34 @@ struct ConfirmPage2View: View {
                 .padding()
                 .frame(height: 60)
                 .background(
-                        Group {
-                            if addres.isEmpty {CustomConfirmButtonsView5()}
-                            else {CustomTappedAccountButton5()}
-                        }
+                    Group {
+                        if addres.isEmpty {CustomConfirmButtonsView5()}
+                        else {CustomTappedAccountButton5()}
+                    }
                 )
                 .padding(.horizontal,16)
                 .padding(.vertical,3)
                 HStack{
-                        TextField("entrance", text: $entrance)
-                            .font(.system(size: 20, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                            .keyboardType(.decimalPad)
-                    .padding()
-                    .frame(height: 60)
-                    .background(
-                        Group {
+                    TextField("entrance", text: $entrance)
+                        .font(.system(size: 20, weight: .light, design: .serif))
+                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        .keyboardType(.decimalPad)
+                        .padding()
+                        .frame(height: 60)
+                        .background(
                             Group {
-                                if entrance.isEmpty {CustomConfirmButtonsView5()}
-                                else {CustomTappedAccountButton5()}
+                                Group {
+                                    if entrance.isEmpty {CustomConfirmButtonsView5()}
+                                    else {CustomTappedAccountButton5()}
+                                }
                             }
-                        }
-                    )
-                    .padding(.trailing,10)
+                        )
+                        .padding(.trailing,10)
                     VStack(alignment: .leading){
-//                        Text("Floor")
-//                            .font(.system(size: 20, design: .serif))
-                        
                         TextField("floor", text: $floor)
                             .font(.system(size: 20, weight: .light, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                             .keyboardType(.decimalPad)
-//                        Divider()
                     }
                     .padding()
                     .frame(height: 60)
@@ -223,8 +212,6 @@ struct ConfirmPage2View: View {
                 .padding(.horizontal,16)
                 .padding(.vertical,3)
                 HStack{
-//                    Text("Phone")
-//                        .font(.system(size: 20, design: .serif))
                     Image(systemName: "phone")
                         .font(.system(size: 20, weight: .light, design: .serif))
                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
@@ -232,7 +219,6 @@ struct ConfirmPage2View: View {
                         .font(.system(size: 20, weight: .light, design: .serif))
                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         .keyboardType(.phonePad)
-//                    Divider()
                 }
                 .padding()
                 .frame(height: 60)
@@ -258,7 +244,7 @@ struct ConfirmPage2View: View {
                         displayedComponents: .hourAndMinute
                     )
                     .font(.system(size: 20, design: .serif))
-                    .foregroundColor(.gray)
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .datePickerStyle(GraphicalDatePickerStyle())
                 }
                 .padding()
@@ -274,14 +260,11 @@ struct ConfirmPage2View: View {
             } else{
                 VStack{
                     HStack{
-//                        Text("Phone")
-//                            .font(.system(size: 20, design: .serif))
                         Image(systemName: "phone")
                             .foregroundColor(addresEmpty ? Color.redd : Color.black)
                         TextField("phone", text: $phone)
                             .font(.system(size: 20, design: .serif))
                             .keyboardType(.decimalPad)
-//                        Divider()
                     }
                     .padding()
                     .frame(height: 60)
@@ -306,8 +289,6 @@ struct ConfirmPage2View: View {
                         )
                         .font(.system(size: 20, weight: .light, design: .serif))
                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        
-                        //                                .datePickerStyle(GraphicalDatePickerStyle())
                     }
                     .padding()
                     .frame(height: 60)
@@ -324,7 +305,6 @@ struct ConfirmPage2View: View {
             Button(action: {
                 if isTap{
                     if !addres.isEmpty
-//                        || !entrance.isEmpty || !floor.isEmpty || !phone.isEmpty
                     {
                         currentPage += 1
                         let impactMed = UIImpactFeedbackGenerator(style: .medium)
@@ -344,7 +324,6 @@ struct ConfirmPage2View: View {
                     .font(.system(size: 26, weight: .regular, design: .serif))
                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .animation(.easeOut(duration:0.8))
-                
             })
             .frame(width: 350, height: 100)
             .background(
@@ -373,11 +352,9 @@ struct ConfirmPage2View: View {
                 }.padding()
             )
             .padding(.horizontal,16)
-//            .keyboardAdaptive()
             .animation(.easeOut(duration:0.8))
             VStack{}.frame(height: 40)
         }
-//        .keyboardAdaptive()
         .navigationBarTitle("Order Data", displayMode: .inline)
         .navigationBarItems(trailing: Text(String(totalPrice))
                                 .font(.system(size: 20, weight: .light, design: .serif))

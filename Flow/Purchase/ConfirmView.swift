@@ -39,17 +39,14 @@ struct ConfirmView: View {
         .offset(y: -self.keyboardHeight)
         .onAppear{
             NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
-              
                 let keyboardHeight = noti.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
                 let height = keyboardHeight.height
-                
                 self.keyboardHeight = height
-        }
+            }
             NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (noti) in
                 self.keyboardHeight = 0
             }
         }
-//        .keyboardAdaptive()
         .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
     }
 }

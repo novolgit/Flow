@@ -21,8 +21,6 @@ struct CreditCardView: View {
     @State private var validLimit = 4
     @State private var cvvLimit = 3
     
-    
-    
     var body: some View {
         VStack{
             Group {
@@ -33,26 +31,16 @@ struct CreditCardView: View {
                 .degrees(degrees),
                 axis: (x: 0.0, y: 1.0, z: 0.0)
             )
-//            .onTapGesture {
-//                withAnimation(.spring()) {
-//                    degrees += 180
-//                    flipped.toggle()
-//                }
-//            }
             .padding()
             HStack{
-//                Text("card number")
-//                    .font(.system(size: 20, design: .serif))
-                
-                    Image(systemName: "creditcard")
-                        .font(.system(size: 20, weight: .regular, design: .serif))
-                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    TextField("card number", text: $cardNumber)
-                        .onReceive(Just(cardNumber)) { _ in limitNumber(numberLimit) }
-                        .font(.system(size: 20, weight: .light, design: .serif))
-                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        .keyboardType(.decimalPad)
-//                Divider()
+                Image(systemName: "creditcard")
+                    .font(.system(size: 20, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                TextField("card number", text: $cardNumber)
+                    .onReceive(Just(cardNumber)) { _ in limitNumber(numberLimit) }
+                    .font(.system(size: 20, weight: .light, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                    .keyboardType(.decimalPad)
             }
             .padding()
             .frame(height: 70)
@@ -65,14 +53,11 @@ struct CreditCardView: View {
             .padding(.horizontal,22)
             .padding(.vertical,3)
             HStack{
-//                Text("cardholder")
-//                    .font(.system(size: 20, design: .serif))
                 Image(systemName: "person.fill.questionmark")
                 TextField("cardholder name", text: $cardHolder)
                     .font(.system(size: 20, weight: .light, design: .serif))
                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                     .disableAutocorrection(true)
-//                Divider()
             }
             .padding()
             .frame(height: 70)
@@ -86,8 +71,6 @@ struct CreditCardView: View {
             .padding(.vertical,3)
             HStack{
                 HStack{
-//                    Image(systemName: "person.fill.questionmark")
-                    
                     TextField("Valid Untill", text: $cardValidDate)
                         .onReceive(Just($cardValidDate)) { _ in limitValid(validLimit) }
                         .font(.system(size: 20, weight: .light, design: .serif))
@@ -104,9 +87,6 @@ struct CreditCardView: View {
                 )
                 .padding(.trailing,10)
                 HStack{
-//                    Text("CVV")
-//                        .font(.system(size: 20, design: .serif))
-                    
                     TextField("CVV", text: $cardCVV){ (editingChanged) in
                         withAnimation(.spring()) {
                             degrees += 180
@@ -135,7 +115,6 @@ struct CreditCardView: View {
                 Text("Pay")
                     .font(.system(size: 28, weight: .regular, design: .serif))
                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                
             })
             .frame(width: 350, height: 100)
             .background(
@@ -250,12 +229,5 @@ struct CardBack: View {
                 NeuButtonsView2(radius: 15, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
             }
         )
-    }
-}
-
-extension String {
-    func separating(every: Int, separator: String) -> String {
-        let regex = #"(.{\#(every)})(?=.)"#
-        return self.replacingOccurrences(of: regex, with: "$1\(separator)", options: [.regularExpression])
     }
 }

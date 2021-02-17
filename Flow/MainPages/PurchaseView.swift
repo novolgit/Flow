@@ -34,9 +34,9 @@ struct PurchaseView: View {
                     .padding([.top, .leading, .trailing])
                     LazyVStack(spacing: 0) {
                         ForEach(
-//                            isSort == "name" ?
+                            //                            isSort == "name" ?
                             sortByNameList()[0..<3]
-//                                    : sortByPriceList()
+                            //                                    : sortByPriceList()
                         ) { flower in
                             RowContentView(flower: $modelData.flowers[getIndex(flower: flower)],flowers: $modelData.flowers, isSet: $modelData.flowers[getIndex(flower: flower)].isPurchase)
                                 .frame(height: 85)
@@ -60,23 +60,16 @@ struct PurchaseView: View {
                                     .frame(width: UIScreen.main.nativeBounds.width * 0.225, height: UIScreen.main.nativeBounds.height * 0.05)
                                     .background(
                                         Group {
-                                                    CustomConfirmButtonsView3()
-                                            }
-                                )
+                                            CustomConfirmButtonsView3()
+                                        }
+                                    )
                             }
-                            
                         }
                         .scaleEffect(detectChoose() ? 1 : 0)
                         .animation(.spring())
                         .padding(.trailing)
                         VStack{}.frame(height: 35)
                     }
-//                    .background(
-//                        Group {
-//                            NeuButtonsView2(radius: 25, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
-//                        }
-//                    )
-//                    .padding()
                     VStack{}.frame(height: 20)
                 }
             }
@@ -98,7 +91,9 @@ struct PurchaseView: View {
                         Button("Price", action: {
                             isSort = "price"
                         })
-                        Button("Color", action: {})
+                        Button("Date", action: {
+                            
+                        })
                     }
                     .font(.system(size: 20, weight: .light, design: .serif))
                     .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
@@ -155,7 +150,7 @@ struct PurchaseView: View {
     }
 }
 
-struct BinView_Previews: PreviewProvider {
+struct PurchaseView_Previews: PreviewProvider {
     static var previews: some View {
         PurchaseView()
             .environmentObject(ModelData())

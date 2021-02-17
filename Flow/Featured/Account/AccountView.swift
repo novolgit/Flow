@@ -12,24 +12,20 @@ struct AccountView: View {
     
     @StateObject var accountCreation = AccountCreationViewModel()
     
-    @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+    @State var userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
     @State var userName = UserDefaults.standard.value(forKey: "userName") as? String ?? "Account"
     @State var userBonuses = UserDefaults.standard.value(forKey: "userBonuses") as? Int ?? 0
-    @State var userPhone = UserDefaults.standard.value(forKey: "userPhNumber") as? String ?? ""
     @State var userImage = UserDefaults.standard.value(forKey: "userImage") as? Array<Any> ?? [0]
     @State private var currentAmount: CGFloat = 0
     @State private var finalAmount: CGFloat = 1
     @State private var isToggled = false
     
-//    var account: AccountFirebase
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
                     ScrollView(showsIndicators: false) {
                         VStack {
                             HStack{
-                                NavigationLink(
-                                    destination: BonusView(accountBonuses: accountCreation.bonuses)){
                                     VStack {
                                         Text("\(userBonuses)")
                                             .font(.system(size: 30, weight: .regular, design: .serif))
@@ -44,11 +40,9 @@ struct AccountView: View {
                                             CustomAccountButtonsView()
                                         }
                                     )
-                                }
                                 Spacer()
                                 VStack{
-                                    
-                                    if status {
+                                    if userStatus {
                                         if userImage.isEmpty {
                                         ZStack {
                                             Image(systemName: "plus.circle")
@@ -111,7 +105,7 @@ struct AccountView: View {
                             LazyVGrid(columns: columns, alignment: .center, spacing: 30) {
                                 Section{
                                     NavigationLink(
-                                        destination: SettingsView(accountName: userName, accountPhone: userPhone)){
+                                        destination: SettingsView()){
                                         VStack{
                                             Image(systemName: "gearshape.2")
                                                 .font(.system(size: 18, weight: .light, design: .serif))
@@ -129,7 +123,7 @@ struct AccountView: View {
                                         )
                                     }
                                     NavigationLink(
-                                        destination: AboutUsView()){
+                                        destination: HistoryView()){
                                         VStack{
                                             Image(systemName: "archivebox")
                                                 .font(.system(size: 18, weight: .light, design: .serif))
@@ -182,45 +176,8 @@ struct AccountView: View {
                                             NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
                                         }
                                     )
-                                    NavigationLink(
-                                        destination: PromoView()){
-                                        VStack{
-                                            Image(systemName: "star")
-                                                .font(.system(size: 18, weight: .light, design: .serif))
-                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                            Text("Favorites")
-                                                .font(.system(size: 18, weight: .light, design: .serif))
-                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                        }
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width*0.312, height: 135)
-                                    .contentShape(RoundedRectangle(cornerRadius: 20.0))
-                                    .background(
-                                        Group {
-                                            NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
-                                        }
-                                    )
-                                    NavigationLink(
-                                        destination: PromoView()){
-                                        VStack{
-                                            Text("F")
-                                                .font(.system(size: 18, weight: .light, design: .serif))
-                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                            Text("Rate Us")
-                                                .font(.system(size: 18, weight: .light, design: .serif))
-                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                        }
-                                    }
-                                    .frame(width: UIScreen.main.bounds.width*0.312, height: 135)
-                                    .contentShape(RoundedRectangle(cornerRadius: 20.0))
-                                    .background(
-                                        Group {
-                                            NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -5, yWhite: -5)
-                                        }
-                                    )
                                 }
                                 .padding()
-//                                .animation(.spring(response: 0.4, dampingFraction: 0.6, blendDuration: 0.5))
                             }
                             .frame(width: UIScreen.main.bounds.width*0.90)
                             .background(
@@ -238,9 +195,9 @@ struct AccountView: View {
                         }
                         .frame(width: UIScreen.main.bounds.width)
                         .padding()
-                        .navigationBarTitle(status ? userName : "Account", displayMode: .inline)
+                        .navigationBarTitle(userStatus ? userName : "Account", displayMode: .inline)
                         .toolbar(content: {
-                            if !status {
+                            if !userStatus {
                             NavigationLink(
                                 destination: LoginView(),
                                 label: {
@@ -261,17 +218,11 @@ struct AccountView: View {
                     }
                     .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
                     .onAppear {
-                                  
                                   NotificationCenter.default.addObserver(forName: NSNotification.Name("statusChange"), object: nil, queue: .main) { (_) in
-                                      
-                                     let status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
-                                         
-                                      self.status = status
+                                     let userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+                                      self.userStatus = userStatus
                                   }
                               }
-//                    .onAppear() {
-//                        self.accountCreation.subscribe()
-//                    }
     }
     
     func loadImageFromDiskWith(fileName: String) -> UIImage? {

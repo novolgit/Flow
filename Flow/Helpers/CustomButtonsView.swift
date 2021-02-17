@@ -18,7 +18,6 @@ struct NeuButtonsView: View{
     let xWhite: CGFloat
     let yWhite: CGFloat
     
-    
     var body: some View{
         RoundedRectangle(cornerRadius: radius)
             .fill(color)
@@ -38,7 +37,6 @@ struct NeuButtonsView2: View{
     let yBlack: CGFloat
     let xWhite: CGFloat
     let yWhite: CGFloat
-    
     
     var body: some View{
         RoundedRectangle(cornerRadius: radius)
@@ -60,7 +58,6 @@ struct NeuButtonsView3: View{
     let xWhite: CGFloat
     let yWhite: CGFloat
     
-    
     var body: some View{
         RoundedRectangle(cornerRadius: radius)
             .fill(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark.opacity(0.2) : Color.offGrayLinearStart.opacity(0.2), colorScheme == .dark ? Color.offGrayLinearEndDark.opacity(0.2) : Color.offGrayLinearEnd.opacity(0.2)))
@@ -73,6 +70,7 @@ struct ContainerView: View {
     @Environment(\.colorScheme) var colorScheme
     
     let color: Color
+    
     var body: some View {
         RoundedRectangle(cornerRadius: 25.0)
             .fill(color)
@@ -125,10 +123,10 @@ struct CustomAccountButton:View {
     
     var body: some View{
         RoundedRectangle(cornerRadius: 100.0)
-        .fill(LinearGradient(Color.offGray, Color.offWhite))
-        .overlay(RoundedRectangle(cornerRadius: 100.0).stroke(LinearGradient(Color.offWhite, Color.offGray), lineWidth: 2))
-        .shadow(color: colorScheme == .dark ? Color.bottomShadowDark : Color.bottomShadow, radius: 5, x: 5, y: 5)
-        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 5, x: -5, y: -5)
+            .fill(LinearGradient(Color.offGray, Color.offWhite))
+            .overlay(RoundedRectangle(cornerRadius: 100.0).stroke(LinearGradient(Color.offWhite, Color.offGray), lineWidth: 2))
+            .shadow(color: colorScheme == .dark ? Color.bottomShadowDark : Color.bottomShadow, radius: 5, x: 5, y: 5)
+            .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 5, x: -5, y: -5)
     }
 }
 
@@ -148,10 +146,10 @@ struct CustomTappedAccountButton:View {
     
     var body: some View{
         RoundedRectangle(cornerRadius: 100.0)
-        .fill(LinearGradient(Color.offGray, Color.offWhite))
-        .overlay(RoundedRectangle(cornerRadius: 100.0).stroke(LinearGradient(Color.offWhite, Color.offGray), lineWidth: 2))
-        .shadow(color: colorScheme == .dark ? Color.bottomShadowDark : Color.bottomShadow, radius: 1, x: -2, y: -2)
-        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 1, x: 4, y: 4)
+            .fill(LinearGradient(Color.offGray, Color.offWhite))
+            .overlay(RoundedRectangle(cornerRadius: 100.0).stroke(LinearGradient(Color.offWhite, Color.offGray), lineWidth: 2))
+            .shadow(color: colorScheme == .dark ? Color.bottomShadowDark : Color.bottomShadow, radius: 1, x: -2, y: -2)
+            .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 1, x: 4, y: 4)
     }
 }
 
@@ -564,7 +562,7 @@ struct ColorfulBackground<S: Shape>: View {
     
     var isHighlighted: Bool
     var shape: S
-
+    
     var body: some View {
         ZStack {
             if isHighlighted {
@@ -610,39 +608,6 @@ struct ColorfulToggleStyle: ToggleStyle {
     }
 }
 
-//struct SettingsView: View {
-//    @State private var isToggled = false
-//
-//    var body: some View {
-//        ZStack {
-//            LinearGradient(Color.darkStart, Color.darkEnd)
-//
-//            VStack(spacing: 40) {
-//                Button(action: {
-//                    print("Button tapped")
-//                }) {
-//                    Image(systemName: "heart.fill")
-//                        .foregroundColor(.white)
-//                }
-//                .buttonStyle(ColorfulButtonStyle())
-//
-//                Toggle(isOn: $isToggled) {
-//                    Image(systemName: "heart.fill")
-//                        .foregroundColor(.white)
-//                }
-//                .toggleStyle(ColorfulToggleStyle())
-//            }
-//        }
-//        .edgesIgnoringSafeArea(.all)
-//    }
-//}
-//
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingsView()
-//    }
-//}
-
 struct FavoriteFlowerButton: View {
     @Environment(\.colorScheme) var colorScheme
     
@@ -652,7 +617,7 @@ struct FavoriteFlowerButton: View {
     
     var width: CGFloat
     var height: CGFloat
-
+    
     var body: some View {
         Button(action: {
             if isSet {
@@ -663,25 +628,25 @@ struct FavoriteFlowerButton: View {
         }) {
             ZStack {
                 if isSet {
-                Image(systemName: "heart.fill")
-                    .resizable()
-                    .frame(width: width, height: height)
-                    .foregroundColor(colorScheme == .light ? .reddDark : .redd)
-//                    .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
-//                    .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
-                Image(systemName: "heart")
-                    .resizable()
-                    .font(.system(size: 10, weight: .ultraLight, design: .serif))
-                    .frame(width: width, height: height)
-                    .foregroundColor(colorScheme == .dark ? Color.reddDark.opacity(0.1) : Color.redd.opacity(0.1))
+                    Image(systemName: "heart.fill")
+                        .resizable()
+                        .frame(width: width, height: height)
+                        .foregroundColor(colorScheme == .light ? .reddDark : .redd)
+                    //                    .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                    //                    .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                    Image(systemName: "heart")
+                        .resizable()
+                        .font(.system(size: 10, weight: .ultraLight, design: .serif))
+                        .frame(width: width, height: height)
+                        .foregroundColor(colorScheme == .dark ? Color.reddDark.opacity(0.1) : Color.redd.opacity(0.1))
                 }
                 else {
                     Image(systemName: "heart")
                         .resizable()
                         .frame(width: width, height: height)
                         .foregroundColor(colorScheme == .light ? Color.reddDark.opacity(0.5) : Color.redd.opacity(0.5))
-//                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
-//                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                    //                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                    //                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
                     Image(systemName: "heart")
                         .resizable()
                         .font(.system(size: 10, weight: .ultraLight, design: .serif))
@@ -708,7 +673,7 @@ struct FavoriteStoreButton: View {
     
     var width: CGFloat
     var height: CGFloat
-
+    
     var body: some View {
         Button(action: {
             if isSet {
@@ -719,25 +684,25 @@ struct FavoriteStoreButton: View {
         }) {
             ZStack {
                 if isSet {
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .frame(width: width, height: height)
-                    .foregroundColor(colorScheme == .light ? .yellowwDark : .yelloww)
-//                    .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
-//                    .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
-                Image(systemName: "star")
-                    .resizable()
-                    .font(.system(size: 10, weight: .ultraLight, design: .serif))
-                    .frame(width: width, height: height)
-                    .foregroundColor(colorScheme == .dark ? Color.yellowwDark.opacity(0.1) : Color.offSecondaryGray.opacity(0.1))
+                    Image(systemName: "star.fill")
+                        .resizable()
+                        .frame(width: width, height: height)
+                        .foregroundColor(colorScheme == .light ? .yellowwDark : .yelloww)
+                    //                    .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                    //                    .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                    Image(systemName: "star")
+                        .resizable()
+                        .font(.system(size: 10, weight: .ultraLight, design: .serif))
+                        .frame(width: width, height: height)
+                        .foregroundColor(colorScheme == .dark ? Color.yellowwDark.opacity(0.1) : Color.offSecondaryGray.opacity(0.1))
                 }
                 else {
                     Image(systemName: "star")
                         .resizable()
                         .frame(width: width, height: height)
                         .foregroundColor(colorScheme == .light ? Color.yellowwDark.opacity(0.5) : Color.yelloww.opacity(0.5))
-//                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
-//                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
+                    //                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 3, x: 3, y: 3)
+                    //                        .shadow(color: colorScheme == .dark ? .topShadowDark : .topShadow, radius: 3, x: -1.5, y: -1.5)
                     Image(systemName: "star")
                         .resizable()
                         .font(.system(size: 10, weight: .ultraLight, design: .serif))
@@ -800,19 +765,19 @@ struct CustomToggleStyle: ToggleStyle {
                     .scaleEffect(configuration.isOn ? 1.1 : 1)
             }
             .frame(width: 220, height: 100)
-//            .background(
-//                ZStack{
-//                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
-//
-////                    Capsule(style: .continuous)
-////                            .stroke(Color.clear, lineWidth: 1)
-////                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
-////
-////                    Capsule(style: .continuous)
-////                        .stroke(Color.clear, lineWidth: 1)
-////                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
-//                }
-//            )
+            //            .background(
+            //                ZStack{
+            //                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
+            //
+            ////                    Capsule(style: .continuous)
+            ////                            .stroke(Color.clear, lineWidth: 1)
+            ////                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
+            ////
+            ////                    Capsule(style: .continuous)
+            ////                        .stroke(Color.clear, lineWidth: 1)
+            ////                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
+            //                }
+            //            )
             .clipShape(Capsule(style: .continuous))
             .overlay(
                 Capsule(style: .continuous)
@@ -835,13 +800,13 @@ struct CustomToggleStyle: ToggleStyle {
                 LongPressGesture().updating($tap) {currentState, gestureState, transaction in
                     gestureState = currentState
                 }
-//                    .onChanged { value in
-//                        configuration.isOn.toggle()
-//                    }
+                //                    .onChanged { value in
+                //                        configuration.isOn.toggle()
+                //                    }
                 .onEnded { value in
                     configuration.isOn.toggle()
                 }
-        )
+            )
         }
     }
 }
@@ -891,19 +856,19 @@ struct CustomToggleStyle2: ToggleStyle {
                     .scaleEffect(configuration.isOn ? 1.1 : 1)
             }
             .frame(width: 220, height: 100)
-//            .background(
-//                ZStack{
-//                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
-//
-//                    RoundedRectangle(cornerRadius: 20)
-//                            .stroke(Color.clear, lineWidth: 1)
-//                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
-//
-//                    RoundedRectangle(cornerRadius: 20)
-//                        .stroke(Color.clear, lineWidth: 1)
-//                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
-//                }
-//            )
+            //            .background(
+            //                ZStack{
+            //                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
+            //
+            //                    RoundedRectangle(cornerRadius: 20)
+            //                            .stroke(Color.clear, lineWidth: 1)
+            //                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
+            //
+            //                    RoundedRectangle(cornerRadius: 20)
+            //                        .stroke(Color.clear, lineWidth: 1)
+            //                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
+            //                }
+            //            )
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
@@ -926,13 +891,13 @@ struct CustomToggleStyle2: ToggleStyle {
                 LongPressGesture().updating($tap) {currentState, gestureState, transaction in
                     gestureState = currentState
                 }
-//                    .onChanged { value in
-//                        configuration.isOn.toggle()
-//                    }
+                //                    .onChanged { value in
+                //                        configuration.isOn.toggle()
+                //                    }
                 .onEnded { value in
                     configuration.isOn.toggle()
                 }
-        )
+            )
         }
     }
 }
@@ -982,19 +947,19 @@ struct PressToggleStyle: ToggleStyle {
                     .scaleEffect(configuration.isOn ? 1.1 : 1)
             }
             .frame(width: toggleWidth, height: toggleHeight)
-//            .background(
-//                ZStack{
-//                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
-//
-////                    Capsule(style: .continuous)
-////                            .stroke(Color.clear, lineWidth: 1)
-////                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
-////
-////                    Capsule(style: .continuous)
-////                        .stroke(Color.clear, lineWidth: 1)
-////                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
-//                }
-//            )
+            //            .background(
+            //                ZStack{
+            //                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
+            //
+            ////                    Capsule(style: .continuous)
+            ////                            .stroke(Color.clear, lineWidth: 1)
+            ////                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
+            ////
+            ////                    Capsule(style: .continuous)
+            ////                        .stroke(Color.clear, lineWidth: 1)
+            ////                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
+            //                }
+            //            )
             .clipShape(Capsule(style: .continuous))
             .overlay(
                 Capsule(style: .continuous)
@@ -1029,68 +994,68 @@ struct CustomButtonStyle: View {
     var size: CGFloat
     
     var body: some View{
-            ZStack{
-                Image(systemName: "heart")
-                    .font(.system(size: size, weight: .light))
-                    .offset(x: press ? -90 : 0, y: press ? 20 : 0)
-                    .rotation3DEffect(Angle.degrees(press ? 100 : 0), axis: (x: 10, y: 10, z: 20))
-                    .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
-                Image(systemName: "heart.fill")
-                    .font(.system(size: size, weight: .light))
-                    .offset(x: press ? 0 : 90, y: press ? 0 : 20)
-                    .rotation3DEffect(Angle.degrees(press ? 0 : 100), axis: (x: -10, y: -10, z: 20))
-                    .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
-            }
-            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-//            .background(
-//                ZStack{
-//                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
-//
-//                        Circle()
-//                            .stroke(Color.clear, lineWidth: 1)
-//                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 10, x: -2, y: -2)
-//                            .blur(radius: 10)
-//
-//                    Circle()
-//                        .stroke(Color.clear, lineWidth: 1)
-//                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 10, x: 4, y: 4)
-//                        .blur(radius: 10)
-//                }
-//            )
-            .clipShape(Circle())
-            .background(
-                Group {
-                    if press {
-                        Group {
-                            CustomTappedAccountButton7()
-                        }
-                    } else {
-                        Group {
-                            CustomConfirmButtonsView7()
-                        }
+        ZStack{
+            Image(systemName: "heart")
+                .font(.system(size: size, weight: .light))
+                .offset(x: press ? -90 : 0, y: press ? 20 : 0)
+                .rotation3DEffect(Angle.degrees(press ? 100 : 0), axis: (x: 10, y: 10, z: 20))
+                .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
+            Image(systemName: "heart.fill")
+                .font(.system(size: size, weight: .light))
+                .offset(x: press ? 0 : 90, y: press ? 0 : 20)
+                .rotation3DEffect(Angle.degrees(press ? 0 : 100), axis: (x: -10, y: -10, z: 20))
+                .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
+        }
+        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+        //            .background(
+        //                ZStack{
+        //                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
+        //
+        //                        Circle()
+        //                            .stroke(Color.clear, lineWidth: 1)
+        //                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 10, x: -2, y: -2)
+        //                            .blur(radius: 10)
+        //
+        //                    Circle()
+        //                        .stroke(Color.clear, lineWidth: 1)
+        //                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 10, x: 4, y: 4)
+        //                        .blur(radius: 10)
+        //                }
+        //            )
+        .clipShape(Circle())
+        .background(
+            Group {
+                if press {
+                    Group {
+                        CustomTappedAccountButton7()
+                    }
+                } else {
+                    Group {
+                        CustomConfirmButtonsView7()
                     }
                 }
-            )
-//            .scaleEffect(press ? 1.1 : 1)
-            .gesture(
-                LongPressGesture().updating($tap) {currentState, gestureState, transaction in
-                    gestureState = currentState
-                }
-//                .onChanged { value in
-//                    if self.press == true {
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                            self.press = false
-//                        }
-//                    } else {
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                            self.press = false
-//                        }
-//                    }
-//                }
-                .onChanged { value in
-                    self.press.toggle()
-                }
-            )
+            }
+        )
+        //            .scaleEffect(press ? 1.1 : 1)
+        .gesture(
+            LongPressGesture().updating($tap) {currentState, gestureState, transaction in
+                gestureState = currentState
+            }
+            //                .onChanged { value in
+            //                    if self.press == true {
+            //                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            //                            self.press = false
+            //                        }
+            //                    } else {
+            //                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            //                            self.press = false
+            //                        }
+            //                    }
+            //                }
+            .onChanged { value in
+                self.press.toggle()
+            }
+        )
     }
 }
 
@@ -1102,57 +1067,57 @@ struct ChevronCustomButtonStyle: View {
     var size: CGFloat
     
     var body: some View{
-            ZStack{
-                Image(systemName: "chevron.right.circle")
-                    .font(.system(size: size, weight: .light))
-//                    .offset(x: isSet ? -90 : 0, y: isSet ? 20 : 0)
-                    .opacity(!isSet ? 1 : 0)
-                    .rotationEffect(Angle.degrees(!isSet ? 90 * 5 : 0))
-                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                Image(systemName: "chevron.right.circle.fill")
-                    .font(.system(size: size, weight: .light))
-//                    .offset(x: isSet ? 0 : 90, y: isSet ? 0 : 20)
-                    .opacity(isSet ? 1 : 0)
-                    .rotationEffect(Angle.degrees(!isSet ? 0 : 90 * 5))
-                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-            }
-            .scaleEffect(isSet ? 1.1 : 1)
-            .frame(width: 40, height: 40)
-//            .background(
-//                ZStack{
-//                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
-//
-//                        Circle()
-//                            .stroke(Color.clear, lineWidth: 1)
-//                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 10, x: -2, y: -2)
-//                            .blur(radius: 10)
-//
-//                    Circle()
-//                        .stroke(Color.clear, lineWidth: 1)
-//                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 10, x: 4, y: 4)
-//                        .blur(radius: 10)
-//                }
-//            )
-            .clipShape(Circle())
-            .background(
-                Group {
-                    if isSet {
-                        Group {
-                            CustomTappedAccountButton8()
-                        }
-                    } else {
-                        Group {
-                            CustomConfirmButtonsView8()
-                        }
+        ZStack{
+            Image(systemName: "chevron.right.circle")
+                .font(.system(size: size, weight: .light))
+                //                    .offset(x: isSet ? -90 : 0, y: isSet ? 20 : 0)
+                .opacity(!isSet ? 1 : 0)
+                .rotationEffect(Angle.degrees(!isSet ? 90 * 5 : 0))
+                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+            Image(systemName: "chevron.right.circle.fill")
+                .font(.system(size: size, weight: .light))
+                //                    .offset(x: isSet ? 0 : 90, y: isSet ? 0 : 20)
+                .opacity(isSet ? 1 : 0)
+                .rotationEffect(Angle.degrees(!isSet ? 0 : 90 * 5))
+                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+        }
+        .scaleEffect(isSet ? 1.1 : 1)
+        .frame(width: 40, height: 40)
+        //            .background(
+        //                ZStack{
+        //                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
+        //
+        //                        Circle()
+        //                            .stroke(Color.clear, lineWidth: 1)
+        //                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 10, x: -2, y: -2)
+        //                            .blur(radius: 10)
+        //
+        //                    Circle()
+        //                        .stroke(Color.clear, lineWidth: 1)
+        //                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 10, x: 4, y: 4)
+        //                        .blur(radius: 10)
+        //                }
+        //            )
+        .clipShape(Circle())
+        .background(
+            Group {
+                if isSet {
+                    Group {
+                        CustomTappedAccountButton8()
+                    }
+                } else {
+                    Group {
+                        CustomConfirmButtonsView8()
                     }
                 }
-            )
-            .scaleEffect(isSet ? 1.1 : 1)
-//            .scaleEffect(press ? 1.1 : 1)
-            .onTapGesture{
-                    self.isSet.toggle()
-                }
-            
+            }
+        )
+        .scaleEffect(isSet ? 1.1 : 1)
+        //            .scaleEffect(press ? 1.1 : 1)
+        .onTapGesture{
+            self.isSet.toggle()
+        }
+        
     }
 }
 
@@ -1161,85 +1126,85 @@ struct FlowerCustomButtonStyle: View {
     
     @Binding var isSet: Bool
     
-//    @State private var showingAlert = false
-//    @State var press = false
+    //    @State private var showingAlert = false
+    //    @State var press = false
     
     var size: CGFloat
     
     var body: some View{
-            ZStack{
-                Image(systemName: "heart")
-                    .font(.system(size: size, weight: .light))
-                    .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
-                    .opacity(isSet ? 0 : 1)
-                    .scaleEffect(isSet ? 0 : 1)
-                Image(systemName: "heart.fill")
-                    .font(.system(size: size, weight: .light))
-                    .clipShape(Rectangle().offset(y: isSet ? 0 : 60))
-                    .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
-                    .animation(.easeInOut)
-                    .opacity(isSet ? 0 : 1)
-                    .scaleEffect(isSet ? 0 : 1)
-                Image(systemName: "heart.fill")
-                    .font(.system(size: size, weight: .light))
-                    .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
-                    .opacity(isSet ? 1 : 0)
-                    .scaleEffect(isSet ? 1 : 0)
+        ZStack{
+            Image(systemName: "heart")
+                .font(.system(size: size, weight: .light))
+                .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
+                .opacity(isSet ? 0 : 1)
+                .scaleEffect(isSet ? 0 : 1)
+            Image(systemName: "heart.fill")
+                .font(.system(size: size, weight: .light))
+                .clipShape(Rectangle().offset(y: isSet ? 0 : 60))
+                .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
+                .animation(.easeInOut)
+                .opacity(isSet ? 0 : 1)
+                .scaleEffect(isSet ? 0 : 1)
+            Image(systemName: "heart.fill")
+                .font(.system(size: size, weight: .light))
+                .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
+                .opacity(isSet ? 1 : 0)
+                .scaleEffect(isSet ? 1 : 0)
+        }
+        .frame(width: 55, height: 55)
+        //            .background(
+        //                ZStack{
+        //                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
+        //
+        //                        Circle()
+        //                            .stroke(Color.clear, lineWidth: 1)
+        //                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
+        //
+        //                    Circle()
+        //                        .stroke(Color.clear, lineWidth: 1)
+        //                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
+        //                }
+        //            )
+        .clipShape(Circle())
+        .overlay(
+            Circle()
+                .trim(from: isSet ? 0.001 : 1, to: isSet ? 1 : 0.001)
+                .stroke(LinearGradient(colorScheme == .dark ? Color.redd : Color.redd, colorScheme == .light ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd), style: StrokeStyle(lineWidth: 2, lineCap: .round))
+                .frame(width: 50, height: 50)
+                .rotationEffect(Angle(degrees: 90))
+                .rotation3DEffect(
+                    Angle(degrees: isSet ? 0 : 180),
+                    axis: (x: 0.0, y: 0.0, z: 0.0))
+                .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 5, x: 3, y: 3)
+                .animation(.spring())
+        )
+        .background(
+            Group {
+                NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
             }
-            .frame(width: 55, height: 55)
-//            .background(
-//                ZStack{
-//                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
-//
-//                        Circle()
-//                            .stroke(Color.clear, lineWidth: 1)
-//                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
-//
-//                    Circle()
-//                        .stroke(Color.clear, lineWidth: 1)
-//                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
-//                }
-//            )
-            .clipShape(Circle())
-            .overlay(
-                Circle()
-                    .trim(from: isSet ? 0.001 : 1, to: isSet ? 1 : 0.001)
-                    .stroke(LinearGradient(colorScheme == .dark ? Color.redd : Color.redd, colorScheme == .light ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd), style: StrokeStyle(lineWidth: 2, lineCap: .round))
-                    .frame(width: 50, height: 50)
-                    .rotationEffect(Angle(degrees: 90))
-                    .rotation3DEffect(
-                        Angle(degrees: isSet ? 0 : 180),
-                        axis: (x: 0.0, y: 0.0, z: 0.0))
-                    .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 5, x: 3, y: 3)
-                    .animation(.spring())
-            )
-            .background(
-                Group {
-                    NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
-                }
-            )
-            .scaleEffect(isSet ? 1.1 : 1)
-            .onTapGesture {
-                    self.isSet.toggle()
-//                    if !isSet {
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            showingAlert = true
-//                        }
-//                    } else {
-//                        isSet = true
-//                    }
-                if isSet {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        isSet = true
-                    }
+        )
+        .scaleEffect(isSet ? 1.1 : 1)
+        .onTapGesture {
+            self.isSet.toggle()
+            //                    if !isSet {
+            //                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //                            showingAlert = true
+            //                        }
+            //                    } else {
+            //                        isSet = true
+            //                    }
+            if isSet {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isSet = true
                 }
             }
-//        .alert(isPresented: $showingAlert) {
-//            Alert(title: Text("Remove from favorites?"), primaryButton: .destructive(Text("Yes")) {
-//                isSet = false
-//            },
-//            secondaryButton: .cancel(){isSet = true})
-//        }
+        }
+        //        .alert(isPresented: $showingAlert) {
+        //            Alert(title: Text("Remove from favorites?"), primaryButton: .destructive(Text("Yes")) {
+        //                isSet = false
+        //            },
+        //            secondaryButton: .cancel(){isSet = true})
+        //        }
     }
 }
 
@@ -1251,81 +1216,81 @@ struct StoreCustomButtonStyle: View {
     @State private var showingAlert = false
     
     @GestureState var tap = false
-//    @State var press = false
+    //    @State var press = false
     
     var size: CGFloat
     
     var body: some View{
-            ZStack{
-                Image(systemName: "star")
-                    .font(.system(size: size, weight: .light))
-                    .foregroundColor(colorScheme == .dark ? .yellowwDark : .yelloww)
-                    .opacity(isSet ? 0 : 1)
-                    .scaleEffect(isSet ? 0 : 1)
-                Image(systemName: "star.fill")
-                    .font(.system(size: size, weight: .light))
-                    .clipShape(Rectangle().offset(y: isSet ? 0 : 60))
-                    .foregroundColor(colorScheme == .dark ? .yellowwDark : .yelloww)
-                    .animation(.easeInOut)
-                    .opacity(isSet ? 0 : 1)
-                    .scaleEffect(isSet ? 0 : 1)
-                Image(systemName: "star.fill")
-                    .font(.system(size: size, weight: .light))
-                    .foregroundColor(colorScheme == .dark ? .yellowwDark : .yelloww)
-                    .opacity(isSet ? 1 : 0)
-                    .scaleEffect(isSet ? 1 : 0)
-            }
-            .frame(width: 30, height: 30)
-//            .background(
-//                ZStack{
-//                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
-//
-//                        Circle()
-//                            .stroke(Color.clear, lineWidth: 1)
-//                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
-//
-//                    Circle()
-//                        .stroke(Color.clear, lineWidth: 1)
-//                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
-//                }
-//            )
-            .clipShape(Circle())
-            .overlay(
-                Circle()
-                    .trim(from: isSet ? 0.001 : 1, to: isSet ? 1 : 0.001)
-                    .stroke(LinearGradient(colorScheme == .dark ? Color.yellowwDark : Color.yelloww, colorScheme == .light ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd), style: StrokeStyle(lineWidth: 1, lineCap: .round))
-                    .frame(width: 27, height: 27)
-                    .rotationEffect(Angle(degrees: 90))
-                    .rotation3DEffect(
-                        Angle(degrees: isSet ? 0 : 180),
-                        axis: (x: 0.0, y: 0.0, z: 0.0))
-                    .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 5, x: 3, y: 3)
-                    .animation(.spring())
-                    .offset(y: 1)
-            )
-//            .background(
-//                Group {
-//                    NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
-//                }
-//            )
-            .scaleEffect(isSet ? 1.1 : 1)
-            .onTapGesture {
-                    self.isSet.toggle()
-//                    if !isSet {
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                            showingAlert = true
-//                        }
-//                    } else {
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                        isSet = true
-//                        }
-//                    }
-            }
-//            .alert(isPresented: $showingAlert) {
-//                Alert(title: Text("Remove from favorites?"), primaryButton: .destructive(Text("Yes")) {
-//                    isSet = false
-//                },
-//                secondaryButton: .cancel(){isSet = true})
-//        }
+        ZStack{
+            Image(systemName: "star")
+                .font(.system(size: size, weight: .light))
+                .foregroundColor(colorScheme == .dark ? .yellowwDark : .yelloww)
+                .opacity(isSet ? 0 : 1)
+                .scaleEffect(isSet ? 0 : 1)
+            Image(systemName: "star.fill")
+                .font(.system(size: size, weight: .light))
+                .clipShape(Rectangle().offset(y: isSet ? 0 : 60))
+                .foregroundColor(colorScheme == .dark ? .yellowwDark : .yelloww)
+                .animation(.easeInOut)
+                .opacity(isSet ? 0 : 1)
+                .scaleEffect(isSet ? 0 : 1)
+            Image(systemName: "star.fill")
+                .font(.system(size: size, weight: .light))
+                .foregroundColor(colorScheme == .dark ? .yellowwDark : .yelloww)
+                .opacity(isSet ? 1 : 0)
+                .scaleEffect(isSet ? 1 : 0)
+        }
+        .frame(width: 30, height: 30)
+        //            .background(
+        //                ZStack{
+        //                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
+        //
+        //                        Circle()
+        //                            .stroke(Color.clear, lineWidth: 1)
+        //                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
+        //
+        //                    Circle()
+        //                        .stroke(Color.clear, lineWidth: 1)
+        //                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
+        //                }
+        //            )
+        .clipShape(Circle())
+        .overlay(
+            Circle()
+                .trim(from: isSet ? 0.001 : 1, to: isSet ? 1 : 0.001)
+                .stroke(LinearGradient(colorScheme == .dark ? Color.yellowwDark : Color.yelloww, colorScheme == .light ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd), style: StrokeStyle(lineWidth: 1, lineCap: .round))
+                .frame(width: 27, height: 27)
+                .rotationEffect(Angle(degrees: 90))
+                .rotation3DEffect(
+                    Angle(degrees: isSet ? 0 : 180),
+                    axis: (x: 0.0, y: 0.0, z: 0.0))
+                .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 5, x: 3, y: 3)
+                .animation(.spring())
+                .offset(y: 1)
+        )
+        //            .background(
+        //                Group {
+        //                    NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+        //                }
+        //            )
+        .scaleEffect(isSet ? 1.1 : 1)
+        .onTapGesture {
+            self.isSet.toggle()
+            //                    if !isSet {
+            //                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //                            showingAlert = true
+            //                        }
+            //                    } else {
+            //                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //                        isSet = true
+            //                        }
+            //                    }
+        }
+        //            .alert(isPresented: $showingAlert) {
+        //                Alert(title: Text("Remove from favorites?"), primaryButton: .destructive(Text("Yes")) {
+        //                    isSet = false
+        //                },
+        //                secondaryButton: .cancel(){isSet = true})
+        //        }
     }
 }

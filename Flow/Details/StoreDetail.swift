@@ -39,11 +39,8 @@ struct StoreDetail: View {
     var storeIndex: Int {
         modelData.stores.firstIndex(where: { $0.id == store.id })!
     }
-    
-    
-    
+      
     var body: some View {
-        
         let markers = [
             Marker(location: MapMarker(coordinate: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)), name: coordinateName)
         ]
@@ -63,10 +60,8 @@ struct StoreDetail: View {
             .onTapGesture {
                 isTap = !isTap
             }
-//            CustomSheetView2(coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity)
             CustomSheetView(isOpen: $isTap, maxHeight: UIScreen.main.bounds.height * 0.775, minHeight: UIScreen.main.bounds.height * 0.2, coordinateImage: coordinateImage, coordinateName: coordinateName, coordinateDescription: coordinateDescription, coordinatePhone: coordinatePhone, coordinateHours: coordinateHours, coordinateCity: coordinateCity, coordinateDays: coordinateDays)
             .edgesIgnoringSafeArea(.all)
-            
         }
         .background(BlurView())
         .onAppear {
@@ -76,7 +71,6 @@ struct StoreDetail: View {
         }
         .frame(height: UIScreen.main.bounds.height)
         .ignoresSafeArea(edges: .top)
-//        .navigationTitle(coordinateName, displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
             self.showFavoritesOnly.toggle()
         }, label: {
@@ -97,46 +91,5 @@ struct StoreDetail_Previews: PreviewProvider {
         StoreDetail(store: ModelData().stores[0], coordinate: CLLocationCoordinate2D(), coordinateName: "", coordinateDescription: "", coordinatePhone: "", coordinateImage: "", coordinateHours: "", coordinateCity: "", coordinateDays: "")
             .environmentObject(ModelData())
             .preferredColorScheme(.dark)
-    }
-}
-
-class locationDelegate : NSObject, ObservableObject, CLLocationManagerDelegate {
-    
-    var currentLatitude: String = "none"
-    var currentLongitude: String = "none"
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        
-        if manager.authorizationStatus == .authorizedWhenInUse {
-            print("authorized")
-            
-            manager.startUpdatingLocation()
-            
-            if manager.accuracyAuthorization != .fullAccuracy {
-                print("reduce accuracy")
-                
-                manager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "Location") {
-                    (err) in
-                    if err != nil {
-                        print(err!)
-                        return
-                    }
-                }
-            }
-        } else {
-            print("not authorized")
-            manager.requestWhenInUseAuthorization()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            print(String(format: "%+.06f", location.coordinate.latitude))
-            print(String(format: "%+.06f", location.coordinate.longitude))
-            
-            currentLatitude = String(format: "%+.06f", location.coordinate.latitude)
-            currentLongitude = String(format: "%+.06f", location.coordinate.longitude)
-            
-        }
     }
 }
