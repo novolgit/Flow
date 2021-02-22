@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     
+    @StateObject private var constructorData = ConstructorData()
+    
     @EnvironmentObject var modelData: ModelData
     
     @State var logoAnimate: Bool = false
@@ -32,11 +34,13 @@ struct ContentView: View {
                     }
                     .tag(Tab.featured)
                 ConstructorView()
+                    .environmentObject(constructorData)
                     .tabItem {
                         Label("Constructor", systemImage: "scale.3d")
                     }
                     .tag(Tab.constructor)
                 PurchaseView()
+                    .environmentObject(constructorData)
                     .tabItem {
                         Label("Purchase", systemImage: "purchased")
                     }

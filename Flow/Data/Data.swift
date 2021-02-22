@@ -16,6 +16,10 @@ final class ModelData: ObservableObject {
     var charts: [Chart] = load("chartData.json")
 }
 
+class ConstructorData: ObservableObject {
+    @Published var constructorImage: Array<Data> = Array()
+}
+
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
 

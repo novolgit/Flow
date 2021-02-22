@@ -1249,20 +1249,20 @@ struct StoreCustomButtonStyle: View {
         //                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
         //                }
         //            )
-        .clipShape(Circle())
-        .overlay(
-            Circle()
-                .trim(from: isSet ? 0.001 : 1, to: isSet ? 1 : 0.001)
-                .stroke(LinearGradient(colorScheme == .dark ? Color.yellowwDark : Color.yelloww, colorScheme == .light ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd), style: StrokeStyle(lineWidth: 1, lineCap: .round))
-                .frame(width: 27, height: 27)
-                .rotationEffect(Angle(degrees: 90))
-                .rotation3DEffect(
-                    Angle(degrees: isSet ? 0 : 180),
-                    axis: (x: 0.0, y: 0.0, z: 0.0))
-                .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 5, x: 3, y: 3)
-                .animation(.spring())
-                .offset(y: 1)
-        )
+//        .clipShape(Circle())
+//        .overlay(
+//            Circle()
+//                .trim(from: isSet ? 0.001 : 1, to: isSet ? 1 : 0.001)
+//                .stroke(LinearGradient(colorScheme == .dark ? Color.yellowwDark : Color.yelloww, colorScheme == .light ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd), style: StrokeStyle(lineWidth: 1, lineCap: .round))
+//                .frame(width: 27, height: 27)
+//                .rotationEffect(Angle(degrees: 90))
+//                .rotation3DEffect(
+//                    Angle(degrees: isSet ? 0 : 180),
+//                    axis: (x: 0.0, y: 0.0, z: 0.0))
+//                .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 5, x: 3, y: 3)
+//                .animation(.spring())
+//                .offset(y: 1)
+//        )
         //            .background(
         //                Group {
         //                    NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)

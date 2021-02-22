@@ -12,6 +12,7 @@ struct PurchaseView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var constructorData: ConstructorData
     
     @State private var paymentType = 0
     @State private var showSort = false
@@ -32,45 +33,73 @@ struct PurchaseView: View {
                             )
                     }
                     .padding([.top, .leading, .trailing])
-                    LazyVStack(spacing: 0) {
-                        ForEach(
-                            //                            isSort == "name" ?
-                            sortByNameList()[0..<3]
-                            //                                    : sortByPriceList()
-                        ) { flower in
-                            RowContentView(flower: $modelData.flowers[getIndex(flower: flower)],flowers: $modelData.flowers, isSet: $modelData.flowers[getIndex(flower: flower)].isPurchase)
-                                .frame(height: 85)
-                                .padding(14)
+                    //                    LazyVStack(spacing: 0) {
+                    //                    if  constructorData.constructorImage.isEmpty {
+                    //                        Text("Empty")
+                    //                    } else {
+                    //                        List{
+                    Button(action: {
+                        print("image counts: \(constructorData.constructorImage)")
+                        print("Indeces \(constructorData.constructorImage.indices)")
+                        print("Counts: \(constructorData.constructorImage.count)")
+                    }, label: {
+                        Text("tap")
+                    })
+                    ForEach(constructorData.constructorImage.indices, id: \.self) { index in
+                        
+                        HStack{
+                            Image(uiImage: loadImageFromDiskWith(fileName: "constructorImage\(index).jpg") ?? UIImage(named: "120x120_clear")!)
+                                .resizable()
+                                .frame(width: UIScreen.main.nativeBounds.width * 0.225, height: UIScreen.main.nativeBounds.height * 0.05)
+                            Spacer()
+                            Text("\(index)")
                         }
-                        VStack{}.frame(height: UIScreen.main.bounds.height*0.04)
-                        VStack {
-                            HStack {
-                                Spacer()
-                                NavigationLink(destination: ConfirmView(totalPrice: calculateTotalPrice(), coordinate: modelData.stores[0].locationCoordinate, coordinateName: modelData.stores[0].name),
-                                               label: {
-                                                HStack {
-                                                    Text("Confirm")
-                                                        .font(.system(size: 26, weight: .regular, design: .serif))
-                                                        .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
-                                                    Image(systemName: "arrow.right")
-                                                        .font(.system(size: 20, weight: .light, design: .serif))
-                                                        .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
-                                                }
-                                               })
-                                    .frame(width: UIScreen.main.nativeBounds.width * 0.225, height: UIScreen.main.nativeBounds.height * 0.05)
-                                    .background(
-                                        Group {
-                                            CustomConfirmButtonsView3()
-                                        }
-                                    )
+                        .background(
+                            Group {
+                                CustomConfirmButtonsView3()
                             }
-                        }
-                        .scaleEffect(detectChoose() ? 1 : 0)
-                        .animation(.spring())
-                        .padding(.trailing)
-                        VStack{}.frame(height: 35)
+                        )
                     }
-                    VStack{}.frame(height: 20)
+                    //                        }
+                    //                    }
+                    //                        ForEach(
+                    //                            //                            isSort == "name" ?
+                    //                            sortByNameList()[0..<3]
+                    //                            //                                    : sortByPriceList()
+                    //                        ) { flower in
+                    //                            RowContentView(flower: $modelData.flowers[getIndex(flower: flower)],flowers: $modelData.flowers, isSet: $modelData.flowers[getIndex(flower: flower)].isPurchase)
+                    //                                .frame(height: 85)
+                    //                                .padding(14)
+                    //                        }
+                    //                        VStack{}.frame(height: UIScreen.main.bounds.height*0.04)
+                    //                        VStack {
+                    //                            HStack {
+                    //                                Spacer()
+                    //                                NavigationLink(destination: ConfirmView(totalPrice: calculateTotalPrice(), coordinate: modelData.stores[0].locationCoordinate, coordinateName: modelData.stores[0].name),
+                    //                                               label: {
+                    //                                                HStack {
+                    //                                                    Text("Confirm")
+                    //                                                        .font(.system(size: 26, weight: .regular, design: .serif))
+                    //                                                        .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
+                    //                                                    Image(systemName: "arrow.right")
+                    //                                                        .font(.system(size: 20, weight: .light, design: .serif))
+                    //                                                        .foregroundColor( colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
+                    //                                                }
+                    //                                               })
+                    //                                    .frame(width: UIScreen.main.nativeBounds.width * 0.225, height: UIScreen.main.nativeBounds.height * 0.05)
+                    //                                    .background(
+                    //                                        Group {
+                    //                                            CustomConfirmButtonsView3()
+                    //                                        }
+                    //                                    )
+                    //                            }
+                    //                        }
+                    //                        .scaleEffect(detectChoose() ? 1 : 0)
+                    //                        .animation(.spring())
+                    //                        .padding(.trailing)
+                    //                        VStack{}.frame(height: 35)
+                    //                    }
+                    //                    VStack{}.frame(height: 20)
                 }
             }
             .navigationBarTitle("Purchase", displayMode: .inline)
@@ -100,6 +129,23 @@ struct PurchaseView: View {
                 }
             )
         }
+    }
+    
+    func loadImageFromDiskWith(fileName: String) -> UIImage? {
+        
+        let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        
+        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+        
+        if let dirPath = paths.first {
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+            let image = UIImage(contentsOfFile: imageUrl.path)
+            return image
+            
+        }
+        
+        return nil
     }
     
     func sortByPriceList() -> [Flower] {
@@ -153,6 +199,7 @@ struct PurchaseView: View {
 struct PurchaseView_Previews: PreviewProvider {
     static var previews: some View {
         PurchaseView()
+            .environmentObject(ConstructorData())
             .environmentObject(ModelData())
             .preferredColorScheme(.dark)
     }

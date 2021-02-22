@@ -13,6 +13,7 @@ struct ConstructorView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var constructorData: ConstructorData
     
     @State private var showChoose = false
     @State private var show: Bool = false
@@ -21,15 +22,14 @@ struct ConstructorView: View {
     @State var modelsArray: Array<Any> = []
     @State var isDelete: Int = 0
     
-    @Namespace private var namespace 
+    @Namespace private var namespace
     
     let imageSize: CGSize = CGSize(width: 1000, height: 1000)
     
     var body: some View {
         VStack{
             ZStack{
-                SceneKitView(modelsArray: $modelsArray, isDelete: $isDelete)
-                    .ignoresSafeArea()
+                SceneKitViewVar
                 VStack {
                     HStack {
                         Button(action: {
@@ -54,6 +54,45 @@ struct ConstructorView: View {
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         })
                         Button(action: {
+                            
+                            let highresImage = SceneKitViewVar.asImage(size: imageSize)
+                            guard let highresData = highresImage.jpegData(compressionQuality: 1) else { return }
+                            constructorData.constructorImage.append(highresData)
+                            
+                            func saveImage(imageName: String, image: UIImage) {
+                                guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+                                
+                                let fileName = imageName
+                                let fileURL = documentsDirectory.appendingPathComponent(fileName)
+                                guard let data = image.jpegData(compressionQuality: 1) else { return }
+                                
+                                //                                if FileManager.default.fileExists(atPath: fileURL.path) {
+                                //                                    do {
+                                //                                        try FileManager.default.removeItem(atPath: fileURL.path)
+                                //                                        print("Removed old image")
+                                //                                    } catch let removeError {
+                                //                                        print("couldn't remove file at path", removeError)
+                                //                                    }
+                                //                                }
+                                do {
+                                    try data.write(to: fileURL)
+                                } catch let error {
+                                    print("error saving file with error", error)
+                                }
+                                print("data \(data)")
+                                print("document \(documentsDirectory)")
+                            }
+                            
+                            //                            func saveImageIndex(data: Data) {
+                            for index in constructorData.constructorImage.indices {
+                                saveImage(imageName: "constructorImage\(index).jpg", image: UIImage(data: constructorData.constructorImage[index]) ?? UIImage(named: "120x120_clear")!)
+                            }
+                            //                            }
+                            
+                            
+                            
+                            print("image counts: \(constructorData.constructorImage)")
+                            
                         }, label: {
                             Image(systemName: "cart.badge.plus")
                                 .font(.system(size: 22, weight: .ultraLight, design: .serif))
@@ -64,93 +103,25 @@ struct ConstructorView: View {
                     Spacer()
                 }
             }
-            VStack{
-                if !show {Button(action: {
-                    show.toggle()
-                }, label: {
-                    Image(systemName: "chevron.compact.up")
-                        .resizable()
-                        .frame(width: 30, height: 10)
-                        .padding(8)
-                        .matchedGeometryEffect(id: "ConstructorCapsule", in: self.namespace)
-                })
-                } else {
-                    VStack{
-                        Capsule()
-                            .frame(width: 50, height: 5)
-                            .foregroundColor(.gray)
-                            .padding()
-                            .matchedGeometryEffect(id: "ConstructorCapsule", in: self.namespace)
-                            .onTapGesture {
-                                show.toggle()
-                            }
-                        HStack{
-                            HStack {
-                                Image(systemName: "magnifyingglass")
-                                TextField("search", text: $searchText, onEditingChanged: { isEditing in
-                                    self.showCancelButton = true
-                                }, onCommit: {
-                                    print("onCommit")
-                                }).foregroundColor(.primary)
-                                Button(action: {
-                                    self.searchText = ""
-                                }) {
-                                    Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
-                                }
-                            }
-                            .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-                            .foregroundColor(.secondary)
-                            .background(Color(.secondarySystemBackground))
-                            .cornerRadius(10.0)
-                            if showCancelButton  {
-                                Button("Cancel") {
-                                    UIApplication.shared.endEditing(true)
-                                    self.searchText = ""
-                                    self.showCancelButton = false
-                                }
-                                .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-                                .foregroundColor(Color(.systemBlue))
-                            }
-                        }
-                        .padding(.horizontal)
-                        .navigationBarHidden(showCancelButton)
-                    }
-                }
-                if !show {ScrollView(.horizontal, showsIndicators: false){
-                    HStack(spacing: 0) {
-                        ForEach(modelData.models) {model in
-                            VStack {
-                                Text(model.name)
-                                HStack{
-                                    Image(model.image)
-                                        .resizable()
-                                        .frame(width: 50, height: 50)
-                                    Button(action: {
-                                        modelsArray.append(model.image + ".usdz")
-                                        let impactMed = UIImpactFeedbackGenerator(style: .medium)
-                                        impactMed.impactOccurred()
-                                    }, label: {
-                                        Image(systemName: "plus.app")
-                                    })
-                                }
-                            }
-                            .frame(width: 80, height: 80)
-                            .padding()
-                        }
-                    }
-                }
-                } else {
-                    ScrollView(showsIndicators: false) {
-                        ForEach(modelData.models) {model in
-                            HStack {
+            bottomNav
+        }
+    }
+    
+    var SceneKitViewVar: some View {
+        SceneKitView(modelsArray: $modelsArray, isDelete: $isDelete)
+            .ignoresSafeArea()
+    }
+    var bottomNav: some View {
+        VStack{
+            if !show {ScrollView(.horizontal, showsIndicators: false){
+                HStack(spacing: 0) {
+                    ForEach(modelData.models) {model in
+                        VStack {
+                            Text(model.name)
+                            HStack{
                                 Image(model.image)
                                     .resizable()
-                                    .frame(width: 80, height: 80)
-                                Spacer()
-                                VStack{
-                                    Text("Name")
-                                    Text(model.name)
-                                }
+                                    .frame(width: 50, height: 50)
                                 Button(action: {
                                     modelsArray.append(model.image + ".usdz")
                                     let impactMed = UIImpactFeedbackGenerator(style: .medium)
@@ -159,19 +130,60 @@ struct ConstructorView: View {
                                     Image(systemName: "plus.app")
                                 })
                             }
-                            .padding()
                         }
+                        .frame(width: 80, height: 80)
+                        .padding()
                     }
-                    .frame(height: 500)
                 }
             }
-            .background(
-                Group {
-                    NeuButtonsView2(radius: 25, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+            } else {
+                ScrollView(showsIndicators: false) {
+                    ForEach(modelData.models) {model in
+                        HStack {
+                            Image(model.image)
+                                .resizable()
+                                .frame(width: 80, height: 80)
+                            Spacer()
+                            VStack{
+                                Text("Name")
+                                Text(model.name)
+                            }
+                            Button(action: {
+                                modelsArray.append(model.image + ".usdz")
+                                let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                                impactMed.impactOccurred()
+                            }, label: {
+                                Image(systemName: "plus.app")
+                            })
+                        }
+                        .padding()
+                    }
                 }
-            )
-            .padding()
+                .frame(height: 500)
+            }
         }
+        .background(
+            Group {
+                NeuButtonsView2(radius: 25, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
+            }
+        )
+        .padding()
+    }
+    func loadImageFromDiskWith(fileName: String) -> UIImage? {
+        
+        let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        
+        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+        
+        if let dirPath = paths.first {
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+            let image = UIImage(contentsOfFile: imageUrl.path)
+            return image
+            
+        }
+        
+        return nil
     }
     //    func takeScreenshot(shouldSave: Bool = true) -> UIImage? {
     //        print("takeScreenshot")
@@ -192,6 +204,7 @@ struct ConstructorView: View {
 struct ConstructorView_Previews: PreviewProvider {
     static var previews: some View {
         ConstructorView()
+            .environmentObject(ConstructorData())
             .environmentObject(ModelData())
     }
 }

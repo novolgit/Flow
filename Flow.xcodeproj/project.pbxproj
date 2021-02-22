@@ -402,13 +402,13 @@
 		2FBE50B525ACF016005F5813 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2FFFAF9C25D6B11700DA5299 /* Extentions.swift */,
 				2F5F453125A33C19009B8A82 /* CustomSheetView.swift */,
 				2FA16C6C25ADF9510006D27D /* CustomButtonsView.swift */,
 				2F69183125BA37EE00F700AD /* BlurView.swift */,
 				2F17C3E325BB855F004B7D1B /* PayWithAppleView.swift */,
 				2FD1772125BC671800F5D72B /* CreditCardView.swift */,
 				2F69183425BA537000F700AD /* IndicatorView.swift */,
-				2FFFAF9C25D6B11700DA5299 /* Extentions.swift */,
 				2FE6F4D425DD29C5003250BD /* ImageLoader.swift */,
 				2FE6F4D825DD32E1003250BD /* CustomDelegate.swift */,
 				2FE6F4DE25DD39B4003250BD /* ImagePickerView.swift */,
