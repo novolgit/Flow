@@ -10,25 +10,40 @@ import SwiftUI
 struct AccountSettingsView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @State var userName = UserDefaults.standard.value(forKey: "userName") as? String ?? "Account"
+    @EnvironmentObject var accountCreation : AccountCreationViewModel
     
-    @State private var changeAccountText: String = ""
+    @State var userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+    @State var userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
+    
+    @State private var newName: String = ""
     
     var body: some View {
         VStack{
             HStack{
-                VStack(alignment: .leading) {
-                    Text("Your current account name")
-                        .font(.system(size: 20, weight: .regular, design: .serif))
-                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    Text(userName)
-                        .font(.system(size: 20, weight: .regular, design: .serif))
-                        .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                }
+                Text("Your current account name")
+                    .font(.system(size: 28, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                    Spacer()
+            }
+            HStack{
+                TextField(userStatus ? userName : "Add Name", text: $newName)
+                    .font(.system(size: 20, weight: .regular, design: .serif))
+                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                    .foregroundColor(.gray)
+                    .disableAutocorrection(true)
                 Spacer()
+                Button(action: {
+                    UserDefaults.standard.set(self.newName, forKey: "userName")
+                    
+                    let userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
+                   
+                    self.userName = userName
+                    
+                }, label: {
                 Image(systemName: "square.and.pencil")
                     .font(.system(size: 20, weight: .light, design: .serif))
                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        })
             }
             .frame(width: UIScreen.main.bounds.width*0.83, height: 70)
             .padding()

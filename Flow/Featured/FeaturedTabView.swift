@@ -15,7 +15,7 @@ struct FeaturedTabView: View {
     @State var index: Int
     
     var body: some View {
-        TabView(selection: $index){
+        TabView(selection: self.$index){
             ForEach(modelData.flowers) { flower in
                 HStack{
                     VStack(alignment: .leading){

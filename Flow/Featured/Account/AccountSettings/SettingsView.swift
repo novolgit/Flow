@@ -4,12 +4,12 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
-    @State var userName = UserDefaults.standard.value(forKey: "userName") as? String ?? "Account"
+    @State var userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+    @State var userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
     @State var userBonuses = UserDefaults.standard.value(forKey: "userBonuses") as? Int ?? 0
     @State var userPhone = UserDefaults.standard.value(forKey: "userPhNumber") as? String ?? ""
     @State var userImage = UserDefaults.standard.value(forKey: "userImage") as? Array<Any> ?? [0]
-    @State var userMail = UserDefaults.standard.value(forKey: "userMail") as? String ?? "Add Email"
+    @State var userMail = UserDefaults.standard.value(forKey: "userMail") as? String ?? ""
     @State var userPass = UserDefaults.standard.value(forKey: "userPass") as? String ?? ""
     
     var body: some View {
@@ -24,7 +24,7 @@ struct SettingsView: View {
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                             Spacer()
                             HStack {
-                                Text(userName)
+                                Text(userStatus ? userName : "")
                                     .font(.system(size: 20, weight: .regular, design: .serif))
                                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                 Image(systemName: "square.and.pencil")
@@ -50,10 +50,10 @@ struct SettingsView: View {
                             NavigationLink(
                                 destination: EmailAddView(),
                                 label: {
-                                    Text(userMail)
+                                    Text(userStatus ? userMail : "")
                                         .font(.system(size: 20, weight: .regular, design: .serif))
                                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                    Image(systemName: "chevron.right")
+                                    Image(systemName: "square.and.pencil")
                                         .font(.system(size: 20, weight: .light, design: .serif))
                                         .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                 })
@@ -87,7 +87,7 @@ struct SettingsView: View {
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                             Spacer()
                             HStack {
-                                Text(userPhone)
+                                Text(userStatus ? userPhone : "")
                                     .font(.system(size: 20, weight: .regular, design: .serif))
                                     .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                 Image(systemName: "square.and.pencil")
@@ -130,6 +130,12 @@ struct SettingsView: View {
             .padding()
             .navigationBarTitle("Settings", displayMode: .inline)
         }
+        .onAppear{
+            let userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
+           
+            self.userName = userName
+        }
+        .frame(width: UIScreen.main.bounds.width)
         .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
     }
 }

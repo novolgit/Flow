@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryView: View {
     var body: some View {
-        Text("Your History")
+        Text("History")
     }
 }
 

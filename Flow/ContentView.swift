@@ -12,7 +12,7 @@ struct ContentView: View {
     
     @EnvironmentObject var modelData: ModelData
     
-    @State var animate: Bool = false
+    @State var logoAnimate: Bool = false
     @State var endAnimate: Bool = false
     @State private var selection: Tab = .featured
     
@@ -56,26 +56,47 @@ struct ContentView: View {
                     .tag(Tab.favorite)
             }
             .accentColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-            ZStack {
-                Image("launch")
-                    .resizable()
-                    .renderingMode(.original)
-                    .aspectRatio(contentMode: animate ? .fill : .fit)
-                    .frame(width: animate ? nil : 85, height: animate ? nil : 85)
-                    .scaleEffect(animate ? 3 : 1)
-                    .frame(width: UIScreen.main.bounds.width)
+            ZStack{
+                LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
+                    .ignoresSafeArea(.all)
+                ZStack{
+                    Text("F")
+                        .font(.system(size: 260, weight: .bold, design: .serif))
+                        .foregroundColor(colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray)
+                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2.5, x: -2.5, y: -2.5)
+                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2.5, x: 1.25, y: 1.25)
+                        .offset(x: !logoAnimate ? -70 : 0)
+                        .rotation3DEffect(Angle.degrees(logoAnimate ? 180 : 0),
+                                          axis: (x: 0.0, y: 1.0, z: 0.0)
+                        )
+                        .scaleEffect(!logoAnimate ? 0.9 : 1.2)
+                    Text("L")
+                        .font(.system(size: 260, weight: .bold, design: .serif))
+                        .foregroundColor(colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray)
+                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2.5, x: -2.5, y: -2.5)
+                        .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2.5, x: 1.25, y: 1.25)
+                        .offset(x: !logoAnimate ? 70 : 0)
+                        .scaleEffect(!logoAnimate ? 0.9 : 1.2)
+                        .rotation3DEffect(Angle.degrees(logoAnimate ? 180 : 0),
+                                          axis: (x: 0.0, y: 1.0, z: 0.0))
+                }
+                .animation(.spring(response: 1, dampingFraction: 1, blendDuration: 1))
+                .frame(width: 380, height: 380)
+                .background(
+                    Group {
+                        NeuButtonsView2(radius: 500, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                    }
+                )
             }
-            .ignoresSafeArea(.all, edges: .all)
-            .onAppear(perform: launchAnimate)
-            .opacity(endAnimate ? 0 : 1)
+                .ignoresSafeArea(.all, edges: .all)
+                .onAppear(perform: launchAnimate)
+                .opacity(endAnimate ? 0 : 1)
         }
     }
     func launchAnimate() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            withAnimation(Animation.easeOut(duration: 0.15)) {
-                animate.toggle()
-            }
-            withAnimation(Animation.linear(duration: 0.25)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                logoAnimate.toggle()
+            withAnimation(Animation.linear(duration: 2)) {
                 endAnimate.toggle()
             }
         }

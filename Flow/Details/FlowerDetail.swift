@@ -32,7 +32,7 @@ struct FlowerDetail: View {
                                 CustomAccountButtonsView3()
                             }
                         )
-                        .offset(y: geometry.size.height * 0.1)
+                        .offset(y: geometry.size.height * 0.11)
                     Text(flowerDetail.name)
                         .lineLimit(3)
                         .multilineTextAlignment(.center)
@@ -42,7 +42,7 @@ struct FlowerDetail: View {
                         .padding(80)
                     FlowerCustomButtonStyle(isSet: $modelData.flowers[flowerIndex].isSelected, size: 35)
                         .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0))
-                        .offset(x: geometry.size.width * 0.4, y: -geometry.size.height * 0.1)
+                        .offset(x: geometry.size.width * 0.4, y: -geometry.size.height * 0.04)
                 }
                 VStack{
                     ZStack{
@@ -80,7 +80,7 @@ struct FlowerDetail: View {
                         NeuButtonsView2(radius: 20, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 10, yBlack: 10, xWhite: -5, yWhite: -5)
                     }
                 )
-                .offset(y: geometry.size.height * 0.1)
+                .offset(y: geometry.size.height * 0.12)
                 .frame(height: 300)
                 .padding()
             }

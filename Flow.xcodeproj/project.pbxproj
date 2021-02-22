@@ -24,6 +24,11 @@
 		2F302C4225B9FDDC00530E19 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F302C4125B9FDDC00530E19 /* AccountSettingsView.swift */; };
 		2F310A2925DAAD660003BA90 /* StoresDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F310A2825DAAD660003BA90 /* StoresDetailView.swift */; };
 		2F33A23925B4CFB5000E92E6 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F33A23825B4CFB5000E92E6 /* SceneKitView.swift */; };
+		2F40D17725DFBDDA00B5CA70 /* HideTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D17625DFBDDA00B5CA70 /* HideTabBar.swift */; };
+		2F40D17B25E1C25E00B5CA70 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D17A25E1C25E00B5CA70 /* ChatView.swift */; };
+		2F40D1D625E3236500B5CA70 /* featuredMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F40D1D525E3236500B5CA70 /* featuredMock.json */; };
+		2F40D1D925E3237C00B5CA70 /* FeaturedMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D1D825E3237C00B5CA70 /* FeaturedMock.swift */; };
+		2F40D1DE25E3281300B5CA70 /* MockTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D1DD25E3281300B5CA70 /* MockTabView.swift */; };
 		2F447FB3259D791400019EA6 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F447FB2259D791400019EA6 /* ConfirmView.swift */; };
 		2F45380125C4CC13001B57F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F45380025C4CC13001B57F4 /* GoogleService-Info.plist */; };
 		2F59065E25ABC66400686CFA /* StoreListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F59065D25ABC66300686CFA /* StoreListData.swift */; };
@@ -105,6 +110,11 @@
 		2F302C4125B9FDDC00530E19 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		2F310A2825DAAD660003BA90 /* StoresDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresDetailView.swift; sourceTree = "<group>"; };
 		2F33A23825B4CFB5000E92E6 /* SceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
+		2F40D17625DFBDDA00B5CA70 /* HideTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideTabBar.swift; sourceTree = "<group>"; };
+		2F40D17A25E1C25E00B5CA70 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		2F40D1D525E3236500B5CA70 /* featuredMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = featuredMock.json; sourceTree = "<group>"; };
+		2F40D1D825E3237C00B5CA70 /* FeaturedMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedMock.swift; sourceTree = "<group>"; };
+		2F40D1DD25E3281300B5CA70 /* MockTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabView.swift; sourceTree = "<group>"; };
 		2F447FB2259D791400019EA6 /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		2F45380025C4CC13001B57F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F59065D25ABC66300686CFA /* StoreListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListData.swift; sourceTree = "<group>"; };
@@ -229,6 +239,14 @@
 			path = AccountSettings;
 			sourceTree = "<group>";
 		};
+		2F40D17925E1C23F00B5CA70 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2F40D17A25E1C25E00B5CA70 /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		2F5F453425A36CBD009B8A82 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +262,8 @@
 				2F9F2E6A25B176A5001CF277 /* chartData.json */,
 				2F89426725BE1AC9006DF9AB /* ModelListData.swift */,
 				2F89426A25BE1AE9006DF9AB /* modelList.json */,
+				2F40D1D825E3237C00B5CA70 /* FeaturedMock.swift */,
+				2F40D1D525E3236500B5CA70 /* featuredMock.json */,
 				2FA579D325B1051F005F59DF /* KeychainItem.swift */,
 			);
 			path = Data;
@@ -312,6 +332,7 @@
 				2F22068925A8D2D700443CA6 /* Purchase */,
 				2F8D2E5D25B22E29006EB984 /* Favorites */,
 				2F65C90525AC59CB0009A74A /* Details */,
+				2F40D17925E1C23F00B5CA70 /* Chat */,
 				2FE6F4F325DD6EF3003250BD /* Tests */,
 				2F0DD38325B2927900081A93 /* Animations */,
 				2FBE50B525ACF016005F5813 /* Helpers */,
@@ -342,6 +363,7 @@
 				2F8D2E5025B1F0B8006EB984 /* NearlyStores.swift */,
 				2F8D2E5325B1F1CA006EB984 /* TopStoresTabView.swift */,
 				2FD1772525BCC04200F5D72B /* ReadyBouqetsView.swift */,
+				2F40D1DD25E3281300B5CA70 /* MockTabView.swift */,
 			);
 			path = Featured;
 			sourceTree = "<group>";
@@ -393,6 +415,7 @@
 				2FE6F4E825DD6C15003250BD /* LocationDelegate.swift */,
 				2FE6F4EB25DD6D2D003250BD /* KeyboardModification.swift */,
 				2FE6F4EE25DD6D63003250BD /* VisualEffect.swift */,
+				2F40D17625DFBDDA00B5CA70 /* HideTabBar.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -504,6 +527,7 @@
 			files = (
 				2F89426525BDC795006DF9AB /* toy_biplane.usdz in Resources */,
 				2FEF6E5E25B649780063B6F2 /* wheelbarrow.usdz in Resources */,
+				2F40D1D625E3236500B5CA70 /* featuredMock.json in Resources */,
 				2F7951AC25AB88F600517E73 /* accountList.json in Resources */,
 				2F5F453625A36CDE009B8A82 /* flowersList.json in Resources */,
 				2F0F987225B780240023975A /* tv_retro.usdz in Resources */,
@@ -572,6 +596,7 @@
 				2F69183525BA537000F700AD /* IndicatorView.swift in Sources */,
 				2F310A2925DAAD660003BA90 /* StoresDetailView.swift in Sources */,
 				2FE6F4D525DD29C5003250BD /* ImageLoader.swift in Sources */,
+				2F40D17B25E1C25E00B5CA70 /* ChatView.swift in Sources */,
 				2FE6F4CE25DD1A63003250BD /* HistoryView.swift in Sources */,
 				2FE6F4DF25DD39B4003250BD /* ImagePickerView.swift in Sources */,
 				2F59065E25ABC66400686CFA /* StoreListData.swift in Sources */,
@@ -589,6 +614,7 @@
 				2FE6F4F525DD6F2F003250BD /* TestButtonView.swift in Sources */,
 				2F5F453A25A37364009B8A82 /* Data.swift in Sources */,
 				2FE6F4D925DD32E1003250BD /* CustomDelegate.swift in Sources */,
+				2F40D1D925E3237C00B5CA70 /* FeaturedMock.swift in Sources */,
 				2F33A23925B4CFB5000E92E6 /* SceneKitView.swift in Sources */,
 				2FA579D025B10475005F59DF /* SignInWithAppleView.swift in Sources */,
 				2F8D2E5425B1F1CA006EB984 /* TopStoresTabView.swift in Sources */,
@@ -619,8 +645,10 @@
 				2F65C90725AC59E70009A74A /* StoreDetail.swift in Sources */,
 				2FA16C6D25ADF9510006D27D /* CustomButtonsView.swift in Sources */,
 				2F17C3DA25BB6B92004B7D1B /* ConfirmPage3View.swift in Sources */,
+				2F40D17725DFBDDA00B5CA70 /* HideTabBar.swift in Sources */,
 				2F95FA74259CBC4900985D53 /* FeaturedView.swift in Sources */,
 				2FE6F4E925DD6C15003250BD /* LocationDelegate.swift in Sources */,
+				2F40D1DE25E3281300B5CA70 /* MockTabView.swift in Sources */,
 				2F9F2E6825B17672001CF277 /* ChartData.swift in Sources */,
 				2F17C3D325BB3496004B7D1B /* ConfirmPage1View.swift in Sources */,
 				2F89426825BE1AC9006DF9AB /* ModelListData.swift in Sources */,
@@ -761,7 +789,7 @@
 				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.821.30;
+				CURRENT_PROJECT_VERSION = 2.821.33;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;
@@ -789,7 +817,7 @@
 				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.821.30;
+				CURRENT_PROJECT_VERSION = 2.821.33;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;

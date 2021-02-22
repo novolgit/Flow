@@ -11,6 +11,7 @@ final class ModelData: ObservableObject {
     @Published var flowers: [Flower] = load("flowersList.json")
     @Published var stores: [Store] = load("storesList.json")
     @Published var models: [Model] = load("modelList.json")
+    @Published var mocks: [FeaturedMock] = load("featuredMock.json")
     
     var charts: [Chart] = load("chartData.json")
 }

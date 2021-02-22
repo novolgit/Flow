@@ -13,7 +13,7 @@ struct AccountView: View {
     @StateObject var accountCreation = AccountCreationViewModel()
     
     @State var userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
-    @State var userName = UserDefaults.standard.value(forKey: "userName") as? String ?? "Account"
+    @State var userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
     @State var userBonuses = UserDefaults.standard.value(forKey: "userBonuses") as? Int ?? 0
     @State var userImage = UserDefaults.standard.value(forKey: "userImage") as? Array<Any> ?? [0]
     @State private var currentAmount: CGFloat = 0
@@ -27,7 +27,7 @@ struct AccountView: View {
                         VStack {
                             HStack{
                                     VStack {
-                                        Text("\(userBonuses)")
+                                        Text(userStatus ? "\(userBonuses)" : "0")
                                             .font(.system(size: 30, weight: .regular, design: .serif))
                                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                                         Text("Bonuses")
@@ -187,8 +187,9 @@ struct AccountView: View {
                                 )
                             ZStack{}.frame(height:20)
                             HStack {
-                                Text("Privacy Policy")
+                                Link("Privacy Policy", destination: URL(string: "https://flow-d5b9a.web.app/privacy-policy.html")!)
                                     .foregroundColor(.blue)
+                                
                                 Spacer()
                             }
                             .frame(width: UIScreen.main.bounds.width*0.90)
@@ -218,9 +219,16 @@ struct AccountView: View {
                     }
                     .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
                     .onAppear {
+                        
+                        let userName = UserDefaults.standard.value(forKey: "userName") as? String ?? ""
+                       
+                         self.userName = userName
+                        
                                   NotificationCenter.default.addObserver(forName: NSNotification.Name("statusChange"), object: nil, queue: .main) { (_) in
                                      let userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+                                    
                                       self.userStatus = userStatus
+                                    
                                   }
                               }
     }

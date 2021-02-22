@@ -15,7 +15,7 @@ struct FeaturedView: View {
     @State var userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
     @State var featuredIndex = 1
     @State var topStoresIndex = 1
-
+    
     var chart: Chart
     
     var body: some View {
@@ -28,111 +28,115 @@ struct FeaturedView: View {
                             .font(.system(size: 28, weight: .black, design: .serif))
                             .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
                         Spacer()
-                        Image(systemName: "hand.draw")
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
-                            .font(.system(size: 20, weight: .light, design: .serif))
-                            .rotation3DEffect(
-                                .degrees(180),
-                                axis: (x: 0.0, y: 1.0, z: 0.0)
-                            )
+                        HStack {
+                            Image(systemName: "hand.draw")
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
+                                .font(.system(size: 20, weight: .light, design: .serif))
+                                .rotation3DEffect(
+                                    .degrees(180),
+                                    axis: (x: 0.0, y: 1.0, z: 0.0)
+                                )
+                            Image(systemName: "hand.tap")
+                                .font(.system(size: 20, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        }
                     }
                     .padding(.horizontal)
-                    FeaturedTabView(index: featuredIndex)
+                    MockTabView(index: featuredIndex)
                         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
                         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                    HStack {
-                        Text("Charts")
-                            .font(.system(size: 28, weight: .black, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        Spacer()
-                        Image(systemName: "hand.tap")
-                            .font(.system(size: 20, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        HStack {
+                            Text("Charts")
+                                .font(.system(size: 28, weight: .black, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                            Spacer()
+                            Image(systemName: "hand.tap")
+                                .font(.system(size: 20, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        }
+                        .padding(.horizontal)
+                        ChartView(chart: modelData.charts[0])
+                        HStack {
+                            Text("Nearly Stores")
+                                .font(.system(size: 28, weight: .black, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                            Spacer()
+                            Image(systemName: "scroll")
+                                .font(.system(size: 20, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        }
+                        .padding(.horizontal)
+                        NearlyStores()
+                            .padding()
+                            .animation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0))
+                        HStack {
+                            Text("Top Stores")
+                                .font(.system(size: 28, weight: .black, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                            Spacer()
+                            Image(systemName: "tablecells")
+                                .font(.system(size: 20, weight: .light, design: .serif))
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                        }
+                        .padding(.horizontal)
+                        TopStoresTabView(index: topStoresIndex)
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.28)
+                            .animation(.spring(response: 0.8, dampingFraction: 0.8, blendDuration: 0))
                     }
-                    .padding(.horizontal)
-                    ChartView(chart: modelData.charts[0])
-                    HStack {
-                        Text("Nearly Stores")
-                            .font(.system(size: 28, weight: .black, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        Spacer()
-                        Image(systemName: "scroll")
-                            .font(.system(size: 20, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    }
-                    .padding(.horizontal)
-                    NearlyStores()
-                        .padding()
-                    HStack {
-                        Text("Top Stores")
-                            .font(.system(size: 28, weight: .black, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        Spacer()
-                        Image(systemName: "tablecells")
-                            .font(.system(size: 20, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    }
-                    .padding(.horizontal)
-                    TopStoresTabView(index: topStoresIndex)
-                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.28)
-                        .animation(.easeOut)
+                    VStack{}.frame(height: 30)
                 }
-                VStack{}.frame(height: 30)
+                .navigationBarItems(trailing: NavigationLink(
+                                        destination: AccountView(),
+                                        label: {
+                                            if !userStatus {
+                                                Image(systemName: "person.circle")
+                                                    .resizable()
+                                                    .frame(width:30,height:30)
+                                                    .font(.system(size: 18, weight: .light, design: .serif))
+                                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                                    .frame(width: 34, height: 34)
+                                                    .background(
+                                                        Group {
+                                                            NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
+                                                        }
+                                                    )
+                                            }
+                                            else {
+                                                Image(uiImage: loadImageFromDiskWith(fileName: "profileImage.jpg") ?? UIImage(named: "120x120_clear")!)
+                                                    .resizable()
+                                                    .clipShape(Circle())
+                                                    .font(.system(size: 18, weight: .light, design: .serif))
+                                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                                    .frame(width: 34, height: 34)
+                                                    .background(
+                                                        Group {
+                                                            NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
+                                                        }
+                                                    )
+                                            }
+                                        })
+                )
+                .navigationBarTitle("Featured", displayMode: .inline)
+                .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
             }
-            .navigationBarItems(trailing: NavigationLink(
-                                    destination: AccountView(),
-                                    label: {
-                                        if !userStatus {
-                                            Image(systemName: "person.circle")
-                                                .resizable()
-                                                .frame(width:30,height:30)
-                                                .font(.system(size: 18, weight: .light, design: .serif))
-                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                                .frame(width: 34, height: 34)
-                                                .background(
-                                                    Group {
-                                                        NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
-                                                    }
-                                                )
-                                        }
-                                        else {
-                                            Image(uiImage: loadImageFromDiskWith(fileName: "profileImage.jpg") ?? UIImage(named: "120x120_clear")!)
-                                                .resizable()
-                                                .clipShape(Circle())
-                                                .font(.system(size: 18, weight: .light, design: .serif))
-                                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                                                .frame(width: 34, height: 34)
-                                                .background(
-                                                    Group {
-                                                        NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 1, xBlack: 2, yBlack: 2, xWhite: -1, yWhite: -1)
-                                                    }
-                                                )
-                                        }
-                                    })
-            )
-            .navigationBarTitle("Featured", displayMode: .inline)
-            .background(LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd))
+        }
+        func loadImageFromDiskWith(fileName: String) -> UIImage? {
+            let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+            let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+            let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+            if let dirPath = paths.first {
+                let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+                let image = UIImage(contentsOfFile: imageUrl.path)
+                return image
+            }
+            return nil
         }
     }
-    func loadImageFromDiskWith(fileName: String) -> UIImage? {
-      let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-        if let dirPath = paths.first {
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
-            let image = UIImage(contentsOfFile: imageUrl.path)
-            return image
+    
+    struct FeaturedView_Previews: PreviewProvider {
+        static var previews: some View {
+            FeaturedView(chart: ModelData().charts[0]).preferredColorScheme(.dark)
+                .environmentObject(ModelData())
         }
-        return nil
     }
-}
-
-struct FeaturedView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeaturedView(chart: ModelData().charts[0]).preferredColorScheme(.dark)
-            .environmentObject(ModelData())
-            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
-            .previewDisplayName("iPhone 8")
-    }
-}

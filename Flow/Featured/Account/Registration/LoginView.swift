@@ -17,8 +17,7 @@ struct LoginView: View {
     
     @State var userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
     @State var startAnimationBox = false
-    @State var startAnimationText = false
-    
+    @State var startAnimationText = false    
     
     var body: some View {
         VStack{
@@ -72,12 +71,32 @@ struct LoginView: View {
                 ZStack{
                     LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
                         .ignoresSafeArea(edges: .all)
-                    MainView()
-                        .environmentObject(accountCreation)
+                    VStack{
+                        MainView()
+                            .environmentObject(accountCreation)
+                        Spacer()
+                        VStack{
+                            Text("By signing in you accept our ")
+                                .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                            HStack{
+                                Link("Terms of Use ", destination: URL(string: "https://flow-d5b9a.web.app/terms-of-use.html")!)
+                                    .foregroundColor(.blue)
+                                Text("and ")
+                                    .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                                Link("Privacy Policy", destination: URL(string: "https://flow-d5b9a.web.app/privacy-policy.html")!)
+                                    .foregroundColor(.blue)
+                            }
+                        }
+                        .padding(.bottom)
+                        .padding(.horizontal)
+                        .multilineTextAlignment(.center)
+                        }
                     if accountCreation.isLoading{
                         ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
                     }
                 }
+                .animation(.spring(response: 0.6, dampingFraction: 0.8))
                 .navigationTitle("")
                 .navigationBarHidden(true)
             }
@@ -89,6 +108,22 @@ struct LoginView: View {
             }
         }
     }
+    
+//    public func introspectTabBarController(customize: @escaping (UITabBarController) -> ()) -> some View {
+//        return inject(UIKitIntrospectionViewController(
+//            selector: { introspectionViewController in
+//
+//                // Search in ancestors
+//                if let navigationController = introspectionViewController.tabBarController {
+//                    return navigationController
+//                }
+//
+//                // Search in siblings
+//                return Introspect.previousSibling(ofType: UITabBarController.self, from: introspectionViewController)
+//            },
+//            customize: customize
+//        ))
+//    }
 }
 
 struct LoginView_Previews: PreviewProvider {
@@ -221,13 +256,13 @@ struct Login: View {
                 .scaleEffect(CGSize(width: accountCreation.phNumber == "" ? 0.0 : 1.0, height:  accountCreation.phNumber == "" ? 0.0 : 1.0))
                 .animation(.spring())
             }
-            Text("Or register with")
+            Text("Or sign in with")
                 .font(.system(size: 22, weight: .medium, design: .serif))
                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-            //                .padding()
             SignInWithAppleView()
-                .frame(height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .padding()
+                .frame(height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .padding(.vertical)
+                .padding(.horizontal, 50)
         }
     }
     
@@ -249,20 +284,6 @@ struct Register: View {
     
     var body: some View {
         VStack{
-            ZStack{
-                HStack {
-                    Button(action: {
-                        accountCreation.pageNumber -= 1
-                    }, label: {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 26, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    })
-                    Spacer()
-                }
-                .padding()
-                .offset(y: -243)
-            }
             HStack{
                 Image(systemName: "person")
                     .font(.system(size: 18, weight: .light, design: .serif))
@@ -344,27 +365,6 @@ struct ImageRegister: View {
     
     var body: some View {
         VStack{
-            ZStack{
-                HStack {
-                    Button(action: {
-                        accountCreation.pageNumber -= 1
-                    }, label: {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 26, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    })
-                    Spacer()
-                    Button(action: {
-                        accountCreation.signUp()
-                    }, label: {
-                        Text("Skip")
-                            .font(.system(size: 22, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                    })
-                }
-                .padding()
-                .offset(y: -207)
-            }
             Text("Add Profile Picture")
                 .font(.system(size: 24, weight: .medium, design: .serif))
                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray)
@@ -430,9 +430,6 @@ struct ImageRegister: View {
                 .scaleEffect(CGSize(width: accountCreation.accountImage[0].count == 0 ? 0.0 : 1.0, height:  accountCreation.accountImage[0].count == 0 ? 0.0 : 1.0))
                 .animation(.spring())
             }
-            Text("By signing in you accept our Terms of Use and Privacy Policy")
-                .padding()
-                .multilineTextAlignment(.center)
         }
         .sheet(isPresented: $accountCreation.picker, content: {
             ImagePicker(show: $accountCreation.picker, ImageData: $accountCreation.accountImage[currentImage])

@@ -7,6 +7,7 @@
 
 import Firebase
 import UserNotifications
+import FirebaseFirestoreSwift
 
 class Delegate: NSObject,UIApplicationDelegate{
     var window: UIWindow?
@@ -16,11 +17,8 @@ class Delegate: NSObject,UIApplicationDelegate{
         
         FirebaseApp.configure()
         
-        Messaging.messaging().delegate = self
-        // [END set_messaging_delegate]
-        // Register for remote notifications. This shows a permission dialog on first run, to
-        // show the dialog at a more appropriate time move this registration accordingly.
-        // [START register_for_notifications]
+//        Messaging.messaging().delegate = self
+        
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
@@ -136,15 +134,15 @@ extension Delegate : UNUserNotificationCenterDelegate {
 }
 
 
-extension Delegate : MessagingDelegate {
-    // [START refresh_token]
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("Firebase registration token: \(String(describing: fcmToken))")
-        
-        let dataDict:[String: String] = ["token": fcmToken ?? ""]
-        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-        // TODO: If necessary send token to application server.
-        // Note: This callback is fired at each app startup and whenever a new token is generated.
-    }
-    // [END refresh_token]
-}
+//extension Delegate : MessagingDelegate {
+//    // [START refresh_token]
+//    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+//        print("Firebase registration token: \(String(describing: fcmToken))")
+//        
+//        let dataDict:[String: String] = ["token": fcmToken ?? ""]
+//        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+//        // TODO: If necessary send token to application server.
+//        // Note: This callback is fired at each app startup and whenever a new token is generated.
+//    }
+//    // [END refresh_token]
+//}

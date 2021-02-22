@@ -13,6 +13,8 @@ import AuthenticationServices
 struct SignInWithAppleView: View {
     @Environment(\.colorScheme) var colorScheme
     
+    @State var userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+    
     @State var currentNonce: String?
     
     var body: some View {
@@ -47,6 +49,11 @@ struct SignInWithAppleView: View {
                                 return
                             }
                             print("signed in")
+                            
+                            UserDefaults.standard.set(true, forKey: "status")
+                            
+                            NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
+                            
                         }
                         print("\(String(describing: Auth.auth().currentUser?.uid))")
                     default:

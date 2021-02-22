@@ -337,7 +337,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
-  - FirebaseFirestoreSwift (~> 7.5.0-beta)
+  - FirebaseFirestoreSwift (~> 7.0-beta)
 
 SPEC REPOS:
   trunk:
@@ -384,6 +384,6 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: 2efc6ae52ab02cd68b2c8d5d3439800d80d7930e
+PODFILE CHECKSUM: 0b0ee5fbc1fb449ced43c5149c315c311456e75b
 
 COCOAPODS: 1.10.1

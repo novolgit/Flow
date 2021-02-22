@@ -1193,11 +1193,6 @@ struct FlowerCustomButtonStyle: View {
             //                    } else {
             //                        isSet = true
             //                    }
-            if isSet {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    isSet = true
-                }
-            }
         }
         //        .alert(isPresented: $showingAlert) {
         //            Alert(title: Text("Remove from favorites?"), primaryButton: .destructive(Text("Yes")) {
