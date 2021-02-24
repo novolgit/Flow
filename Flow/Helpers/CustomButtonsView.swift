@@ -1289,3 +1289,86 @@ struct StoreCustomButtonStyle: View {
         //        }
     }
 }
+
+struct CheckmarkCustomButtonStyle: View {
+    @Environment(\.colorScheme) var colorScheme
+    
+    @Binding var isSet: Bool
+    
+    //    @State private var showingAlert = false
+    //    @State var press = false
+    
+    var size: CGFloat
+    
+    var body: some View{
+        ZStack{
+            Image(systemName: "checkmark")
+                .font(.system(size: size, weight: .light))
+                .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
+                .opacity(!isSet ? 0 : 1)
+                .scaleEffect(!isSet ? 0 : 1)
+//            Image(systemName: "purchased")
+//                .font(.system(size: size, weight: .light))
+//                .clipShape(Rectangle().offset(y: isSet ? 0 : 60))
+//                .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
+//                .animation(.easeInOut)
+//                .opacity(isSet ? 0 : 1)
+//                .scaleEffect(isSet ? 0 : 1)
+            Image(systemName: "purchased")
+                .font(.system(size: size, weight: .light))
+                .foregroundColor(colorScheme == .dark ? .reddDark : .redd)
+                .opacity(!isSet ? 1 : 0)
+                .scaleEffect(!isSet ? 1 : 0)
+        }
+        .frame(width: 55, height: 55)
+        //            .background(
+        //                ZStack{
+        //                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
+        //
+        //                        Circle()
+        //                            .stroke(Color.clear, lineWidth: 1)
+        //                            .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: -4, y: -4)
+        //
+        //                    Circle()
+        //                        .stroke(Color.clear, lineWidth: 1)
+        //                        .shadow(color: colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray, radius: 8, x: 5, y: 5)
+        //                }
+        //            )
+        .clipShape(Circle())
+        .overlay(
+            Circle()
+                .trim(from: !isSet ? 0.001 : 1, to: !isSet ? 1 : 0.001)
+                .stroke(LinearGradient(colorScheme == .dark ? Color.redd : Color.redd, colorScheme == .light ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd), style: StrokeStyle(lineWidth: 1, lineCap: .round))
+                .frame(width: 50, height: 50)
+                .rotationEffect(Angle(degrees: 90))
+                .rotation3DEffect(
+                    Angle(degrees: !isSet ? 0 : 180),
+                    axis: (x: 0.0, y: 0.0, z: 0.0))
+                .shadow(color: colorScheme == .dark ? .offSecondaryGrayDark : .offSecondaryGray, radius: 2.5, x: 1.5, y: 1.5)
+                .animation(.spring())
+        )
+        .background(
+            Group {
+                NeuButtonsView2(radius: 100, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 2.5, xBlack: 2.5, yBlack: 2.5, xWhite: -1.25, yWhite: -1.25)
+            }
+        )
+        
+        .scaleEffect(!isSet ? 1.1 : 1)
+        .onTapGesture {
+            self.isSet.toggle()
+            //                    if !isSet {
+            //                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //                            showingAlert = true
+            //                        }
+            //                    } else {
+            //                        isSet = true
+            //                    }
+        }
+        //        .alert(isPresented: $showingAlert) {
+        //            Alert(title: Text("Remove from favorites?"), primaryButton: .destructive(Text("Yes")) {
+        //                isSet = false
+        //            },
+        //            secondaryButton: .cancel(){isSet = true})
+        //        }
+    }
+}

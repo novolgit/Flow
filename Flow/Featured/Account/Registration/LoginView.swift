@@ -16,53 +16,68 @@ struct LoginView: View {
     @StateObject var accountCreation = AccountCreationViewModel()
     
     @State var userStatus = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
-    @State var startAnimationBox = false
-    @State var startAnimationText = false    
+    @State var startAnimationText: Bool = false
+    @State var logoAnimate: Bool = false
+    @State var endAnimate: Bool = false
     
     var body: some View {
         VStack{
             if userStatus{
                 ZStack {
-                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color(#colorLiteral(red: 0.8077717423, green: 0.8078888059, blue: 0.8077461123, alpha: 1)), colorScheme == .dark ? Color.offGrayLinearEndDark : Color(#colorLiteral(red: 0.8077717423, green: 0.8078888059, blue: 0.8077461123, alpha: 1)))
-                        .ignoresSafeArea(edges: .all)
+                    LinearGradient(colorScheme == .dark ? Color.offGrayLinearStartDark : Color.offGrayLinearStart, colorScheme == .dark ? Color.offGrayLinearEndDark : Color.offGrayLinearEnd)
                     VStack {
                         HStack {
                             Text("Welcome to ")
                                 .font(.system(size: 40, weight: .bold, design: .serif))
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                            Text("Flow")
+                            Text("FLos")
                                 .font(.system(size: 40, weight: .bold, design: .serif))
                                 .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
                         }
                         .scaleEffect(!startAnimationText ? 0 : 1)
-                        ZStack {
-                            Image("korobka1")
-                                .resizable()
-                                .frame(width: 250, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                .opacity(startAnimationBox ? 1 : 0)
-                                .offset(y: startAnimationBox ? 30 : 0)
-                                .scaleEffect(startAnimationBox ? 1.1 : 1)
-                                .animation(.spring(response: 1, dampingFraction: 0.4))
-                            Image("korobka2")
-                                .resizable()
-                                .frame(width: 250, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                .opacity(startAnimationBox ? 0 : 1)
-                                .offset(y: startAnimationBox ? 0 : 30)
-                                .animation(.spring(response: 1, dampingFraction: 0.4))
+                        ZStack{
+                            Text("F")
+                                .font(.system(size: 260, weight: .bold, design: .serif))
+                                .foregroundColor(colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray)
+                                .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2.5, x: -2.5, y: -2.5)
+                                .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2.5, x: 1.25, y: 1.25)
+                                .offset(x: !logoAnimate ? -70 : 0)
+                                .rotation3DEffect(Angle.degrees(logoAnimate ? 180 : 0),
+                                                  axis: (x: 0.0, y: 1.0, z: 0.0)
+                                )
+                                .scaleEffect(!logoAnimate ? 0.9 : 1.2)
+                            Text("L")
+                                .font(.system(size: 260, weight: .bold, design: .serif))
+                                .foregroundColor(colorScheme == .light ? .offSecondaryGrayDark : .offSecondaryGray)
+                                .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2.5, x: -2.5, y: -2.5)
+                                .shadow(color: colorScheme == .dark ? .bottomShadowDark : .bottomShadow, radius: 2.5, x: 1.25, y: 1.25)
+                                .offset(x: !logoAnimate ? 70 : 0)
+                                .scaleEffect(!logoAnimate ? 0.9 : 1.2)
+                                .rotation3DEffect(Angle.degrees(logoAnimate ? 180 : 0),
+                                                  axis: (x: 0.0, y: 1.0, z: 0.0))
                         }
+                        .frame(width: 380, height: 380)
+                        .background(
+                            Group {
+                                NeuButtonsView2(radius: 500, whiteColorOpacity: colorScheme == .dark ? .topShadowDark : .topShadow, blackColorOpacity: colorScheme == .dark ? .bottomShadowDark :  .bottomShadow, shadowRadius: 5, xBlack: 5, yBlack: 5, xWhite: -2.5, yWhite: -2.5)
+                            }
+                        )
+                        .ignoresSafeArea(.all, edges: .all)
                     }
-                    .animation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0.3))
+                    .animation(.spring(response: 1, dampingFraction: 1, blendDuration: 1))
                 }
                 .navigationBarHidden(true)
                 .statusBar(hidden: true)
                 .onAppear{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.presentationMode.wrappedValue.dismiss()
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                        self.startAnimationBox = true
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                            logoAnimate.toggle()
+                        withAnimation(Animation.linear(duration: 1)) {
+                            endAnimate.toggle()
+                        }
+                        
                         self.startAnimationText = true
                     }
                 }

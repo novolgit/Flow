@@ -10,42 +10,41 @@ import SwiftUI
 struct RowContentView : View {
     @Environment(\.colorScheme) var colorScheme
     
-    @Binding var flower: Flower
-    @Binding var flowers: [Flower]
-    @Binding var isSet: Bool
+    @EnvironmentObject var constructorData: ConstructorData
     
     @State var offset = CGSize.zero
-    @State var offsetY : CGFloat = 0
-    @State var scale : CGFloat = 0.5
+    @State var offsetY: CGFloat = 0
+    @State var scale: CGFloat = 0.5
+    @State var showDetail = false
+    
+    @Binding var isSet: Bool
+    
+    var index: Int
     
     var body : some View {
         GeometryReader { geo in
-            HStack (spacing : 0){
+            HStack(spacing: 0){
                 HStack{
-                    VStack(alignment: .leading) {
-                        Text("Name")
-                            .font(.system(size: 16, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.7) : Color.offSecondaryGray.opacity(0.7))
-                        Text(flower.name)
-                            .font(.system(size: 18, weight: .regular, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
+                    HStack {
+                        Image(uiImage: loadImageFromDiskWith(fileName: "constructorImage\(index).jpg") ?? UIImage(named: "120x120_clear")!)
+                            .resizable()
+                            .frame(width: UIScreen.main.nativeBounds.width * 0.12, height: UIScreen.main.nativeBounds.height * 0.05)
+                            .cornerRadius(10)
+                        Text("Bouquet \(index)")
+                        Spacer()
+                        Text("144$")
+                            .font(.system(size: 18, weight: .light, design: .serif))
+                            .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark : Color.offSecondaryGray)
                     }
-                    Spacer()
-                    VStack(alignment: .leading) {
-                        Text("Price")
-                            .font(.system(size: 16, weight: .light, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? Color.offSecondaryGrayDark.opacity(0.7) : Color.offSecondaryGray.opacity(0.7))
-                        Text(String(flower.price) + "$")
-                            .font(.system(size: 18, weight: .regular, design: .serif))
-                            .foregroundColor(colorScheme == .dark ? .offSecondaryGrayDark : Color.offSecondaryGray)
-                        
+                    .onTapGesture {
+                        showDetail.toggle()
                     }
                     VStack {
                         Button(action: {
                             isSet.toggle()
                         }) {
                             ZStack{
-                                if flower.isPurchase {
+                                if isSet {
                                     Image(systemName: "cart.fill.badge.minus")
                                         .resizable()
                                         .frame(width: 30, height: 26)
@@ -73,7 +72,6 @@ struct RowContentView : View {
                             }
                         }
                     }
-                    .padding()
                 }
                 .padding()
                 .frame(width : geo.size.width, height: 100)
@@ -140,6 +138,26 @@ struct RowContentView : View {
             )
             .animation(.spring())
         }
+        .sheet(isPresented: $showDetail, content: {
+            ConstructorConfirm()
+        })
+    }
+    
+    func loadImageFromDiskWith(fileName: String) -> UIImage? {
+        
+        let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        
+        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+        
+        if let dirPath = paths.first {
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+            let image = UIImage(contentsOfFile: imageUrl.path)
+            return image
+            
+        }
+        
+        return nil
     }
     
     func deleteItem(){

@@ -2,31 +2,37 @@
     {
         "id": 1,
         "name": "tulip",
-        "image": "flower_tulip"
+        "image": "flower_tulip",
+        "price": 100
     },
     {
         "id": 2,
         "name": "retro tv",
-        "image": "tv_retro"
+        "image": "tv_retro",
+        "price": 200
     },
     {
         "id": 3,
         "name": "toy biplane",
-        "image": "toy_biplane"
+        "image": "toy_biplane",
+        "price": 300
     },
     {
         "id": 4,
         "name": "toy car",
-        "image": "toy_car"
+        "image": "toy_car",
+        "price": 400
     },
     {
         "id": 5,
         "name": "toy drummer",
-        "image": "toy_drummer"
+        "image": "toy_drummer",
+        "price": 500
     },
     {
         "id": 6,
         "name": "wheelbarrow",
-        "image": "wheelbarrow"
+        "image": "wheelbarrow",
+        "price": 600
     }
 ]

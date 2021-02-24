@@ -43,7 +43,7 @@ extension Color {
     static let offGray = Color(#colorLiteral(red: 0.9215686275, green: 0.937254902, blue: 0.9490196078, alpha: 1))
     static let topShadow = Color.init(hex: "#ffffff")
     static let bottomShadow = Color.init(hex: "#5e6061")
-    static let offSecondaryGray = Color(#colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.1215686275, alpha: 1))
+    static let offSecondaryGray = Color(#colorLiteral(red: 0.122, green: 0.1215686275, blue: 0.1215686275, alpha: 1))
     
     static let offGrayLinearStart = Color(#colorLiteral(red: 0.9215686275, green: 0.937254902, blue: 0.9490196078, alpha: 1))
     static let offGrayLinearEnd = Color(#colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1))
@@ -53,7 +53,7 @@ extension Color {
     static let offGrayDark = Color(#colorLiteral(red: 0.1019607843, green: 0.1019607843, blue: 0.1019607843, alpha: 1))
     static let topShadowDark = Color.init(hex: "#2a2a2a")
     static let bottomShadowDark = Color.init(hex: "#0a0a0a")
-    static let offSecondaryGrayDark = Color(#colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1))
+    static let offSecondaryGrayDark = Color(#colorLiteral(red: 0.878, green: 0.8784313725, blue: 0.8784313725, alpha: 1))
     
     static let offGrayLinearStartDark = Color(#colorLiteral(red: 0.07843137255, green: 0.09411764706, blue: 0.1058823529, alpha: 1))
     static let offGrayLinearEndDark = Color(#colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1))
@@ -66,6 +66,10 @@ extension Color {
     ///yellow
     static let yelloww = Color.init(hex: "#ffd200")
     static let yellowwDark = Color.init(hex: "#fce185")
+    
+    ///green
+    static let greenn = Color.init(hex: "#2b9a7d")
+    static let greennDark = Color.init(hex: "#4fdcb8")
 }
 
 extension LinearGradient {
@@ -194,5 +198,12 @@ extension PayWithAppleView {
         @objc
         func callback(_ sender: Any) {
         }
+    }
+}
+
+extension UIImage {
+    func toString() -> String? {
+        let data: Data? = self.pngData()
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
 }

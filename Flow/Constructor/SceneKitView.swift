@@ -11,15 +11,22 @@ import SceneKit
 import SwiftUI
 
 struct SceneKitView: UIViewRepresentable {
+    @Environment(\.colorScheme) var colorScheme
+    
+    @EnvironmentObject var constructorData: ConstructorData
+    
     let sceneView = SCNView(frame: .zero)
     
     @Binding var modelsArray: Array<Any>
     @Binding var isDelete: Int
+    @Binding var snapArray: Array<Any>
+    @Binding var snapSet: Bool
     
     func makeUIView(context: Context) -> SCNView {
         sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.scene = SCNScene()
+//        sceneView.backgroundColor = (colorScheme == .dark ? UIColor(red:0.122, green:0.122 ,blue:0.122 , alpha: 1.00) : UIColor(red:0.878, green:0.878 ,blue:0.878 , alpha:1.00))
         
         let floor = SCNFloor()
         floor.firstMaterial!.colorBufferWriteMask = [.all]
@@ -65,6 +72,62 @@ struct SceneKitView: UIViewRepresentable {
             )
         }
         print(modelsArray.count)
+        
+//        func snapStringArray() -> String {
+        if snapSet {
+            let snap = sceneView.snapshot()
+//            let snapString = snap.toString()
+//            let highresImage = SceneKitViewVar.asImage(size: imageSize)
+            guard let highresData = snap.jpegData(compressionQuality: 1) else { return }
+            constructorData.constructorImage.append(highresData)
+
+            func saveImage(imageName: String, image: UIImage) {
+                guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+
+                let fileName = imageName
+                let fileURL = documentsDirectory.appendingPathComponent(fileName)
+                guard let data = image.jpegData(compressionQuality: 1) else { return }
+
+                //                                if FileManager.default.fileExists(atPath: fileURL.path) {
+                //                                    do {
+                //                                        try FileManager.default.removeItem(atPath: fileURL.path)
+                //                                        print("Removed old image")
+                //                                    } catch let removeError {
+                //                                        print("couldn't remove file at path", removeError)
+                //                                    }
+                //                                }
+                do {
+                    try data.write(to: fileURL)
+                } catch let error {
+                    print("error saving file with error", error)
+                }
+                print("data \(data)")
+                print("document \(documentsDirectory)")
+            }
+
+            //                            func saveImageIndex(data: Data) {
+//        if snapSet {
+            for index in constructorData.constructorImage.indices {
+                saveImage(imageName: "constructorImage\(index).jpg", image: UIImage(data: constructorData.constructorImage[index]) ?? UIImage(named: "120x120_clear")!)
+            }
+            print("image counts: \(constructorData.constructorImage)")
+            snapSet = false
+//        }
+            //                            }
+
+
+
+            print("image counts: \(constructorData.constructorImage)")
+            snapSet = false
+        }
+//            return snapString ?? ""
+//        }
+        
+//        if snapSet {
+//            snapArray.append(saveImage())
+//            print("snapArrayUIKit \(snapArray)")
+//        }
+        
     }
     func makeCoordinator() -> Coordinator {
         Coordinator(sceneView)

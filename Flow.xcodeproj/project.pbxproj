@@ -29,6 +29,7 @@
 		2F40D1D625E3236500B5CA70 /* featuredMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F40D1D525E3236500B5CA70 /* featuredMock.json */; };
 		2F40D1D925E3237C00B5CA70 /* FeaturedMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D1D825E3237C00B5CA70 /* FeaturedMock.swift */; };
 		2F40D1DE25E3281300B5CA70 /* MockTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D1DD25E3281300B5CA70 /* MockTabView.swift */; };
+		2F40D1E325E56AB300B5CA70 /* ConstructorConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F40D1E225E56AB300B5CA70 /* ConstructorConfirm.swift */; };
 		2F447FB3259D791400019EA6 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F447FB2259D791400019EA6 /* ConfirmView.swift */; };
 		2F45380125C4CC13001B57F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F45380025C4CC13001B57F4 /* GoogleService-Info.plist */; };
 		2F59065E25ABC66400686CFA /* StoreListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F59065D25ABC66300686CFA /* StoreListData.swift */; };
@@ -115,6 +116,7 @@
 		2F40D1D525E3236500B5CA70 /* featuredMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = featuredMock.json; sourceTree = "<group>"; };
 		2F40D1D825E3237C00B5CA70 /* FeaturedMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedMock.swift; sourceTree = "<group>"; };
 		2F40D1DD25E3281300B5CA70 /* MockTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabView.swift; sourceTree = "<group>"; };
+		2F40D1E225E56AB300B5CA70 /* ConstructorConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorConfirm.swift; sourceTree = "<group>"; };
 		2F447FB2259D791400019EA6 /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		2F45380025C4CC13001B57F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F59065D25ABC66300686CFA /* StoreListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListData.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		2F0DD38325B2927900081A93 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				2FE6F4E525DD6459003250BD /* AfterLoginView.swift */,
 				2F0DD38425B2928B00081A93 /* Animations.swift */,
 			);
 			path = Animations;
@@ -211,7 +214,6 @@
 				2F18EB4C25C4A4C900206355 /* RegistrationView.swift */,
 				2FA579CF25B10475005F59DF /* SignInWithAppleView.swift */,
 				2FE6F4D125DD1C00003250BD /* PhoneChangeView.swift */,
-				2FE6F4E525DD6459003250BD /* AfterLoginView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -373,6 +375,7 @@
 			children = (
 				2FA53FE125A9D37D00950D99 /* Objects */,
 				2F33A23825B4CFB5000E92E6 /* SceneKitView.swift */,
+				2F40D1E225E56AB300B5CA70 /* ConstructorConfirm.swift */,
 			);
 			path = Constructor;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				2FD1772225BC671800F5D72B /* CreditCardView.swift in Sources */,
 				2FE6F4CA25DD1A1B003250BD /* PasswordChangeView.swift in Sources */,
 				2FE6F4F525DD6F2F003250BD /* TestButtonView.swift in Sources */,
+				2F40D1E325E56AB300B5CA70 /* ConstructorConfirm.swift in Sources */,
 				2F5F453A25A37364009B8A82 /* Data.swift in Sources */,
 				2FE6F4D925DD32E1003250BD /* CustomDelegate.swift in Sources */,
 				2F40D1D925E3237C00B5CA70 /* FeaturedMock.swift in Sources */,
@@ -789,7 +793,7 @@
 				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.821.33;
+				CURRENT_PROJECT_VERSION = 2.821.34;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;
@@ -817,7 +821,7 @@
 				CODE_SIGN_ENTITLEMENTS = Flow/Flow.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.821.33;
+				CURRENT_PROJECT_VERSION = 2.821.34;
 				DEVELOPMENT_ASSET_PATHS = "\"Flow/Preview Content\"";
 				DEVELOPMENT_TEAM = JN3FPZVX7E;
 				ENABLE_PREVIEWS = YES;

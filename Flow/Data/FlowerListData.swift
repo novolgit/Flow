@@ -8,11 +8,12 @@
 import Foundation
 
 struct Flower: Codable, Identifiable {
-    var price: Double
+    var price: Float
     var descriptions, image, name: String
     var id: Int
     var isSelected: Bool
     var isPurchase: Bool
     var flower: String
     var group, subGroup: String?
+    var textColor: String
 }

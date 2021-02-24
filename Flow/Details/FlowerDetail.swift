@@ -42,7 +42,7 @@ struct FlowerDetail: View {
                         .padding(80)
                     FlowerCustomButtonStyle(isSet: $modelData.flowers[flowerIndex].isSelected, size: 35)
                         .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0))
-                        .offset(x: geometry.size.width * 0.4, y: -geometry.size.height * 0.04)
+                        .offset(x: geometry.size.width * 0.4, y: -geometry.size.height * 0.09)
                 }
                 VStack{
                     ZStack{
