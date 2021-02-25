@@ -62,7 +62,7 @@ class AccountCreationViewModel: ObservableObject{
     func login(){
         isLoading.toggle()
         
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+//        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         PhoneAuthProvider.provider().verifyPhoneNumber("+" + phNumber, uiDelegate: nil) { (CODE, err) in
             
             self.isLoading.toggle()
@@ -72,6 +72,9 @@ class AccountCreationViewModel: ObservableObject{
                 self.alert.toggle()
                 return
             }
+            
+            UserDefaults.standard.set(CODE, forKey: "firebase_verification")
+            UserDefaults.standard.synchronize()
             
             self.CODE = CODE!
             
@@ -90,6 +93,7 @@ class AccountCreationViewModel: ObservableObject{
                     Auth.auth().signIn(with: credential) { (res, err) in
                         if err != nil{
                             self.alertMsg = err!.localizedDescription
+                            Auth.auth().languageCode = "ru"
                             self.alert.toggle()
                             self.isLoading.toggle()
                             return
@@ -102,7 +106,8 @@ class AccountCreationViewModel: ObservableObject{
                 }
             }
             alertView.addTextField { (txt) in
-                txt.placeholder = "message code"
+                txt.placeholder = "Code From Message"
+                txt.autocorrectionType = .yes
             }
             alertView.addAction(cancel)
             alertView.addAction(ok)

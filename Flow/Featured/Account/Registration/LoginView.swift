@@ -107,8 +107,7 @@ struct LoginView: View {
                         .multilineTextAlignment(.center)
                         }
                     if accountCreation.isLoading{
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
+                        CustionProgressView(frame: 100, fontSize: 50, offset: 15)
                     }
                 }
                 .animation(.spring(response: 0.6, dampingFraction: 0.8))
@@ -411,6 +410,7 @@ struct ImageRegister: View {
                     Image(uiImage: UIImage(data: accountCreation.accountImage[0])!)
                         .resizable()
                         .clipShape(Circle())
+                        .aspectRatio(contentMode: .fit)
                         .frame(width:200, height: 200)
                         .padding()
                 }

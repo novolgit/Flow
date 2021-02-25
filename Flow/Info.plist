@@ -43,7 +43,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
+	<string>NO</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MKDirectionsApplicationSupportedModes</key>
@@ -67,6 +67,7 @@
 	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchScreen</key>
@@ -74,7 +75,7 @@
 		<key>UIColorName</key>
 		<string>LaunchBackgroundColor</string>
 		<key>UIImageName</key>
-		<string>AppLogo</string>
+		<string>flowLogoX-3</string>
 	</dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

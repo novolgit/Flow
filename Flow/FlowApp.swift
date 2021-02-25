@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct FlowApp: App {
     @StateObject private var modelData = ModelData()
+    @StateObject private var favoriteFlowers = FavoriteFlowers()
     
     @UIApplicationDelegateAdaptor(Delegate.self) var delegate
     
@@ -17,6 +18,7 @@ struct FlowApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(modelData)
+                .environmentObject(favoriteFlowers)
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }

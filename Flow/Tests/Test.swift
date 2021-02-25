@@ -9,99 +9,127 @@ import Foundation
 import SwiftUI
 
 struct Test: View {
-//    @State var name: String = ""
-//    @State var phone: String = ""
-//    @State var bio: String = ""
-//    @State var profileImage: String = ""
-//    @State var bonuses: Int = 0
-//    @State var email: String = ""
-//    @State var password: String = ""
-//    @State var confirmPassword: String = ""
-//
-//    @State var showSignUpForm = true
-//    @State var showDetails = false
-//
-//    @ObservedObject var sessionStore = SessionStore()
-//    @State var profile: AccountFirebase?
+    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var favoriteFlowers: FavoriteFlowers
     
+    @State var favorites = UserDefaults.standard.value(forKey: "FavoriteFlowers") as? Array ?? []
+    @State private var showFavoritesOnly = false
+
+    var filteredFlowers: [Flower] {
+        modelData.flowers.filter { flower in
+            (!showFavoritesOnly || favoriteFlowers.contains(flower))
+        }
+    }
+
     var body: some View {
-        Text("das")
-//        NavigationView {
-//          VStack {
-//            if self.showSignUpForm {
-//              Form {
-//                Section {
-//                  TextField("name", text: $name)
-//                    .textContentType(.givenName)
-//                }
-//                Section {
-//                  TextField("Email", text: $email)
-//                    .textContentType(.emailAddress)
-//                    .autocapitalization(.none)
-//                  SecureField("Password", text: $password)
-//                  SecureField("Confirm password", text: $confirmPassword)
-//                }
-//                Button(action: { self.signUp() }) {
-//                  Text("Sign up")
-//                }
-//              }
-//              .navigationBarTitle("Sign up")
-//            }
-//            else {
-//              Form {
-//                TextField("Email", text: $email)
-//                  .textContentType(.emailAddress)
-//                  .autocapitalization(.none)
-//                SecureField("Password", text: $password)
-//                Button(action: { self.signIn() }) {
-//                  Text("Sign in")
-//                }
-//              }
-//              .navigationBarTitle("Sign in")
-//            }
-//            Button(action: { self.showSignUpForm.toggle() }) {
-//              Text(self.showSignUpForm ? "Have an account? Sign in instead." : "No account yet? Click here to sign up instead.")
-//            }
-//          }
-//          .sheet(isPresented: $showDetails) {
-//            UserProfileView(userProfile: self.profile ??  AccountFirebase(uid: "", name: "", phone: "", bio: "", profileImage: "", bonuses: 0))
-          }
-//        }
-//      }
-//
-//      func signUp() {
-//        sessionStore.signUp(email: self.email, password: self.password, name: self.name, phone: self.phone, bio: self.bio, profileImage: self.profileImage, bonuses: self.bonuses) { (profile, error) in
-//          if let error = error {
-//            print("Error when signing up: \(error)")
-//            return
-//          }
-//          self.profile = profile
-//          self.showDetails.toggle()
-//        }
-//      }
-//
-//      func signIn() {
-//        sessionStore.signIn(email: self.email, password: self.password) { (profile, error) in
-//          if let error = error {
-//            print("Error when signing up: \(error)")
-//            return
-//          }
-//          self.profile = profile
-//          self.showDetails.toggle()
-//        }
-//    }
+        NavigationView {
+            List {
+                Toggle(isOn: $showFavoritesOnly) {
+                    Text("Favorites only")
+                }
+
+                ForEach(filteredFlowers) { flower in
+                    NavigationLink(destination: FlowerrDetail(flower: flower)) {
+                        FlowerRow(flower: flower)
+                    }
+                }
+            }
+            .navigationTitle("Flowers")
+        }
+    }
+}
+
+struct FlowerRow: View {
+    @EnvironmentObject var favoriteFlowers: FavoriteFlowers
+    
+    var flower: Flower
+
+    var body: some View {
+        HStack {
+            Image(flower.image)
+                .resizable()
+                .frame(width: 50, height: 50)
+                .cornerRadius(5)
+            Text(flower.name)
+
+            Spacer()
+
+            if favoriteFlowers.contains(flower) {
+                Image(systemName: "star.fill")
+                    .imageScale(.medium)
+                    .foregroundColor(.yellow)
+            }
+        }
+    }
+}
+
+struct FlowerrDetail: View {
+    @EnvironmentObject var modelData: ModelData
+    
+    var flower: Flower
+
+    var flowerIndex: Int {
+        modelData.flowers.firstIndex(where: { $0.id == flower.id })!
+    }
+
+    var body: some View {
+        ScrollView {
+
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(flower.name)
+                        .font(.title)
+                        .foregroundColor(.primary)
+                    FlowerButton(isSet: $modelData.flowers[flowerIndex].isSelected, flower: flower)
+                }
+
+                HStack {
+                    Text(flower.name)
+                    Spacer()
+                    Text(flower.descriptions)
+                }
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
+                Divider()
+
+                Text("About \(flower.name)")
+                    .font(.title2)
+                Text(String(flower.price))
+            }
+            .padding()
+        }
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct FlowerButton: View {
+    @EnvironmentObject var favoriteFlowers: FavoriteFlowers
+    
+    @Binding var isSet: Bool
+    
+    var flower: Flower
+
+    var body: some View {
+        Button(action: {
+            if favoriteFlowers.contains(flower) {
+                favoriteFlowers.remove(flower)
+                print(favoriteFlowers)
+            } else {
+                favoriteFlowers.add(flower)
+                print(favoriteFlowers)
+            }
+        }) {
+            Image(systemName: favoriteFlowers.contains(flower) ? "star.fill" : "star")
+                .foregroundColor(favoriteFlowers.contains(flower) ? Color.yellow : Color.gray)
+        }
+    }
 }
 
 struct Test_Previews: PreviewProvider {
     static var previews: some View {
         Test()
+            .environmentObject(ModelData())
+            .environmentObject(FavoriteFlowers())
     }
 }
-
-//struct UserProfileView: View {
-//  var userProfile: AccountFirebase
-//
-//  var body: some View {
-//        Text("Hello \(userProfile.name)")
-//  }
-//}
